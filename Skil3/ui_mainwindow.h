@@ -48,7 +48,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(359, 340);
+        MainWindow->resize(421, 340);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -57,6 +57,7 @@ public:
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         pushButton_6 = new QPushButton(centralWidget);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
+        pushButton_6->setCursor(QCursor(Qt::PointingHandCursor));
 
         gridLayout->addWidget(pushButton_6, 2, 4, 1, 1);
 
@@ -72,26 +73,31 @@ public:
 
         pushButton_5 = new QPushButton(centralWidget);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        pushButton_5->setCursor(QCursor(Qt::PointingHandCursor));
 
         gridLayout->addWidget(pushButton_5, 0, 4, 1, 1);
 
         viewButton = new QPushButton(centralWidget);
         viewButton->setObjectName(QStringLiteral("viewButton"));
+        viewButton->setCursor(QCursor(Qt::PointingHandCursor));
 
         gridLayout->addWidget(viewButton, 8, 2, 1, 1);
 
         addButton = new QPushButton(centralWidget);
         addButton->setObjectName(QStringLiteral("addButton"));
+        addButton->setCursor(QCursor(Qt::PointingHandCursor));
 
         gridLayout->addWidget(addButton, 8, 3, 1, 1);
 
         editButton = new QPushButton(centralWidget);
         editButton->setObjectName(QStringLiteral("editButton"));
+        editButton->setCursor(QCursor(Qt::PointingHandCursor));
 
         gridLayout->addWidget(editButton, 8, 4, 1, 1);
 
         removeButton = new QPushButton(centralWidget);
         removeButton->setObjectName(QStringLiteral("removeButton"));
+        removeButton->setCursor(QCursor(Qt::PointingHandCursor));
 
         gridLayout->addWidget(removeButton, 8, 5, 1, 1);
 
@@ -112,7 +118,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 359, 19));
+        menuBar->setGeometry(QRect(0, 0, 421, 26));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
