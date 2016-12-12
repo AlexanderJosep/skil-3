@@ -3,7 +3,7 @@
 
 #include <cstdlib>
 #include <QStandardItemModel>
-#include "mainwindow.h"
+#include <QMainWindow>
 #include "config.h"
 #include "entity.h"
 #include "person.h"
@@ -16,7 +16,7 @@ using namespace config;
 class UserInterface {
 public:
     UserInterface();
-    QStandardItemModel* getPersonTableModel(int organization, MainWindow *window);
+    QStandardItemModel* getTableModel(int type, int organization, QMainWindow *window);
 private:
     int currentYear;
     EntityManager manager;

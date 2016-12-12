@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>459</width>
+    <width>359</width>
     <height>340</height>
    </rect>
   </property>
@@ -15,22 +15,75 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="5">
+    <item row="2" column="4">
      <widget class="QPushButton" name="pushButton_6">
       <property name="text">
        <string>Filter</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="5">
+    <item row="2" column="2" colspan="2">
+     <widget class="QLineEdit" name="lineFilter"/>
+    </item>
+    <item row="0" column="2" colspan="2">
+     <widget class="QLineEdit" name="lineSearch"/>
+    </item>
+    <item row="0" column="4">
      <widget class="QPushButton" name="pushButton_5">
       <property name="text">
        <string>Search</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="2" rowspan="3" colspan="4">
-     <widget class="QTableView" name="tableViewPersons">
+    <item row="8" column="2">
+     <widget class="QPushButton" name="viewButton">
+      <property name="text">
+       <string>View</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="3">
+     <widget class="QPushButton" name="addButton">
+      <property name="text">
+       <string>Add</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="4">
+     <widget class="QPushButton" name="editButton">
+      <property name="text">
+       <string>Edit</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="5">
+     <widget class="QPushButton" name="removeButton">
+      <property name="text">
+       <string>Remove</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="5">
+     <widget class="QComboBox" name="comboBox">
+      <item>
+       <property name="text">
+        <string>Persons</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Computers</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Connections</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="3" column="2" rowspan="3" colspan="4">
+     <widget class="QTableView" name="tableView">
       <property name="editTriggers">
        <set>QAbstractItemView::NoEditTriggers</set>
       </property>
@@ -45,40 +98,6 @@
       </attribute>
      </widget>
     </item>
-    <item row="5" column="4">
-     <widget class="QPushButton" name="removePButton">
-      <property name="text">
-       <string>Remove</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="2">
-     <widget class="QPushButton" name="viewPButton">
-      <property name="text">
-       <string>View</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="5">
-     <widget class="QPushButton" name="editPButton">
-      <property name="text">
-       <string>Edit</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2" colspan="3">
-     <widget class="QLineEdit" name="lineSearch"/>
-    </item>
-    <item row="5" column="3">
-     <widget class="QPushButton" name="addPButton">
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2" colspan="3">
-     <widget class="QLineEdit" name="lineFilter"/>
-    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -86,7 +105,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>459</width>
+     <width>359</width>
      <height>19</height>
     </rect>
    </property>

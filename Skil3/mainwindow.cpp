@@ -6,14 +6,21 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui -> setupUi(this);
-    UserInterface userInterface = UserInterface();
-    ui -> tableViewPersons -> setModel(userInterface.getPersonTableModel(0, this));
-    ui -> tableViewPersons -> setSelectionMode(QAbstractItemView::SingleSelection);
-    ui -> tableViewPersons -> horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    setListType(0);
+    ui -> tableView -> setSelectionMode(QAbstractItemView::SingleSelection);
+    ui -> tableView -> horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    connect(ui -> comboBox, SIGNAL(currentIndexChanged(int)),
+            this, SLOT(setListType(int)));
+
     resize(QDesktopWidget().availableGeometry(this).size() * 0.4);
 }
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::setListType(int index) {
+    ui -> tableView -> setModel(userInterface.getTableModel(index, 0, this));
 }
 

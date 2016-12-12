@@ -5,6 +5,7 @@
 #include <QStandardItemModel>
 #include <QStandardItem>
 #include <QDesktopWidget>
+#include "userinterface.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,6 +20,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    UserInterface userInterface;
+
+public slots:
+    void setListType(int index); // sets the list type (persons/computers/connections)
 };
 
 #endif // MAINWINDOW_H
