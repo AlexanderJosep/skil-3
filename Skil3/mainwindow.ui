@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>661</width>
-    <height>390</height>
+    <width>459</width>
+    <height>338</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,10 +15,21 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLineEdit" name="lineSearch"/>
+    <item row="1" column="5">
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="text">
+       <string>Filter</string>
+      </property>
+     </widget>
     </item>
-    <item row="0" column="2" rowspan="3" colspan="4">
+    <item row="0" column="5">
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="text">
+       <string>Search</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2" rowspan="3" colspan="4">
      <widget class="QTableView" name="tableViewPersons">
       <property name="editTriggers">
        <set>QAbstractItemView::NoEditTriggers</set>
@@ -34,50 +45,39 @@
       </attribute>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="text">
-       <string>Search</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="4">
+    <item row="5" column="4">
      <widget class="QPushButton" name="removePButton">
       <property name="text">
        <string>Remove</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="3">
-     <widget class="QPushButton" name="addPButton">
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
+    <item row="5" column="2">
      <widget class="QPushButton" name="viewPButton">
       <property name="text">
        <string>View</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="5">
+    <item row="5" column="5">
      <widget class="QPushButton" name="editPButton">
       <property name="text">
        <string>Edit</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QLineEdit" name="lineFilter"/>
+    <item row="0" column="2" colspan="3">
+     <widget class="QLineEdit" name="lineSearch"/>
     </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton_6">
+    <item row="5" column="3">
+     <widget class="QPushButton" name="addPButton">
       <property name="text">
-       <string>Filter</string>
+       <string>Add</string>
       </property>
      </widget>
+    </item>
+    <item row="1" column="2" colspan="3">
+     <widget class="QLineEdit" name="lineFilter"/>
     </item>
    </layout>
   </widget>
@@ -86,8 +86,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>661</width>
-     <height>26</height>
+     <width>459</width>
+     <height>19</height>
     </rect>
    </property>
   </widget>
