@@ -19,11 +19,14 @@ public:
     ~MainWindow();
 
 private:
+    void setListType(int index); // sets the list type (persons/computers/connections)
     Ui::MainWindow *ui;
     UserInterface userInterface;
+    int listType;
 
-public slots:
-    void setListType(int index); // sets the list type (persons/computers/connections)
+private slots:
+    void on_pushButton_5_clicked();
+    void on_comboBox_activated(int index);
 };
 
 #endif // MAINWINDOW_H

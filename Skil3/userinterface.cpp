@@ -6,9 +6,15 @@ UserInterface::UserInterface() {
     this -> manager = EntityManager(tPtr -> tm_year + 1900); // parameter is the current year
 }
 
-QStandardItemModel* UserInterface::getTableModel(int type, int organization, QMainWindow *window) {
+vector<Entity*> UserInterface::getEntities(int type) {
+    return manager.getOrganizedEntities(0, type);
+}
 
-    vector<Entity*> entities = manager.getOrganizedEntities(organization, type);
+vector<Entity*> UserInterface::getSearchResults(string s, int type) {
+    return manager.getSearchResults(s, type);
+}
+
+QStandardItemModel* UserInterface::getTableModel(vector<Entity*> entities, int type, QMainWindow *window) {
     QStandardItemModel *model = new QStandardItemModel(entities.size(), 4 - type, window);
     model -> setHorizontalHeaderItem(0, new QStandardItem(QString(type == CONNECTION ? "Person" : "Name")));
     model -> setHorizontalHeaderItem(1, new QStandardItem(QString(type == CONNECTION ? "Computer" : (type == COMPUTER ? "Type" : "Gender"))));

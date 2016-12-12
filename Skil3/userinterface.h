@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <QStandardItemModel>
 #include <QMainWindow>
+#include <vector>
 #include "config.h"
 #include "entity.h"
 #include "person.h"
@@ -16,7 +17,9 @@ using namespace config;
 class UserInterface {
 public:
     UserInterface();
-    QStandardItemModel* getTableModel(int type, int organization, QMainWindow *window);
+    QStandardItemModel* getTableModel(vector<Entity*> entities, int type, QMainWindow *window);
+    vector<Entity*> getEntities(int type);
+    vector<Entity*> getSearchResults(string s, int type);
 private:
     int currentYear;
     EntityManager manager;

@@ -192,7 +192,7 @@ void Console::process() {
         }
         if(i == 1) { // search
             int type = !getBool("Persons or computers", 'p', 'c');
-            printEntities(manager.getSearchResults(*this, type), false, false, type);
+          //  printEntities(manager.getSearchResults(type), false, false, type);
         }
         if(i == 2) { // add person
             manager.add(*this, !getBool("Person or computer", 'p', 'c'));

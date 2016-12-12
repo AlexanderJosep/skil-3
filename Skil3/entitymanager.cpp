@@ -501,13 +501,7 @@ string EntityManager::toLowerCase(string s) {
     return out;
 }
 
-vector<Entity*> EntityManager::getSearchResults(Console &c, int type) {
-    if(type == PERSON) {
-        c.println("You can search for 'male' or 'female' to get gender results.");
-    } else if(type == COMPUTER) {
-        c.println("You can search for 'built' or 'not built' to get specific results.");
-    }
-    string search = toLowerCase(c.getString("Search", true));
+vector<Entity*> EntityManager::getSearchResults(string search, int type) {
     vector<Entity*> out;
     if(type == PERSON) {
         string male = "male";
