@@ -3,8 +3,6 @@
 Connection::Connection(int personID, int computerID) {
     this -> personID = personID;
     this -> computerID = computerID;
-    this -> person = person;
-    this -> computer = computer;
 }
 
 int Connection::getPersonID() {

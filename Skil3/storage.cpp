@@ -212,4 +212,5 @@ void Storage::close() {
     if(database.open()) {
         database.close(); // close the sql database connection
     }
+    QSqlDatabase::removeDatabase("QSQLITE");
 }

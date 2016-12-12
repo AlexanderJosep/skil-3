@@ -256,7 +256,7 @@ debug/moc_mainwindow.cpp: C:/Qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.7/mingw53_32/include/QtGui/QStandardItem \
 		mainwindow.h \
 		C:/Qt/5.7/mingw53_32/bin/moc.exe
-	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -IC:/Users/krist/OneDrive/AATölvunarfræði/1.önn/Verklegur/Skil_3_Official/skil-3/Skil3 -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtSql -IC:/Qt/5.7/mingw53_32/include/QtCore -I"C:/Program Files (x86)/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include" -I"C:/Program Files (x86)/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed" -I"C:/Program Files (x86)/Qt/Tools/mingw530_32/i686-w64-mingw32/include" -I"C:/Program Files (x86)/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++" -I"C:/Program Files (x86)/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32" -I"C:/Program Files (x86)/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward" mainwindow.h -o debug\moc_mainwindow.cpp
+	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -IC:/Users/krist/OneDrive/AATölvunarfræði/1.önn/Verklegur/Skil_3_Official/skil-3/Skil3 -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtSql -IC:/Qt/5.7/mingw53_32/include/QtCore -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug/moc_snakethread.cpp: C:/Qt/5.7/mingw53_32/include/QtCore/QThread \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qthread.h \
@@ -380,7 +380,7 @@ debug/moc_snakethread.cpp: C:/Qt/5.7/mingw53_32/include/QtCore/QThread \
 		C:/Qt/5.7/mingw53_32/include/QtGui/QFontMetrics \
 		snakethread.h \
 		C:/Qt/5.7/mingw53_32/bin/moc.exe
-	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -IC:/Users/krist/OneDrive/AATölvunarfræði/1.önn/Verklegur/Skil_3_Official/skil-3/Skil3 -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtSql -IC:/Qt/5.7/mingw53_32/include/QtCore -I"C:/Program Files (x86)/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include" -I"C:/Program Files (x86)/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed" -I"C:/Program Files (x86)/Qt/Tools/mingw530_32/i686-w64-mingw32/include" -I"C:/Program Files (x86)/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++" -I"C:/Program Files (x86)/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32" -I"C:/Program Files (x86)/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward" snakethread.h -o debug\moc_snakethread.cpp
+	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -IC:/Users/krist/OneDrive/AATölvunarfræði/1.önn/Verklegur/Skil_3_Official/skil-3/Skil3 -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtSql -IC:/Qt/5.7/mingw53_32/include/QtCore -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward snakethread.h -o debug\moc_snakethread.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -672,6 +672,8 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qstatusbar.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QTableView \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtableview.h \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/QTableWidget \
+		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtablewidget.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QToolBar \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/qtoolbar.h \
 		C:/Qt/5.7/mingw53_32/include/QtWidgets/QWidget \

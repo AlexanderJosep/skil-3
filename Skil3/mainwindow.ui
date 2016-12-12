@@ -6,317 +6,87 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>937</width>
-    <height>326</height>
+    <width>661</width>
+    <height>390</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QRadioButton" name="radioButtonP1">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>89</y>
-      <width>91</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Name alphabetical</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="radioButtonP2">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>109</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Gender</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="radioButtonP3">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>129</y>
-      <width>61</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Birth year</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="radioButtonP4">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>149</y>
-      <width>61</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Death year</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>69</y>
-      <width>51</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Organizing&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="radioButtonP5">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>169</y>
-      <width>71</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>No organizing</string>
-    </property>
-    <property name="checked">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="addPButton">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>199</y>
-      <width>51</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="removePButton">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>199</y>
-      <width>51</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Remove</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="editPButton">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>199</y>
-      <width>51</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Edit</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="viewPButton">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>199</y>
-      <width>51</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>View</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>9</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Search</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_6">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>39</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Filter</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineSearch">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>9</y>
-      <width>61</width>
-      <height>21</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineFilter">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>39</y>
-      <width>61</width>
-      <height>21</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTableView" name="tableViewPersons">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>10</y>
-      <width>231</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="editTriggers">
-     <set>QAbstractItemView::NoEditTriggers</set>
-    </property>
-    <property name="selectionBehavior">
-     <enum>QAbstractItemView::SelectRows</enum>
-    </property>
-    <property name="sortingEnabled">
-     <bool>true</bool>
-    </property>
-    <attribute name="verticalHeaderVisible">
-     <bool>false</bool>
-    </attribute>
-   </widget>
-   <widget class="QTableWidget" name="tableWidget">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>10</y>
-      <width>511</width>
-      <height>192</height>
-     </rect>
-    </property>
-    <property name="editTriggers">
-     <set>QAbstractItemView::NoEditTriggers</set>
-    </property>
-    <property name="selectionBehavior">
-     <enum>QAbstractItemView::SelectRows</enum>
-    </property>
-    <property name="sortingEnabled">
-     <bool>true</bool>
-    </property>
-    <attribute name="verticalHeaderVisible">
-     <bool>false</bool>
-    </attribute>
-    <row>
-     <property name="text">
-      <string>New Row</string>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>New Row</string>
-     </property>
-    </row>
-    <column>
-     <property name="text">
-      <string>Name</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Birth Year</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Gender</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Death Year</string>
-     </property>
-    </column>
+   <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <property name="text">
-      <string>Kristjan</string>
-     </property>
+     <widget class="QLineEdit" name="lineSearch"/>
+    </item>
+    <item row="0" column="2" rowspan="3" colspan="4">
+     <widget class="QTableView" name="tableViewPersons">
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+     </widget>
     </item>
     <item row="0" column="1">
-     <property name="text">
-      <string>1993</string>
-     </property>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="text">
+       <string>Search</string>
+      </property>
+     </widget>
     </item>
-    <item row="0" column="2">
-     <property name="text">
-      <string>KK</string>
-     </property>
+    <item row="3" column="4">
+     <widget class="QPushButton" name="removePButton">
+      <property name="text">
+       <string>Remove</string>
+      </property>
+     </widget>
     </item>
-    <item row="0" column="3">
-     <property name="text">
-      <string>NOPE</string>
-     </property>
+    <item row="3" column="3">
+     <widget class="QPushButton" name="addPButton">
+      <property name="text">
+       <string>Add</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QPushButton" name="viewPButton">
+      <property name="text">
+       <string>View</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="5">
+     <widget class="QPushButton" name="editPButton">
+      <property name="text">
+       <string>Edit</string>
+      </property>
+     </widget>
     </item>
     <item row="1" column="0">
-     <property name="text">
-      <string>Lubbi</string>
-     </property>
+     <widget class="QLineEdit" name="lineFilter"/>
     </item>
     <item row="1" column="1">
-     <property name="text">
-      <string>2003</string>
-     </property>
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="text">
+       <string>Filter</string>
+      </property>
+     </widget>
     </item>
-    <item row="1" column="2">
-     <property name="text">
-      <string>kk</string>
-     </property>
-    </item>
-    <item row="1" column="3">
-     <property name="text">
-      <string>nope</string>
-     </property>
-    </item>
-   </widget>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>937</width>
+     <width>661</width>
      <height>26</height>
     </rect>
    </property>
