@@ -10,8 +10,8 @@ vector<Entity*> UserInterface::getEntities(int type) {
     return manager.getOrganizedEntities(0, type);
 }
 
-vector<Entity*> UserInterface::getSearchResults(string s, int type) {
-    return manager.getSearchResults(s, type);
+vector<Entity*> UserInterface::getSearchResults(string s, string filter, int type) {
+    return manager.getFilteredSearchResults(s, filter, type);
 }
 
 QStandardItemModel* UserInterface::getTableModel(vector<Entity*> entities, int type, QMainWindow *window) {

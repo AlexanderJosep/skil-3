@@ -12,6 +12,10 @@ SnakeGrid::SnakeGrid() {
 }
 
 void SnakeGrid::initialize() {
+    srand(time(NULL)); // change the seed
+    resetGrid();
+    snakeX.clear();
+    snakeY.clear();
     for(int i = 0; i < 3; i++) {
         snakeX.push_back(0);
     }
@@ -36,9 +40,9 @@ void SnakeGrid::setDirection(int dir) {
     direction = dir;
 }
 
-bool SnakeGrid::update(Console &c) {
+bool SnakeGrid::update() {
     resetGrid();
-    if(!updateSnake(c, direction)) {
+    if(!updateSnake(direction)) {
         return false;
     }
     canUpdateDir = true;
@@ -68,7 +72,7 @@ bool SnakeGrid::hasWon() {
     return true;
 }
 
-bool SnakeGrid::updateSnake(Console &, int dir) {
+bool SnakeGrid::updateSnake(int dir) {
     int offX = dir == 0 ? -1 : (dir == 2 ? 1 : 0);
     int offY = dir == 1 ? -1 : (dir == 3 ? 1 : 0);
     for(unsigned int i = 1; i < snakeX.size(); i++) {

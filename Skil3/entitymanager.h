@@ -21,7 +21,7 @@ public:
     void edit(Console &c, vector<Entity*> entities, int type); // edits a entity in a list
     void remove(Console &c, vector<Entity*> entities, int type); // remove a entity from a list
     vector<Entity*> getOrganizedEntities(int o, int type); // gets organized entity list which organizes by type o
-    vector<Entity*> getSearchResults(string search, int type); // returns a list of entities that correspond to the search
+    vector<Entity*> getFilteredSearchResults(string searchString, string filterString, int type); // gets filtered search results and returns the resulting entities in a vector
     void addSnakeScore(Console &c, int score, int grid); // adds a snake score to a list, also prints top 10 hiscores if available
 private:
     short getListIndex(Console &c, int type); // select a index from a list
@@ -36,6 +36,7 @@ private:
     string trim(string s); // trims the edges of a string for any pesky spaces
     string capitialize(string s); // capitalizes a string
     string toLowerCase(string s); // lowercases a string
+    vector<Entity*> getSearchResults(string search, int type); // returns a list of entities that correspond to the search
     vector<Person> persons;
     vector<Computer> computers;
     vector<Connection> connections;

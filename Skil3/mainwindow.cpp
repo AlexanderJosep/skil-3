@@ -17,16 +17,27 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::setListType(int index) {
-    ui -> tableView -> setModel(userInterface.getTableModel(userInterface.getEntities(index), index, this));\
     listType = index;
-}
-
-
-void MainWindow::on_pushButton_5_clicked() {
-    // plus 3 because it's a search so we can do -3 when we want to get the real type
-    ui -> tableView -> setModel(userInterface.getTableModel(userInterface.getSearchResults("", listType), listType, this));
+    ui -> tableView -> setModel(userInterface.getTableModel(userInterface.getSearchResults(ui -> listSearch -> text().toStdString(), ui -> listFilter -> text().toStdString(), listType), listType, this));
 }
 
 void MainWindow::on_comboBox_activated(int index){
         setListType(index);
+}
+
+void MainWindow::on_listSearch_textChanged(const QString &arg1) {
+    ui -> tableView -> setModel(userInterface.getTableModel(userInterface.getSearchResults(arg1.toStdString(), ui -> listFilter -> text().toStdString(), listType), listType, this));
+}
+
+void MainWindow::on_listFilter_textChanged(const QString &arg1) {
+    ui -> tableView -> setModel(userInterface.getTableModel(userInterface.getSearchResults(ui -> listSearch -> text().toStdString(), arg1.toStdString(), listType), listType, this));
+}
+
+void MainWindow::on_actionSnake_triggered() {
+    Snake snake = Snake(this);
+    // add hiscores to this bitch :)
+}
+
+void MainWindow::on_actionPong_triggered() {
+    Pong pong = Pong(this);
 }

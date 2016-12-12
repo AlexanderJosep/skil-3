@@ -1,25 +1,54 @@
 #include "snakewidget.h"
 
-SnakeWidget::SnakeWidget(SnakeGrid *gridObject) {
+SnakeWidget::SnakeWidget(SnakeGrid *gridObject, QMainWindow *window) {
     this -> gridObject = gridObject;
-    grid = new short*[(*gridObject).getGridSize()];
-    for(int i = 0; i < (*gridObject).getGridSize(); i++) {
-        grid[i] = new short[(*gridObject).getGridSize()];
-        for(int j = 0; j < (*gridObject).getGridSize(); j++) {
+    this -> window = window;
+    grid = new short*[gridObject -> getGridSize()];
+    for(int i = 0; i < gridObject -> getGridSize(); i++) {
+        grid[i] = new short[gridObject -> getGridSize()];
+        for(int j = 0; j < gridObject -> getGridSize(); j++) {
             grid[i][j] = 0;
         }
     }
     status = SNAKE_DEFAULT_STATUS;
     started = false;
+    needsReset = false;
+    waitTime = 0;
 }
 
 void SnakeWidget::setStatus(string status) {
     this -> status = status;
 }
 
+void SnakeWidget::reset() {
+    started = false;
+    needsReset = true;
+    auto dur = std::chrono::system_clock::now().time_since_epoch();
+    waitTime = std::chrono::duration_cast<std::chrono::milliseconds>(dur).count();
+}
+
 bool SnakeWidget::hasStarted() {
     return started;
 }
+
+bool SnakeWidget::doesNeedReset() {
+    return needsReset;
+}
+
+void SnakeWidget::setNeedsReset(bool b) {
+    needsReset = b;
+}
+
+void SnakeWidget::setGrid(short **grid) {
+    this -> grid = new short*[gridObject -> getGridSize()];
+    for(int i = 0; i < gridObject -> getGridSize(); i++) {
+        this -> grid[i] = new short[gridObject -> getGridSize()];
+        for(int j = 0; j < gridObject -> getGridSize(); j++) {
+            this -> grid[i][j] = grid[i][j];
+        }
+    }
+}
+
 
 void SnakeWidget::paintEvent(QPaintEvent*) {
     painter.begin(this);
@@ -76,6 +105,11 @@ void SnakeWidget::mousePressEvent(QMouseEvent*) {
 }
 
 void SnakeWidget::keyPressEvent(QKeyEvent *event){
+    auto dur = std::chrono::system_clock::now().time_since_epoch();
+    auto currentTime = std::chrono::duration_cast<std::chrono::milliseconds>(dur).count();
+    if(currentTime <= waitTime + 1000) {
+        return;
+    }
     if(!started) {
         started = true;
         status = "Eat the candies.";
@@ -85,16 +119,11 @@ void SnakeWidget::keyPressEvent(QKeyEvent *event){
     int dir = (key == 87 || key == 16777235) ? 0 : ((key == 65 || key == 16777234) ? 1 :
               ((key == 83 || key == 16777237) ? 2 : ((key == 68 || key == 16777236) ? 3 : -1)));
     if(dir >= 0) {
-        (*gridObject).setDirection(dir);
+        gridObject -> setDirection(dir);
     }
 }
 
-void SnakeWidget::setGrid(short **grid) {
-    this -> grid = new short*[(*gridObject).getGridSize()];
-    for(int i = 0; i < (*gridObject).getGridSize(); i++) {
-        this -> grid[i] = new short[(*gridObject).getGridSize()];
-        for(int j = 0; j < (*gridObject).getGridSize(); j++) {
-            this -> grid[i][j] = grid[i][j];
-        }
-    }
+void SnakeWidget::closeEvent(QCloseEvent *event) {
+    window -> show();
+    event -> accept();
 }

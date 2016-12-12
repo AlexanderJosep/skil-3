@@ -7,8 +7,8 @@ using namespace std;
 
 namespace config {
     /* Snake Configuration */
-    const long SNAKE_SLEEP_TIME = 130;
-    const int SNAKE_CELL_SIZE = 50;
+    const long SNAKE_SLEEP_TIME = 100;
+    const int SNAKE_CELL_SIZE = 24;
     const int SNAKE_BAR_OFFSET = 150;
     const string SNAKE_DEFAULT_STATUS = "Press any key to begin!";
 

@@ -6,11 +6,15 @@
 #include <QPaintEvent>
 #include <QMouseEvent>
 #include <QKeyEvent>
+#include <QCloseEvent>
 #include <QRect>
 #include <QPointF>
 #include <QBrush>
 #include <QFontMetrics>
+#include <QMainWindow>
+#include <ctime>
 #include <string>
+#include <chrono>
 #include "snakegrid.h"
 #include "config.h"
 
@@ -18,19 +22,26 @@ using namespace config;
 
 class SnakeWidget : public QWidget {
 public:
-    SnakeWidget(SnakeGrid *gridObject);
+    SnakeWidget(SnakeGrid *gridObject, QMainWindow *window);
     void setStatus(string status);
     void setGrid(short **grid);
+    void reset();
     bool hasStarted();
+    bool doesNeedReset();
+    void setNeedsReset(bool b);
 protected:
     virtual void paintEvent(QPaintEvent *event);
     virtual void keyPressEvent(QKeyEvent *event);
-    void mousePressEvent(QMouseEvent * event );
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void closeEvent(QCloseEvent *event);
 private:
     QPainter painter;
     SnakeGrid *gridObject;
+    QMainWindow *window;
     short **grid;
     bool started;
+    bool needsReset;
+    long double waitTime;
     string status;
 };
 

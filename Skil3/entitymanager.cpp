@@ -501,7 +501,25 @@ string EntityManager::toLowerCase(string s) {
     return out;
 }
 
+vector<Entity*> EntityManager::getFilteredSearchResults(string searchString, string filterString, int type) {
+    vector<Entity*> search = getSearchResults(searchString, type);
+    if(filterString.size() > 0) {
+        // we get the filter and search results then remove the filter results from the search result and return it
+        vector<Entity*> filter = getSearchResults(filterString, type);
+        for(unsigned int i = 0; i < filter.size(); i++) {
+            for(unsigned int j = 0; j < search.size(); j++) {
+                if(filter[i] -> getID() == search[j] -> getID()) {
+                    search.erase(search.begin() + j);
+                    break;
+                }
+            }
+        }
+    }
+    return search;
+}
+
 vector<Entity*> EntityManager::getSearchResults(string search, int type) {
+    search = toLowerCase(search);
     vector<Entity*> out;
     if(type == PERSON) {
         string male = "male";

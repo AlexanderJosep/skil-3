@@ -8,22 +8,25 @@
 #include <QMainWindow>
 #include <QWidget>
 #include <QSize>
+#include <QObject>
+#include <QInputDialog>
+#include <QLineEdit>
+#include <QDir>
+#include <QMainWindow>
 #include "snakegrid.h"
 #include "snakewidget.h"
 #include "snakethread.h"
-#include "console.h"
 #include "config.h"
 
 using namespace config;
 
 class Snake {
 public:
-    Snake(Console &c);
+    Snake(QMainWindow *window);
     int getPoints();
     short getGridSize();
 private:
-    short getGridSize(Console &c, string s); // gets user input grid size
-    SnakeGrid grid;
+    SnakeGrid *grid;
 };
 
 #endif // SNAKE_H

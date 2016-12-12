@@ -19,7 +19,7 @@ public:
     UserInterface();
     QStandardItemModel* getTableModel(vector<Entity*> entities, int type, QMainWindow *window);
     vector<Entity*> getEntities(int type);
-    vector<Entity*> getSearchResults(string s, int type);
+    vector<Entity*> getSearchResults(string s, string filter, int type);
 private:
     int currentYear;
     EntityManager manager;

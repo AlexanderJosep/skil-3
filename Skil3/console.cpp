@@ -191,7 +191,7 @@ void Console::process() {
             printEntities(manager.getOrganizedEntities(o, type), rev, false, type);
         }
         if(i == 1) { // search
-            int type = !getBool("Persons or computers", 'p', 'c');
+            //int type = !getBool("Persons or computers", 'p', 'c');
           //  printEntities(manager.getSearchResults(type), false, false, type);
         }
         if(i == 2) { // add person
@@ -222,7 +222,7 @@ void Console::process() {
             }
         }
         if(i == 8) { // snake
-            Snake(*this);
+            //Snake(*this);
         }
         if(i != 3 && i != 5) {
             println("Press 'i' for instructions.");

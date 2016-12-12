@@ -27,7 +27,9 @@ SOURCES += main.cpp\
     snakewidget.cpp \
     console.cpp \
     storage.cpp \
-    userinterface.cpp
+    userinterface.cpp \
+    pongwidget.cpp \
+    pong.cpp
 
 HEADERS  += mainwindow.h \
     entity.h \
@@ -43,6 +45,8 @@ HEADERS  += mainwindow.h \
     console.h \
     storage.h \
     config.h \
-    userinterface.h
+    userinterface.h \
+    pongwidget.h \
+    pong.h
 
 FORMS    += mainwindow.ui

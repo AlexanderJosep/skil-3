@@ -1,9 +1,10 @@
 #ifndef SNAKEGRID_H
 #define SNAKEGRID_H
 #include <vector>
-#include <cstdlib>
 #include <iostream>
 #include <cstdlib>
+#include <cstdlib>
+#include <ctime>
 #include "console.h"
 
 using namespace std;
@@ -13,7 +14,7 @@ public:
     SnakeGrid();
     void initialize(); // initializes the grid
     void setDirection(int dir); // sets the snakes direction
-    bool update(Console &c); // updates the snake with the next direction
+    bool update(); // updates the snake with the next direction
     void pushLostSnake(); // pushes a lost snake, everything but the part that's off the map/loses
     bool hasWon(); // check if the player won
     short** getGrid(); // returns the grid data
@@ -23,7 +24,7 @@ public:
     int getSnakeSize(); // gets snake size for calculating points
     void setGrid(int size); // sets grid size
 private:
-    bool updateSnake(Console &c, int dir); // updates the snakes position and checks for collision and walking out of grid
+    bool updateSnake(int dir); // updates the snakes position and checks for collision and walking out of grid
     void pushSnake(); // pushes the snake onto the grid
     void pushCandy(); // pushes the candy onto the grid
     void setRandomCandy(); // sets candy to a random pos

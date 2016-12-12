@@ -1,55 +1,38 @@
 #include "snake.h"
-using namespace std;
 
-Snake::Snake(Console &c) {
-    short gridSize = getGridSize(c, "Grid size(10-30)");
-    grid.setGrid(gridSize);
-    grid.initialize();
-    //start the snake frame
-    int argc = 0;
-    char* argv[] = {};
-    QApplication application(argc, &argv[0]);
+Snake::Snake(QMainWindow *window) {
+    window -> hide();
+    bool isOk;
+    short gridSize = QInputDialog::getInt(window, QObject::tr("Grid"),
+                                       QObject::tr("Grid size(10-30):"), 10, 10, 30, 1, &isOk);
+    if(!isOk) {
+        window -> show();
+        return;
+    }
+    grid = new SnakeGrid();
+    grid -> setGrid(gridSize);
+    grid -> initialize();
 
-    QMainWindow *window = new QMainWindow();
-    window -> setWindowTitle(QString::fromUtf8("Snake"));
-    window -> resize((gridSize + 2) * (SNAKE_CELL_SIZE + 2), (gridSize + 2) * (SNAKE_CELL_SIZE + 2) + SNAKE_BAR_OFFSET);
+    SnakeWidget *widget = new SnakeWidget(grid, window);
+    widget -> setWindowTitle(QString::fromUtf8("Snake"));
+    widget -> resize((gridSize + 2) * (SNAKE_CELL_SIZE + 2), (gridSize + 2) * (SNAKE_CELL_SIZE + 2) + SNAKE_BAR_OFFSET);
     QSize size = QSize((gridSize + 2) * (SNAKE_CELL_SIZE + 2), (gridSize + 2) * (SNAKE_CELL_SIZE + 2) + SNAKE_BAR_OFFSET);
-    window -> setMinimumSize(size);
-    window -> setMaximumSize(size);
-
-    SnakeWidget *widget = new SnakeWidget(&grid);
-    widget -> setGrid(grid.getGrid());
-    window -> setCentralWidget(widget);
-    window -> show();
-    window -> setFocus();
-    window -> activateWindow();
-    window -> raise();
+    widget -> setMinimumSize(size);
+    widget -> setMaximumSize(size);
+    widget -> setGrid(grid -> getGrid());
+    widget -> show();
     widget -> setFocus();
+    widget -> activateWindow();
+    widget -> raise();
 
-    //start the snake thread -> handles all the snake processing
-    SnakeThread *thread = new SnakeThread(&grid, widget, &c, window);
+    SnakeThread *thread = new SnakeThread(grid, widget, window);
     thread -> start();
-
-    application.exec();
 }
 
 int Snake::getPoints() {
-    return grid.getSnakeSize() - 3;
+    return grid -> getSnakeSize() - 3;
 }
 
 short Snake::getGridSize() {
-    return grid.getGridSize();
-}
-
-short Snake::getGridSize(Console &c, string s) {
-    short in;
-    while(true) {
-        in = c.getShort(s);
-        if(in < 10 || in > 30) {
-            c.println("Please select a grid size between 10 - 30.");
-            continue;
-        }
-        break;
-    }
-    return in;
+    return grid -> getGridSize();
 }

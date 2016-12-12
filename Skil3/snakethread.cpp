@@ -1,28 +1,34 @@
 #include "snakethread.h"
 
-SnakeThread::SnakeThread(SnakeGrid *grid, SnakeWidget *widget, Console *c, QMainWindow *window) {
+SnakeThread::SnakeThread(SnakeGrid *grid, SnakeWidget *widget, QMainWindow *mainWindow) {
     this -> grid = grid;
     this -> widget = widget;
-    this -> c = c;
-    this -> window = window;
+    this -> mainWindow = mainWindow;
 }
 
 void SnakeThread::run() {
-    while(window -> isVisible()) { // we don't wanna keep running if the window has closed
+    while(widget -> isVisible()) { // we don't wanna keep running if the window has closed
         if(!widget -> hasStarted()) {
             msleep(25);
             continue;
         }
-        if(!(grid -> update((*c)))) {
+        if(widget -> doesNeedReset()) {
+            grid -> initialize();
+            widget -> setNeedsReset(false);
+            msleep(SNAKE_SLEEP_TIME);
+        }
+        if(!(grid -> update())) {
             if(grid -> hasWon()) {
-                 widget -> setStatus("You WIN!");
+                 widget -> setStatus("You WIN! Press any key to restart.");
             } else {
                 grid -> pushLostSnake();
-                widget -> setStatus("You lose.");
+                widget -> setStatus("You lose. Press any key to restart.");
             }
             widget -> setGrid(grid -> getGrid());
+            widget -> reset();
             widget -> update();
-            break;
+            msleep(1000);
+            continue;
         }
         widget -> setGrid(grid -> getGrid());
         widget -> update();

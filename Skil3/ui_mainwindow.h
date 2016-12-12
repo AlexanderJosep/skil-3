@@ -16,12 +16,13 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableView>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -29,82 +30,97 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionSnake;
+    QAction *actionPong;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
-    QPushButton *pushButton_6;
-    QLineEdit *lineFilter;
-    QLineEdit *lineSearch;
-    QPushButton *pushButton_5;
-    QPushButton *viewButton;
     QPushButton *addButton;
+    QComboBox *comboBox;
     QPushButton *editButton;
     QPushButton *removeButton;
-    QComboBox *comboBox;
+    QPushButton *viewButton;
+    QGridLayout *gridLayout_2;
+    QLabel *searchLabel;
+    QLabel *label;
+    QLineEdit *listFilter;
+    QLineEdit *listSearch;
     QTableView *tableView;
     QMenuBar *menuBar;
-    QToolBar *mainToolBar;
+    QMenu *menuMain;
+    QMenu *menuGames;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(421, 340);
+        actionSnake = new QAction(MainWindow);
+        actionSnake->setObjectName(QStringLiteral("actionSnake"));
+        actionPong = new QAction(MainWindow);
+        actionPong->setObjectName(QStringLiteral("actionPong"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        pushButton_6 = new QPushButton(centralWidget);
-        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-        pushButton_6->setCursor(QCursor(Qt::PointingHandCursor));
-
-        gridLayout->addWidget(pushButton_6, 2, 4, 1, 1);
-
-        lineFilter = new QLineEdit(centralWidget);
-        lineFilter->setObjectName(QStringLiteral("lineFilter"));
-
-        gridLayout->addWidget(lineFilter, 2, 2, 1, 2);
-
-        lineSearch = new QLineEdit(centralWidget);
-        lineSearch->setObjectName(QStringLiteral("lineSearch"));
-
-        gridLayout->addWidget(lineSearch, 0, 2, 1, 2);
-
-        pushButton_5 = new QPushButton(centralWidget);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
-        pushButton_5->setCursor(QCursor(Qt::PointingHandCursor));
-
-        gridLayout->addWidget(pushButton_5, 0, 4, 1, 1);
-
-        viewButton = new QPushButton(centralWidget);
-        viewButton->setObjectName(QStringLiteral("viewButton"));
-        viewButton->setCursor(QCursor(Qt::PointingHandCursor));
-
-        gridLayout->addWidget(viewButton, 8, 2, 1, 1);
-
         addButton = new QPushButton(centralWidget);
         addButton->setObjectName(QStringLiteral("addButton"));
         addButton->setCursor(QCursor(Qt::PointingHandCursor));
 
-        gridLayout->addWidget(addButton, 8, 3, 1, 1);
+        gridLayout->addWidget(addButton, 12, 5, 1, 1);
+
+        comboBox = new QComboBox(centralWidget);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+
+        gridLayout->addWidget(comboBox, 0, 7, 1, 1);
 
         editButton = new QPushButton(centralWidget);
         editButton->setObjectName(QStringLiteral("editButton"));
         editButton->setCursor(QCursor(Qt::PointingHandCursor));
 
-        gridLayout->addWidget(editButton, 8, 4, 1, 1);
+        gridLayout->addWidget(editButton, 12, 6, 1, 1);
 
         removeButton = new QPushButton(centralWidget);
         removeButton->setObjectName(QStringLiteral("removeButton"));
         removeButton->setCursor(QCursor(Qt::PointingHandCursor));
 
-        gridLayout->addWidget(removeButton, 8, 5, 1, 1);
+        gridLayout->addWidget(removeButton, 12, 7, 1, 1);
 
-        comboBox = new QComboBox(centralWidget);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
+        viewButton = new QPushButton(centralWidget);
+        viewButton->setObjectName(QStringLiteral("viewButton"));
+        viewButton->setCursor(QCursor(Qt::PointingHandCursor));
 
-        gridLayout->addWidget(comboBox, 2, 5, 1, 1);
+        gridLayout->addWidget(viewButton, 12, 4, 1, 1);
+
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        searchLabel = new QLabel(centralWidget);
+        searchLabel->setObjectName(QStringLiteral("searchLabel"));
+        searchLabel->setLayoutDirection(Qt::LeftToRight);
+        searchLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        searchLabel->setWordWrap(false);
+
+        gridLayout_2->addWidget(searchLabel, 0, 0, 1, 1);
+
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+
+        gridLayout_2->addWidget(label, 1, 0, 1, 1);
+
+        listFilter = new QLineEdit(centralWidget);
+        listFilter->setObjectName(QStringLiteral("listFilter"));
+
+        gridLayout_2->addWidget(listFilter, 1, 2, 1, 1);
+
+        listSearch = new QLineEdit(centralWidget);
+        listSearch->setObjectName(QStringLiteral("listSearch"));
+
+        gridLayout_2->addWidget(listSearch, 0, 2, 1, 1);
+
+
+        gridLayout->addLayout(gridLayout_2, 0, 4, 1, 2);
 
         tableView = new QTableView(centralWidget);
         tableView->setObjectName(QStringLiteral("tableView"));
@@ -113,18 +129,26 @@ public:
         tableView->setSortingEnabled(true);
         tableView->verticalHeader()->setVisible(false);
 
-        gridLayout->addWidget(tableView, 3, 2, 3, 4);
+        gridLayout->addWidget(tableView, 7, 4, 3, 4);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 421, 26));
+        menuBar->setGeometry(QRect(0, 0, 421, 19));
+        menuMain = new QMenu(menuBar);
+        menuMain->setObjectName(QStringLiteral("menuMain"));
+        menuGames = new QMenu(menuMain);
+        menuGames->setObjectName(QStringLiteral("menuGames"));
         MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
+
+        menuBar->addAction(menuMain->menuAction());
+        menuMain->addSeparator();
+        menuMain->addAction(menuGames->menuAction());
+        menuGames->addAction(actionSnake);
+        menuGames->addAction(actionPong);
 
         retranslateUi(MainWindow);
+        QObject::connect(actionSnake, SIGNAL(triggered()), MainWindow, SLOT(raise()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -132,18 +156,31 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        pushButton_6->setText(QApplication::translate("MainWindow", "Filter", 0));
-        pushButton_5->setText(QApplication::translate("MainWindow", "Search", 0));
-        viewButton->setText(QApplication::translate("MainWindow", "View", 0));
+        actionSnake->setText(QApplication::translate("MainWindow", "Snake", 0));
+        actionPong->setText(QApplication::translate("MainWindow", "Pong", 0));
+#ifndef QT_NO_WHATSTHIS
+        addButton->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>Add a entity..</p></body></html>", 0));
+#endif // QT_NO_WHATSTHIS
         addButton->setText(QApplication::translate("MainWindow", "Add", 0));
-        editButton->setText(QApplication::translate("MainWindow", "Edit", 0));
-        removeButton->setText(QApplication::translate("MainWindow", "Remove", 0));
         comboBox->clear();
         comboBox->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Persons", 0)
          << QApplication::translate("MainWindow", "Computers", 0)
          << QApplication::translate("MainWindow", "Connections", 0)
         );
+#ifndef QT_NO_WHATSTHIS
+        comboBox->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>List types..</p></body></html>", 0));
+#endif // QT_NO_WHATSTHIS
+        editButton->setText(QApplication::translate("MainWindow", "Edit", 0));
+        removeButton->setText(QApplication::translate("MainWindow", "Remove", 0));
+        viewButton->setText(QApplication::translate("MainWindow", "View", 0));
+        searchLabel->setText(QApplication::translate("MainWindow", "Search:", 0));
+        label->setText(QApplication::translate("MainWindow", "Filter:", 0));
+#ifndef QT_NO_WHATSTHIS
+        listSearch->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>Search..</p></body></html>", 0));
+#endif // QT_NO_WHATSTHIS
+        menuMain->setTitle(QApplication::translate("MainWindow", "Main", 0));
+        menuGames->setTitle(QApplication::translate("MainWindow", "Games", 0));
     } // retranslateUi
 
 };
