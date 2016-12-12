@@ -4,6 +4,7 @@
 #
 #-------------------------------------------------
 
+QT       += core sql
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -13,8 +14,35 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    entity.cpp \
+    computer.cpp \
+    connection.cpp \
+    entitymanager.cpp \
+    person.cpp \
+    snake.cpp \
+    snakegrid.cpp \
+    snakescore.cpp \
+    snakethread.cpp \
+    snakewidget.cpp \
+    console.cpp \
+    storage.cpp \
+    userinterface.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    entity.h \
+    computer.h \
+    connection.h \
+    entitymanager.h \
+    person.h \
+    snake.h \
+    snakegrid.h \
+    snakescore.h \
+    snakethread.h \
+    snakewidget.h \
+    console.h \
+    storage.h \
+    config.h \
+    userinterface.h
 
 FORMS    += mainwindow.ui
