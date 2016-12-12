@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>838</width>
+    <width>937</width>
     <height>326</height>
    </rect>
   </property>
@@ -205,6 +205,110 @@
       <height>181</height>
      </rect>
     </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <property name="sortingEnabled">
+     <bool>true</bool>
+    </property>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>10</y>
+      <width>511</width>
+      <height>192</height>
+     </rect>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <property name="sortingEnabled">
+     <bool>true</bool>
+    </property>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <row>
+     <property name="text">
+      <string>New Row</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>New Row</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Birth Year</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Gender</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Death Year</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>Kristjan</string>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>1993</string>
+     </property>
+    </item>
+    <item row="0" column="2">
+     <property name="text">
+      <string>KK</string>
+     </property>
+    </item>
+    <item row="0" column="3">
+     <property name="text">
+      <string>NOPE</string>
+     </property>
+    </item>
+    <item row="1" column="0">
+     <property name="text">
+      <string>Lubbi</string>
+     </property>
+    </item>
+    <item row="1" column="1">
+     <property name="text">
+      <string>2003</string>
+     </property>
+    </item>
+    <item row="1" column="2">
+     <property name="text">
+      <string>kk</string>
+     </property>
+    </item>
+    <item row="1" column="3">
+     <property name="text">
+      <string>nope</string>
+     </property>
+    </item>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -212,8 +316,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>838</width>
-     <height>19</height>
+     <width>937</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
