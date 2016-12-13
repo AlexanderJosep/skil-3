@@ -3,6 +3,7 @@
 #include "userinterface.h"
 
 #include "addwindow.h"
+#include "editwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -48,5 +49,13 @@ void MainWindow::on_addButton_clicked() {
     this->hide();
     AddWindow addWindow;
     addWindow.exec();
+    this->show();
+}
+
+void MainWindow::on_editButton_clicked()
+{
+    this->hide();
+    EditWindow a;
+    a.exec();
     this->show();
 }
