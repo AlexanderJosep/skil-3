@@ -20,10 +20,11 @@ namespace config {
     const int PONG_WINDOW_HEIGHT = 600;
     const int PONG_BALL_WIDTH = 20;
     const int PONG_BALL_HEIGHT = 20;
-    const int PONG_BALL_SPEED_X = 10;
+    const int PONG_BALL_SPEED_X = 14;
     const int PONG_RACKET_HEIGHT = 100;
     const int PONG_RACKET_WIDTH = 15;
-    const int PONG_SLEEP_TIME = 15;
+    const int PONG_SLEEP_TIME = 14;
+    const int PONG_START_BAR_HEIGHT = 50;
 
     /* Entity Configuration */
     const int PERSON = 0;

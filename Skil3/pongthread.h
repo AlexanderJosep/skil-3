@@ -11,10 +11,12 @@ class PongThread : public QThread {
     Q_OBJECT
 
 public:
-    PongThread(PongBall *ball, PongWidget *widget);
+    PongThread(PongBall *ball, PongRacket *playerRacket, PongRacket *computerRacket, PongWidget *widget);
 private:
     PongBall *ball;
     PongWidget *widget;
+    PongRacket *playerRacket;
+    PongRacket *computerRacket;
 protected:
     void run();
 };
