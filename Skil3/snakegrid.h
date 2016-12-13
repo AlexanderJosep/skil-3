@@ -6,8 +6,9 @@
 #include <cstdlib>
 #include <ctime>
 #include "console.h"
+#include "config.h"
 
-using namespace std;
+using namespace config;
 
 class SnakeGrid {
 public:

@@ -1,27 +1,28 @@
 #include "pongwidget.h"
+#include <iostream>
 
-PongWidget::PongWidget(QMainWindow *window, int width, int height) {
+PongWidget::PongWidget(PongBall *ball, PongRacket *playerRacket, QMainWindow *window, int width, int height) {
+    this -> ball = ball;
+    this -> playerRacket = playerRacket;
     this -> window = window;
     this -> width = width;
     this -> height = height;
+    this -> mouseY = -1;
+    setMouseTracking(true);
 }
 
 void PongWidget::paintEvent(QPaintEvent*) {
     painter.begin(this);
     painter.setRenderHint(QPainter::Antialiasing);
-    int space = 10;
-    int count = 25;
-    int w = 6;
-    int h = (height - count * space) / count;
-    int drawHeight = space / 2;
-    for(int i = 0; i < count; i++) {
-        painter.fillRect(QRect(width / 2 - w / 2, drawHeight, w, h), QBrush(QColor(128, 128, 255, 128)));
-        drawHeight += space + h;
-
+    int h = (height - PONG_MIDDLE_SEPARATOR_COUNT * PONG_MIDDLE_SEPARATOR_SPACE) / PONG_MIDDLE_SEPARATOR_COUNT;
+    int drawHeight = PONG_MIDDLE_SEPARATOR_SPACE / 2;
+    for(int i = 0; i < PONG_MIDDLE_SEPARATOR_COUNT; i++) {
+        painter.fillRect(QRect(width / 2 - PONG_MIDDLE_SEPARATOR_WIDTH / 2, drawHeight, PONG_MIDDLE_SEPARATOR_WIDTH, h), QBrush(QColor(255, 255, 255, 255)));
+        drawHeight += PONG_MIDDLE_SEPARATOR_SPACE + h;
     }
+    painter.fillRect(QRect(ball -> getX(), ball -> getY(), ball -> getWidth(), ball -> getHeight()), QBrush(QColor(255, 255, 255, 255)));
 
-
-   // painter.fillRect(QRect(j * (SNAKE_CELL_SIZE + 2) + 2, i * (SNAKE_CELL_SIZE + 2) + 2 + SNAKE_BAR_OFFSET, SNAKE_CELL_SIZE, SNAKE_CELL_SIZE), QBrush(QColor(128, 128, 255, 128)));
+    painter.fillRect(QRect(playerRacket -> getX(), playerRacket -> getY(), playerRacket -> getWidth(), playerRacket -> getHeight()), QBrush(QColor(255, 255, 255, 255)));
 
     painter.end();
 }
@@ -38,6 +39,25 @@ void PongWidget::mousePressEvent(QMouseEvent*) {
    //     return;
    // }
     setFocus();
+}
+
+void PongWidget::mouseMoveEvent(QMouseEvent* event) {
+    if(mouseY < 0) {
+        mouseY = event -> globalY();
+        return;
+    }
+    playerRacket -> setY(event -> globalY() - mouseY);
+    if(playerRacket -> getY() <= 0 || playerRacket -> getY() + playerRacket -> getHeight() >= height) {
+        mouseY = event -> globalY();
+        if(playerRacket -> getY() <= 0) {
+             playerRacket -> setY(0);
+             cout << "lllll" << endl;
+        } else {
+             playerRacket -> setY(height - playerRacket -> getHeight());
+             cout << "22222" << endl;
+        }
+        return;
+    }
 }
 
 void PongWidget::closeEvent(QCloseEvent *event) {

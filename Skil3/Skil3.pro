@@ -29,7 +29,10 @@ SOURCES += main.cpp\
     storage.cpp \
     userinterface.cpp \
     pongwidget.cpp \
-    pong.cpp
+    pong.cpp \
+    pongracket.cpp \
+    pongthread.cpp \
+    pongball.cpp
 
 HEADERS  += mainwindow.h \
     entity.h \
@@ -47,6 +50,9 @@ HEADERS  += mainwindow.h \
     config.h \
     userinterface.h \
     pongwidget.h \
-    pong.h
+    pong.h \
+    pongracket.h \
+    pongthread.h \
+    pongball.h
 
 FORMS    += mainwindow.ui

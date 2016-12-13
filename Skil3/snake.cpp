@@ -9,6 +9,7 @@ Snake::Snake(QMainWindow *window) {
         window -> show();
         return;
     }
+
     grid = new SnakeGrid();
     grid -> setGrid(gridSize);
     grid -> initialize();
@@ -25,7 +26,7 @@ Snake::Snake(QMainWindow *window) {
     widget -> activateWindow();
     widget -> raise();
 
-    SnakeThread *thread = new SnakeThread(grid, widget, window);
+    SnakeThread *thread = new SnakeThread(grid, widget);
     thread -> start();
 }
 

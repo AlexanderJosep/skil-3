@@ -4,7 +4,11 @@
 #include <QMainWindow>
 #include <QSize>
 #include <QString>
-#include "pongwidget.h"
+#include "pongball.h"
+#include "pongracket.h"
+#include "config.h"
+
+using namespace config;
 
 class Pong {
 public:

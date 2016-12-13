@@ -1,8 +1,6 @@
 #include "SnakeGrid.h"
 
-using namespace std;
-
-static int getRanInt(int size) {
+static int getRanInt(int size) { // get a random int from 0-size
     return rand() % size;
 }
 

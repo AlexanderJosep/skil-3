@@ -12,6 +12,19 @@ namespace config {
     const int SNAKE_BAR_OFFSET = 150;
     const string SNAKE_DEFAULT_STATUS = "Press any key to begin!";
 
+    /* Pong Configuration */
+    const int PONG_MIDDLE_SEPARATOR_SPACE = 10;
+    const int PONG_MIDDLE_SEPARATOR_COUNT = 25;
+    const int PONG_MIDDLE_SEPARATOR_WIDTH = 6;
+    const int PONG_WINDOW_WIDTH = 800;
+    const int PONG_WINDOW_HEIGHT = 600;
+    const int PONG_BALL_WIDTH = 20;
+    const int PONG_BALL_HEIGHT = 20;
+    const int PONG_BALL_SPEED_X = 10;
+    const int PONG_RACKET_HEIGHT = 100;
+    const int PONG_RACKET_WIDTH = 15;
+    const int PONG_SLEEP_TIME = 15;
+
     /* Entity Configuration */
     const int PERSON = 0;
     const int COMPUTER = 1;
@@ -38,6 +51,7 @@ namespace config {
                                     "'o' - no organization"};
     const string DISPLAY_COMPUTER_INSTRUCTIONS[DISPLAY_COMPUTER_INSTRUCTIONS_LENGTH] = {"'n' - organize by names in alphabetical order",
                                     "'t' - organize by type", "'y' - organize by year it was built", "'o' - no organization"};
+
 }
 
 #endif // CONFIG_H

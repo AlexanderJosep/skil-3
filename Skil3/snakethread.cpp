@@ -1,9 +1,8 @@
 #include "snakethread.h"
 
-SnakeThread::SnakeThread(SnakeGrid *grid, SnakeWidget *widget, QMainWindow *mainWindow) {
+SnakeThread::SnakeThread(SnakeGrid *grid, SnakeWidget *widget) {
     this -> grid = grid;
     this -> widget = widget;
-    this -> mainWindow = mainWindow;
 }
 
 void SnakeThread::run() {
