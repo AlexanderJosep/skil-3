@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     pong.cpp \
     pongracket.cpp \
     pongthread.cpp \
-    pongball.cpp
+    pongball.cpp \
+    addwindow.cpp
 
 HEADERS  += mainwindow.h \
     entity.h \
@@ -53,6 +54,8 @@ HEADERS  += mainwindow.h \
     pong.h \
     pongracket.h \
     pongthread.h \
-    pongball.h
+    pongball.h \
+    addwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    addwindow.ui
