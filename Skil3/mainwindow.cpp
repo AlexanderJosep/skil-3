@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "userinterface.h"
 
+#include "addwindow.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
@@ -40,4 +42,11 @@ void MainWindow::on_actionSnake_triggered() {
 
 void MainWindow::on_actionPong_triggered() {
     Pong pong = Pong(this);
+}
+
+void MainWindow::on_addButton_clicked() {
+    this->hide();
+    AddWindow addWindow;
+    addWindow.exec();
+    this->show();
 }

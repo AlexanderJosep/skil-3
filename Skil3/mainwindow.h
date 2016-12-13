@@ -32,6 +32,7 @@ private slots:
     void on_listFilter_textChanged(const QString &arg1);
     void on_actionSnake_triggered();
     void on_actionPong_triggered();
+    void on_addButton_clicked();
 };
 
 #endif // MAINWINDOW_H

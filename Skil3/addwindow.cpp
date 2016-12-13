@@ -3,12 +3,15 @@
 
 AddWindow::AddWindow(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AddWindow)
-{
+    ui(new Ui::AddWindow) {
     ui->setupUi(this);
 }
 
-AddWindow::~AddWindow()
-{
+AddWindow::~AddWindow() {
     delete ui;
+}
+
+void AddWindow::on_pushButton_clicked()
+{
+    //hellings kóði, með villuleiðbeiningum.
 }
