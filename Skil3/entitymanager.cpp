@@ -198,15 +198,11 @@ short EntityManager::getIndex(Entity *entity, int type) {
         }
     } else {
         Connection *connection = static_cast<Connection*>(entity);
-            cout << "here" << endl;
         for(unsigned int i = 0; i < connections.size(); i++) {
-                cout << "here2" << endl;
             if(connection -> getName() == connections[i].getName()) {
-                    cout << "here3" << endl;
                 index = i;
                 break;
             }
-                cout << "here4" << endl;
         }
     }
     return index;

@@ -22,21 +22,31 @@ bool UserInterface::removeEntity(QMainWindow *window, Entity *entity, QString s,
 Connection* UserInterface::getConnection(string person, string computer) {
     int pId = 0;
     int cId = 0;
+    Person *p;
+    Computer *c;
     vector<Entity*> persons = manager.getOrganizedEntities(0, PERSON);
     vector<Entity*> computers = manager.getOrganizedEntities(0, COMPUTER);
     for(int i = 0; i < persons.size(); i++) {
         if(persons[i] -> getName() == person) {
             pId = persons[i] -> getID();
+            p = static_cast<Person*>(persons[i]);
             break;
         }
     }
     for(int i = 0; i < computers.size(); i++) {
         if(computers[i] -> getName() == computer) {
             cId = computers[i] -> getID();
+            c = static_cast<Computer*>(computers[i]);
             break;
         }
     }
-    return new Connection(pId, cId);
+    Connection *connection = new Connection(pId, cId);
+    connection -> setPerson(p);
+    connection -> setComputer(c);
+    cout << "test" << endl;
+    cout << p->getName() << endl;
+        cout << "test" << endl;
+    return connection;
 }
 
 vector<Entity*> UserInterface::getEntities(int type) {
