@@ -9,6 +9,11 @@ EntityManager::EntityManager(int currentYear) {
     this -> persons = storage.getPersons();
     this -> computers = storage.getComputers();
     this -> connections = storage.getConnections();
+    loadConnections();
+}
+
+void EntityManager::loadConnections() {
+    this -> connections = storage.getConnections();
     // set the person and computer pointer in connections
     // we're setting this to get a correct output when displaying connections in the console
     for(unsigned int i = 0; i < connections.size(); i++) {
@@ -141,46 +146,36 @@ void EntityManager::edit(Console &c, vector<Entity*> entities, int type) {
     c.newLine();*/
 }
 
-void EntityManager::remove(Entity &entity, int type) {
-   /* Entity
-    short index = getListIndex(c, type);
-    if(type != CONNECTION) { // the connection list hasn't been organized and doesn't need to be
-        index = getRealIndex(entities, index, type); // get real non-organized index
+bool EntityManager::remove(Entity *entity, int type) {
+    short index = getIndex(entity, type);
+    if(index < 0) {
+       return false;
     }
     if(type == PERSON) {
-
-    }
-    if(c.getBool("Are you sure you want to delete"+addon+" '"+name+"'", 'y', 'n')) {
-        if(type == PERSON) {
-            if(storage.removePerson(persons[index])) {
-                persons.erase(persons.begin() + index);
-                c.println("You have deleted "+name+".");
-            } else {
-                c.println("Failed to delete "+name+".");
-            }
-        } else if(type == COMPUTER) {
-            if(storage.removeComputer(computers[index])) {
-                computers.erase(computers.begin() + index);
-                c.println("You have deleted "+name+".");
-            } else {
-                c.println("Failed to delete "+name+".");
-            }
+        if(storage.removePerson(persons[index])) {
+            persons.erase(persons.begin() + index);
         } else {
-            if(storage.removeConnection(connections[index - 1])) {
-                connections.erase(connections.begin() + index - 1);
-                c.println("You have deleted "+name+".");
-            } else {
-                c.println("Failed to delete "+name+".");
-            }
+            return false;
+        }
+    } else if(type == COMPUTER) {
+        if(storage.removeComputer(computers[index])) {
+            computers.erase(computers.begin() + index);
+        } else {
+            return false;
         }
     } else {
-        c.println("Cancelled.");
+        if(storage.removeConnection(connections[index])) {
+            connections.erase(connections.begin() + index);
+        } else {
+            return false;
+        }
     }
-    c.newLine();*/
+    loadConnections();
+    return true;
 }
 
-short EntityManager::getEntity(Entity *entity, int type) {
-    short index = 0;
+short EntityManager::getIndex(Entity *entity, int type) {
+    short index = -1;
     if(type == PERSON) {
         Person *person = static_cast<Person*>(entity);
         for(unsigned int i = 0; i < persons.size(); i++) {
@@ -195,15 +190,24 @@ short EntityManager::getEntity(Entity *entity, int type) {
     } else if(type == COMPUTER){
         Computer *computer = static_cast<Computer*>(entity);
         for(unsigned int i = 0; i < computers.size(); i++) {
-            if(computer -> getName() == computers[i].getName()) {
-                if(computers[i].getYear() == computer -> getYear() && computers[i].getType() == computer -> getType()) {
-                    index = i;
-                    break;
-                }
+            if(computers[i].getName() == computer -> getName() && computers[i].getYear() == computer -> getYear() &&
+                    computers[i].getType() == computer -> getType()) {
+                index = i;
+                break;
             }
         }
     } else {
-
+        Connection *connection = static_cast<Connection*>(entity);
+            cout << "here" << endl;
+        for(unsigned int i = 0; i < connections.size(); i++) {
+                cout << "here2" << endl;
+            if(connection -> getName() == connections[i].getName()) {
+                    cout << "here3" << endl;
+                index = i;
+                break;
+            }
+                cout << "here4" << endl;
+        }
     }
     return index;
 }

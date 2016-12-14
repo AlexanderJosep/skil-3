@@ -6,16 +6,37 @@ UserInterface::UserInterface() {
     this -> manager = EntityManager(tPtr -> tm_year + 1900); // parameter is the current year
 }
 
-void UserInterface::remoteEntity(QMainWindow *window, Entity &entity, string s, int type) {
-  //  bool remove = QMessageBox::question(window, "Remove entity", "Are you sure you want to remove "+s,
-   //                               QMessageBox::Yes|QMessageBox::No) == QMessageBox::Yes;
-   // QMessageBox::StandardButton reply;
-   // QString test = "test";
-   // reply = QMessageBox::question(this, test, test,
-    //                              QMessageBox::Yes|QMessageBox::No);
-    //if (remove) {
-     //   //manager.remove();
-   // }
+bool UserInterface::removeEntity(QMainWindow *window, Entity *entity, QString s, int type) {
+    QMessageBox rmBox;
+    rmBox.setWindowTitle("Remove entity");
+    rmBox.setText("Are you sure you want to remove "+s);
+    rmBox.setStandardButtons(QMessageBox::Yes);
+    rmBox.addButton(QMessageBox::No);
+    rmBox.setDefaultButton(QMessageBox::No);
+    if(rmBox.exec() == QMessageBox::Yes){
+        return manager.remove(entity, type);
+    }
+    return false;
+}
+
+Connection* UserInterface::getConnection(string person, string computer) {
+    int pId = 0;
+    int cId = 0;
+    vector<Entity*> persons = manager.getOrganizedEntities(0, PERSON);
+    vector<Entity*> computers = manager.getOrganizedEntities(0, COMPUTER);
+    for(int i = 0; i < persons.size(); i++) {
+        if(persons[i] -> getName() == person) {
+            pId = persons[i] -> getID();
+            break;
+        }
+    }
+    for(int i = 0; i < computers.size(); i++) {
+        if(computers[i] -> getName() == computer) {
+            cId = computers[i] -> getID();
+            break;
+        }
+    }
+    return new Connection(pId, cId);
 }
 
 vector<Entity*> UserInterface::getEntities(int type) {

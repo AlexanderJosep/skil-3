@@ -15,7 +15,6 @@ public:
     short getYear();
     short getType();
     void setData(string name, short year, short type);
-    string getOutput();
 private:
     short year;
     short type;

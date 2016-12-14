@@ -25,6 +25,7 @@ private:
     void setListType(int index); // sets the list type (persons/computers/connections)
     Ui::MainWindow *ui;
     UserInterface userInterface;
+    QStandardItemModel *tableModel;
     int listType;
 
 private slots:

@@ -16,7 +16,6 @@ public:
     short getBirthYear();
     short getDeathYear();
     void setData(string name, short gender, short birthYear, short deathYear); // set name, gender, birthYear and deathYear
-    string getOutput(); // gets output ready to be printed to the console
 private:
     short gender; // 0 male, 1 female
     short birthYear;

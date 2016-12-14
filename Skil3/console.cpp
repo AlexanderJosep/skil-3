@@ -91,7 +91,7 @@ void Console::printEntities(vector<Entity*> entities, bool reverse, bool include
                 print(" ");
             }
         }
-        println(entities[i] -> getOutput());
+      //  println(entities[i] -> getOutput());
     }
     newLine();
 }

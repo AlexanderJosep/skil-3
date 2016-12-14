@@ -15,7 +15,6 @@ public:
     void setComputer(Computer *computer);
     Person* getPerson();
     Computer* getComputer();
-    string getOutput(); // gets output ready to be printed to the console
 private:
     int personID;
     int computerID;

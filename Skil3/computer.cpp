@@ -19,12 +19,3 @@ void Computer::setData(string name, short year, short type) {
     this -> year = year;
     this -> type = type;
 }
-
-string Computer::getOutput() {
-    ostringstream out;
-    int priorLength  = 0;
-    updateString(out, name, priorLength, 0);
-    updateString(out, MACHINE_TYPES[type], priorLength, 28);
-    updateString(out, (year < 0 ? "Not built" : to_string(year)), priorLength, 19);
-    return out.str();
-}

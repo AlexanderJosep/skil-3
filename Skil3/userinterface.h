@@ -18,7 +18,8 @@ using namespace config;
 class UserInterface {
 public:
     UserInterface();
-    void remoteEntity(QMainWindow *window, Entity &entity, string s, int type);
+    bool removeEntity(QMainWindow *window, Entity *entity, QString s, int type);
+    Connection* getConnection(string person, string computer);
     QStandardItemModel* getTableModel(vector<Entity*> entities, int type, QMainWindow *window);
     vector<Entity*> getEntities(int type);
     vector<Entity*> getSearchResults(string s, string filter, int type);

@@ -32,11 +32,3 @@ Person* Connection::getPerson() {
 Computer* Connection::getComputer() {
     return computer;
 }
-
-string Connection::getOutput() {
-    ostringstream out;
-    int priorLength  = 0;
-    updateString(out, person -> getName(), priorLength, 0);
-    updateString(out, computer -> getName(), priorLength, 30);
-    return out.str();
-}
