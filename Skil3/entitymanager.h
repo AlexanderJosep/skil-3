@@ -19,13 +19,12 @@ public:
     void end(); // tell storage to close it's connection with the sql database
     void add(Console &c, int type);
     void edit(Console &c, vector<Entity*> entities, int type); // edits a entity in a list
-    void remove(Console &c, vector<Entity*> entities, int type); // remove a entity from a list
+    void remove(Entity &entity, int type); // remove a entity from a list
     vector<Entity*> getOrganizedEntities(int o, int type); // gets organized entity list which organizes by type o
     vector<Entity*> getFilteredSearchResults(string searchString, string filterString, int type); // gets filtered search results and returns the resulting entities in a vector
     void addSnakeScore(Console &c, int score, int grid); // adds a snake score to a list, also prints top 10 hiscores if available
 private:
-    short getListIndex(Console &c, int type); // select a index from a list
-    short getRealIndex(vector<Entity*> entities, int index, int type); // get the actual index ; the old one was organized in some way
+    short getEntity(Entity *entity, int type); // gets a entity index from the list
     string getName(Console &c, bool n, int type); // gets the name from user input, n is true if user is creating a new person, false if editing
     short getGender(Console &c, bool n); // gets the gender from user input, n is true if user is creating a new person, false if editing
     short getYear(Console &c, string s); // gets a year from user input

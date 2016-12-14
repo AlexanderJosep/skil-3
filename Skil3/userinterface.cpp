@@ -6,6 +6,18 @@ UserInterface::UserInterface() {
     this -> manager = EntityManager(tPtr -> tm_year + 1900); // parameter is the current year
 }
 
+void UserInterface::remoteEntity(QMainWindow *window, Entity &entity, string s, int type) {
+  //  bool remove = QMessageBox::question(window, "Remove entity", "Are you sure you want to remove "+s,
+   //                               QMessageBox::Yes|QMessageBox::No) == QMessageBox::Yes;
+   // QMessageBox::StandardButton reply;
+   // QString test = "test";
+   // reply = QMessageBox::question(this, test, test,
+    //                              QMessageBox::Yes|QMessageBox::No);
+    //if (remove) {
+     //   //manager.remove();
+   // }
+}
+
 vector<Entity*> UserInterface::getEntities(int type) {
     return manager.getOrganizedEntities(0, type);
 }

@@ -5,6 +5,7 @@
 #include <QStandardItemModel>
 #include <QStandardItem>
 #include <QDesktopWidget>
+#include <QItemSelectionModel>
 #include "userinterface.h"
 #include "snake.h"
 #include "pong.h"
@@ -34,6 +35,7 @@ private slots:
     void on_actionPong_triggered();
     void on_addButton_clicked();
     void on_editButton_clicked();
+    void on_removeButton_clicked();
 };
 
 #endif // MAINWINDOW_H

@@ -216,9 +216,9 @@ void Console::process() {
             vector<Entity*> entities = manager.getOrganizedEntities(1, type); // organized in alphabetical order
             printEntities(entities, false, true, type); // alphabetical organization
             if(i == 6) { // edit person
-                manager.edit(*this, entities, type);
+               // manager.edit(*this, entities, type);
             } else { // remove person
-                manager.remove(*this, entities, type);
+                //manager.remove(*this, entities, type);
             }
         }
         if(i == 8) { // snake

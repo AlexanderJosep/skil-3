@@ -32,7 +32,7 @@ void EntityManager::end() {
 }
 
 void EntityManager::add(Console &c, int type) {
-    if(type == PERSON) {
+   /* if(type == PERSON) {
         string name = getName(c, true, type);
         short gender = getGender(c, true);
         short birthYear = getYear(c, "Birth year");
@@ -84,11 +84,11 @@ void EntityManager::add(Console &c, int type) {
             c.println("Failed to connect "+persons[personIndex].getName() +" and "+computers[computerIndex].getName()+" together.");
         }
     }
-    c.newLine();
+    c.newLine();*/
 }
 
 void EntityManager::edit(Console &c, vector<Entity*> entities, int type) {
-    short index = getRealIndex(entities, getListIndex(c, type), type);
+    /*short index = getRealIndex(entities, getListIndex(c, type), type);
     string name;
     string oldName;
     if(type == PERSON) {
@@ -138,28 +138,18 @@ void EntityManager::edit(Console &c, vector<Entity*> entities, int type) {
             c.println("You failed to edit "+name+" (old name: "+oldName+").");
         }
     }
-    c.newLine();
+    c.newLine();*/
 }
 
-void EntityManager::remove(Console &c, vector<Entity*> entities, int type) {
-    if(entities.size() <= 0) {
-        c.println("Nothing to remove.");
-        c.newLine();
-        return;
-    }
+void EntityManager::remove(Entity &entity, int type) {
+   /* Entity
     short index = getListIndex(c, type);
     if(type != CONNECTION) { // the connection list hasn't been organized and doesn't need to be
         index = getRealIndex(entities, index, type); // get real non-organized index
     }
-    string name;
     if(type == PERSON) {
-        name = persons[index].getName();
-    } else if(type == COMPUTER){
-        name = computers[index].getName();
-    } else {
-        name = connections[index - 1].getName();
+
     }
-    string addon = type == CONNECTION ? " the connection" : "";
     if(c.getBool("Are you sure you want to delete"+addon+" '"+name+"'", 'y', 'n')) {
         if(type == PERSON) {
             if(storage.removePerson(persons[index])) {
@@ -186,14 +176,15 @@ void EntityManager::remove(Console &c, vector<Entity*> entities, int type) {
     } else {
         c.println("Cancelled.");
     }
-    c.newLine();
+    c.newLine();*/
 }
 
-short EntityManager::getRealIndex(vector<Entity*> entities, int index, int type) {
+short EntityManager::getEntity(Entity *entity, int type) {
+    short index = 0;
     if(type == PERSON) {
+        Person *person = static_cast<Person*>(entity);
         for(unsigned int i = 0; i < persons.size(); i++) {
-            if(persons[i].getName() == entities[index - 1] -> getName()) { // checks first for name before casting
-                Person* person = static_cast<Person*>(entities[index - 1]);
+            if(person -> getName() == persons[i].getName()) {
                 if(persons[i].getGender() == person -> getGender()
                         && persons[i].getBirthYear() == person -> getBirthYear() && persons[i].getDeathYear() == person -> getDeathYear()) {
                     index = i;
@@ -201,29 +192,18 @@ short EntityManager::getRealIndex(vector<Entity*> entities, int index, int type)
                 }
             }
         }
-    } else {
+    } else if(type == COMPUTER){
+        Computer *computer = static_cast<Computer*>(entity);
         for(unsigned int i = 0; i < computers.size(); i++) {
-            if(computers[i].getName() == entities[index - 1] -> getName()) { // checks first for name before casting
-                Computer* computer = static_cast<Computer*>(entities[index - 1]);
+            if(computer -> getName() == computers[i].getName()) {
                 if(computers[i].getYear() == computer -> getYear() && computers[i].getType() == computer -> getType()) {
                     index = i;
                     break;
                 }
             }
         }
-    }
-    return index;
-}
+    } else {
 
-short EntityManager::getListIndex(Console &c, int type) {
-    short index;
-    int listSize = type == PERSON ? persons.size() : (type == COMPUTER ? computers.size() : connections.size());
-    while (true){
-        index = c.getShort("Select index from the list (1-"+to_string(listSize)+")");
-        if(index > 0 && index <= listSize) {
-            break;
-        }
-        c.println("Invalid index!");
     }
     return index;
 }

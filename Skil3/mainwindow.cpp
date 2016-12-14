@@ -52,10 +52,26 @@ void MainWindow::on_addButton_clicked() {
     this->show();
 }
 
-void MainWindow::on_editButton_clicked()
-{
-    this->hide();
+void MainWindow::on_editButton_clicked() {
+    this -> hide();
     EditWindow a;
     a.exec();
     this->show();
+}
+
+void MainWindow::on_removeButton_clicked() {
+    QItemSelectionModel *item = ui -> tableView -> selectionModel();
+    if(listType == PERSON) {
+        string name = item -> selectedRows(0).value(0).data().toString().toStdString();
+        short gender = item -> selectedRows(1).value(0).data().toString() == "Male" ? 0 : 1;
+        short birthYear = item -> selectedRows(2).value(0).data().toInt();
+        short deathYear = item -> selectedRows(3).value(0).data().toString() == "Not dead" ? -1 : item -> selectedRows(3).value(0).data().toInt();
+        Person *person = new Person(name, gender, birthYear, deathYear);
+
+    } else if(listType == COMPUTER) {
+
+    } else {
+
+    }
+
 }
