@@ -17,6 +17,10 @@ public:
 private slots:
     void on_addPersonButton_clicked();
 
+    void on_cancelButton_clicked();
+
+    void on_isDeadCheckBox_toggled(bool checked);
+
 private:
     Ui::AddWindow *ui;
 };
