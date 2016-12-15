@@ -113,6 +113,14 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>nameBox</tabstop>
+  <tabstop>typeBox</tabstop>
+  <tabstop>computerBuiltBox</tabstop>
+  <tabstop>buildYearBox</tabstop>
+  <tabstop>addButton</tabstop>
+  <tabstop>cancelButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

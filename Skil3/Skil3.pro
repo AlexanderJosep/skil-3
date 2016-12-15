@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     pong/pongthread.cpp \
     pong/pongball.cpp \
     entity/person/addpersondialog.cpp \
-    entity/computer/addcomputerdialog.cpp
+    entity/computer/addcomputerdialog.cpp \
+    entity/connection/addconnectiondialog.cpp
 
 HEADERS  += mainwindow.h \
     entity/entity.h \
@@ -57,11 +58,13 @@ HEADERS  += mainwindow.h \
     pong/pongthread.h \
     pong/pongball.h \
     entity/person/addpersondialog.h \
-    entity/computer/addcomputerdialog.h
+    entity/computer/addcomputerdialog.h \
+    entity/connection/addconnectiondialog.h
 
 FORMS    += mainwindow.ui \
     entity/person/addpersondialog.ui \
-    entity/computer/addcomputerdialog.ui
+    entity/computer/addcomputerdialog.ui \
+    entity/connection/addconnectiondialog.ui
 
 RESOURCES += \
     resources.qrc

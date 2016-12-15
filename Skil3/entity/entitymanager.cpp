@@ -36,77 +36,85 @@ void EntityManager::loadConnections() {
     }
 }
 
+QStandardItemModel* EntityManager::getTableModel(vector<Entity*> entities, int type) {
+    QStandardItemModel *model = new QStandardItemModel(entities.size(), 4 - type);
+    model -> setHorizontalHeaderItem(0, new QStandardItem(QString(type == CONNECTION ? "Person" : "Name")));
+    model -> setHorizontalHeaderItem(1, new QStandardItem(QString(type == CONNECTION ? "Computer" : (type == COMPUTER ? "Type" : "Gender"))));
+    if(type != CONNECTION) {
+        model -> setHorizontalHeaderItem(2, new QStandardItem(QString(type == COMPUTER ? "Year built" : "Birth year")));
+        if(type == PERSON) {
+            model -> setHorizontalHeaderItem(3, new QStandardItem(QString("Death year")));
+        }
+    }
+    for(unsigned int i = 0; i < entities.size(); i++) {
+        if(type == PERSON) {
+            Person* person = static_cast<Person*>(entities[i]);
+            QStandardItem *row1 = new QStandardItem(QString::fromStdString(person -> getName()));
+            string gender = person -> getGender() == 0 ? "Male" : "Female";
+            QStandardItem *row2 = new QStandardItem(QString::fromStdString(gender));
+            QStandardItem *row3 = new QStandardItem(QString::fromStdString(to_string(person -> getBirthYear())));
+            string deathYear = person -> getDeathYear() < 0 ? "Not dead" : to_string(person -> getDeathYear());
+            QStandardItem *row4 = new QStandardItem(QString::fromStdString(deathYear));
+            model -> setItem(i, 0, row1);
+            model -> setItem(i, 1, row2);
+            model -> setItem(i, 2, row3);
+            model -> setItem(i, 3, row4);
+        } else if(type == COMPUTER) {
+            Computer* computer = static_cast<Computer*>(entities[i]);
+            QStandardItem *row1 = new QStandardItem(QString::fromStdString(computer -> getName()));
+            QStandardItem *row2 = new QStandardItem(QString::fromStdString(MACHINE_TYPES[computer -> getType()]));
+            string built = computer -> getYear() < 0 ? "Not built" : to_string(computer -> getYear());
+            QStandardItem *row3 = new QStandardItem(QString::fromStdString(built));
+            model -> setItem(i, 0, row1);
+            model -> setItem(i, 1, row2);
+            model -> setItem(i, 2, row3);
+        } else {
+            Connection* connection = static_cast<Connection*>(entities[i]);
+            QStandardItem *row1 = new QStandardItem(QString::fromStdString(connection -> getPerson() -> getName()));
+            QStandardItem *row2 = new QStandardItem(QString::fromStdString(connection -> getComputer() -> getName()));
+            model -> setItem(i, 0, row1);
+            model -> setItem(i, 1, row2);
+        }
+    }
+    return model;
+}
+
 bool EntityManager::add(Entity *entity, int type) {
     if(type == PERSON) {
         Person *person = static_cast<Person*>(entity);
         if(storage.savePerson(*person)) {
             persons.push_back(*person);
+            return true;
         }
     } else if(type == COMPUTER) {
         Computer *computer = static_cast<Computer*>(entity);
         if(storage.saveComputer(*computer)) {
             computers.push_back(*computer);
+            return true;
         }
     } else {
         Connection *connection = static_cast<Connection*>(entity);
         if(storage.addConnection(*connection)) {
             connections.push_back(*connection);
+            return true;
         }
     }
+    return false;
 }
 
-void EntityManager::edit(Console &c, vector<Entity*> entities, int type) {
-    /*short index = getRealIndex(entities, getListIndex(c, type), type);
-    string name;
-    string oldName;
+void EntityManager::edit(Entity *oldEntity, Entity *newEntity, int type) {
+    short index = getIndex(oldEntity, type);
     if(type == PERSON) {
-        oldName = persons[index].getName();
-        c.println("Old name: "+oldName);
-        name = getName(c, false, type);
-        short oldGender = persons[index].getGender() ;
-        string oldGenderString = (oldGender == 0 ? "Male" : "Female");
-        c.println("Old gender: "+oldGenderString);
-        short gender = getGender(c, false);
-        short oldBirthYear = persons[index].getBirthYear();
-        c.println("Old birth year: "+to_string(oldBirthYear));
-        short birthYear = getYear(c, "Birth year");
-        short oldDeathYear = persons[index].getDeathYear();
-        if(oldDeathYear > 0) {
-             c.println("Old death year: "+to_string(oldDeathYear));
-        } else {
-             c.println("Old person did not have a death year.");
+        Person *person = static_cast<Person*>(newEntity);
+        if(storage.editPerson(person, persons[index].getName(), persons[index].getGender(), persons[index].getBirthYear(), persons[index].getDeathYear())) {
+            persons[index].setData(person -> getName(), person -> getGender(), person -> getBirthYear(), person -> getDeathYear());
         }
-        short deathYear = getDeathYear(c, false, birthYear);
-        Person person = Person(name, gender, birthYear, deathYear);
-        if(storage.editPerson(person, oldName, oldGender, oldBirthYear, oldDeathYear)) {
-            persons[index].setData(name, gender, birthYear, deathYear);
-            c.println("You have edited "+name+" (old name: "+oldName+").");
-        } else {
-            c.println("You failed to edit "+name+" (old name: "+oldName+").");
-        }
-    } else {
-        oldName = computers[index].getName();
-        c.println("Old name: "+oldName);
-        name = getName(c, false, type);
-        short oldType = computers[index].getType();
-        c.println("Old type is "+MACHINE_TYPES[oldType]+".");
-        short type = getComputerType(c, "New ID of computer type");
-        short oldYear = computers[index].getYear();
-        if(oldYear < 0) {
-            c.println("Old computer was not built");
-        } else {
-            c.println("Old year built: "+to_string(oldYear));
-        }
-        short yearBuilt = getYearBuilt(c, false);
-        Computer computer = Computer(name, yearBuilt, type);
-        if(storage.editComputer(computer, oldName, oldYear, oldType)) {
-            computers[index].setData(name, yearBuilt, type);
-            c.println("You have edited "+name+" (old name: "+oldName+").");
-        } else {
-            c.println("You failed to edit "+name+" (old name: "+oldName+").");
+    } else if(type == COMPUTER) {
+        Computer *computer = static_cast<Computer*>(newEntity);
+        if(storage.editComputer(computer, computers[index].getName(), computers[index].getYear(), computers[index].getType())) {
+            computers[index].setData(computer -> getName(), computer -> getYear(), computer -> getType());
         }
     }
-    c.newLine();*/
 }
 
 bool EntityManager::remove(Entity *entity, int type) {
@@ -267,130 +275,22 @@ short EntityManager::getYearBuilt(Console &c, bool n) {
     return yearBuilt;
 }
 
-vector<Entity*> EntityManager::getOrganizedEntities(int o, int type) {
+vector<Entity*> EntityManager::getEntities(int type) {
     vector<Entity*> out;
-    if(type == CONNECTION) {
-        for(unsigned int i = 0; i < connections.size(); i++) {
-            out.push_back(&connections[i]);
-        }
-    }
-    if(o == 0 && type == PERSON) {
+    if(type == PERSON) {
         for(unsigned int i = 0; i < persons.size(); i++) {
             out.push_back(&persons[i]);
         }
     }
-    if(o == 0 && type == COMPUTER) {
+    if(type == COMPUTER) {
         for(unsigned int i = 0; i < computers.size(); i++) {
             out.push_back(&computers[i]);
         }
     }
-    if(o == 1 && type != CONNECTION) { // organize by names alphabetically
-        vector<string> names;
-        if(type == PERSON) {
-            for(unsigned int i = 0; i < persons.size(); i++) {
-                names.push_back(persons[i].getName());
-            }
-        } else {
-            for(unsigned int i = 0; i < computers.size(); i++) {
-                names.push_back(computers[i].getName());
-            }
-        }
-        sort(names.begin(), names.end()); // sort all the names alphabetically
-        // then we link each name to a entity and add it to a list to get a sorted entity list
-        for(unsigned int i = 0; i < names.size(); i++) {
-            if(type == PERSON) {
-                for(unsigned int j = 0; j < persons.size(); j++) {
-                    if(names[i] == persons[j].getName()) {
-                        out.push_back(&persons[j]);
-                        break;
-                    }
-                }
-            } else {
-                for(unsigned int j = 0; j < computers.size(); j++) {
-                    if(names[i] == computers[j].getName()) {
-                        out.push_back(&computers[j]);
-                        break;
-                    }
-                }
-            }
-        }
-    }
-    if(o == 2 && type == PERSON) { // organize by gender
-        for(int j = 0; j < 2; j++) {
-            for(unsigned int i = 0; i < persons.size(); i++) {
-                if(persons[i].getGender() == j) {
-                    out.push_back(&persons[i]);
-                }
-            }
-        }
-    }
-    if(((o == 3 || o == 4) && type == PERSON) || (o == 2 && type == COMPUTER)) { // organize by birth year or by death year or by built year
-        vector<int> years;
-        vector<Person*> copyPersons;
-        vector<Computer*> copyComputers;
-        // we add all the years to a vector
-        if(type == PERSON) {
-            for(unsigned int i = 0; i < persons.size(); i++) {
-                if((o == 3 && persons[i].getBirthYear() >= 0) || (o == 4 && persons[i].getDeathYear() >= 0)) {
-                    years.push_back(o == 3 ? persons[i].getBirthYear() : persons[i].getDeathYear());
-                }
-            }
-        } else {
-            for(unsigned int i = 0; i < computers.size(); i++) {
-                if(computers[i].getYear() >= 0) {
-                    years.push_back(computers[i].getYear());
-                }
-            }
-        }
-        sort(years.begin(), years.end()); // sort the years, smallest years first
-        if(type == PERSON) {
-            for(unsigned int i = 0; i < persons.size(); i++) {
-                copyPersons.push_back(&persons[i]);
-            }
-        } else {
-            for(unsigned int i = 0; i < computers.size(); i++) {
-                copyComputers.push_back(&computers[i]);
-            }
-        }
-        // then we link each year to a entity and add it to a list to get a sorted entity list
-        for(unsigned int i = 0; i < years.size(); i++) {
-            if(type == PERSON) {
-                for(unsigned int j = 0; j < copyPersons.size(); j++) {
-                    if((o == 3 && years[i] == copyPersons[j] -> getBirthYear()) || (o == 4 && years[i] == copyPersons[j] -> getDeathYear())) {
-                        out.push_back(copyPersons[j]);
-                        copyPersons.erase(copyPersons.begin() + j);
-                        break;
-                    }
-                }
-            } else {
-                for(unsigned int j = 0; j < copyComputers.size(); j++) {
-                    if(years[i] == copyComputers[j] -> getYear()) {
-                        out.push_back(copyComputers[j]);
-                        copyComputers.erase(copyComputers.begin() + j);
-                        break;
-                    }
-                }
-            }
-        }
-        // then we add those who haven't been added to the return list
-        if(o == 4) {
-            for(unsigned int j = 0; j < copyPersons.size(); j++) {
-                 out.push_back(copyPersons[j]);
-            }
-        }
-        if(type == COMPUTER) {
-            for(unsigned int j = 0; j < copyComputers.size(); j++) {
-                 out.push_back(copyComputers[j]);
-            }
-        }
-    }
-    if(o == 3 && type == COMPUTER) {
-        for(int i = 0; i < NUMBER_OF_MACHINES_TYPES; i++) {
-            for(unsigned int j = 0; j < computers.size(); j++) {
-                if(computers[j].getType() == i) { // check for the same type
-                    out.push_back(&computers[j]);
-                }
-            }
+    if(type == CONNECTION) {
+        loadConnections();
+        for(unsigned int i = 0; i < connections.size(); i++) {
+            out.push_back(&connections[i]);
         }
     }
     return out;
@@ -445,6 +345,7 @@ string EntityManager::toLowerCase(string s) {
 }
 
 vector<Entity*> EntityManager::getFilteredSearchResults(string searchString, string filterString, int type) {
+    loadConnections();
     vector<Entity*> search = getSearchResults(searchString, type);
     if(filterString.size() > 0) {
         // we get the filter and search results then remove the filter results from the search result and return it

@@ -1,6 +1,7 @@
 #ifndef ENTITYMANAGER_H
 #define ENTITYMANAGER_H
 
+#include <QStandardItemModel>
 #include <vector>
 #include "config.h"
 #include "console.h"
@@ -18,13 +19,14 @@ public:
     EntityManager(int currentYear);
     int getCurrentYear();
     void loadConnections();
-    bool add(Entity *entity, int type);
-    void edit(Console &c, vector<Entity*> entities, int type); // edits a entity in a list
+    QStandardItemModel* getTableModel(vector<Entity*> entities, int type);
+    bool add(Entity *entity, int type); // adds a entity to the list
+    void edit(Entity *oldEntity, Entity *newEntity, int type); // edits a entity in a list
     bool remove(Entity *entity, int type); // remove a entity from a list
     bool validName(string name, int type); // checks if a name is valid or not
     string trim(string s); // trims the edges of a string for any pesky spaces
     string capitialize(string s); // capitalizes a string
-    vector<Entity*> getOrganizedEntities(int o, int type); // gets organized entity list which organizes by type o
+    vector<Entity*> getEntities( int type); // gets all entities
     vector<Entity*> getFilteredSearchResults(string searchString, string filterString, int type); // gets filtered search results and returns the resulting entities in a vector
     void addSnakeScore(Console &c, int score, int grid); // adds a snake score to a list, also prints top 10 hiscores if available
 private:

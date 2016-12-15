@@ -2,7 +2,7 @@
 #define ADDPERSONDIALOG_H
 
 #include <QDialog>
-#include <QIntValidator>
+#include <QMessageBox>
 #include "entity/entitymanager.h"
 
 namespace Ui {
@@ -15,6 +15,7 @@ public:
     explicit AddPersonDialog(QWidget *parent = 0);
     ~AddPersonDialog();
     void setEntityManager(EntityManager *manager);
+    void setPerson(Person *person);
 private slots:
     void on_personDeadBox_toggled(bool checked);
     void on_addButton_clicked();
@@ -24,6 +25,8 @@ private slots:
 private:
     Ui::AddPersonDialog *ui;
     EntityManager *manager;
+    Person *person;
+    bool edit;
 };
 
 #endif // ADDPERSONDIALOG_H

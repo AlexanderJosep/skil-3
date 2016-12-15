@@ -188,7 +188,7 @@ void Console::process() {
             printDisplayInstructions(type);
             int o = getInstruction(1 + type);
             bool rev = getBool("Reverse output", 'y', 'n');
-            printEntities(manager.getOrganizedEntities(o, type), rev, false, type);
+            //printEntities(manager.getOrganizedEntities(o, type), rev, false, type);
         }
         if(i == 1) { // search
             //int type = !getBool("Persons or computers", 'p', 'c');
@@ -213,8 +213,8 @@ void Console::process() {
         }
         if(i == 6 || i == 7) {
             int type = !getBool("Persons or computers", 'p', 'c');
-            vector<Entity*> entities = manager.getOrganizedEntities(1, type); // organized in alphabetical order
-            printEntities(entities, false, true, type); // alphabetical organization
+           // vector<Entity*> entities = manager.getOrganizedEntities(1, type); // organized in alphabetical order
+          //  printEntities(entities, false, true, type); // alphabetical organization
             if(i == 6) { // edit person
                // manager.edit(*this, entities, type);
             } else { // remove person

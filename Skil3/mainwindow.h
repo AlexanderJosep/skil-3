@@ -34,6 +34,7 @@ private slots:
     void on_addButton_clicked();
     void on_editButton_clicked();
     void on_removeButton_clicked();
+    void on_tableView_clicked(const QModelIndex &index);
 };
 
 #endif // MAINWINDOW_H

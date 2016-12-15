@@ -3,7 +3,6 @@
 
 #include <cstdlib>
 #include <QStandardItemModel>
-#include <QMainWindow>
 #include <QMessageBox>
 #include <vector>
 #include "config.h"
@@ -19,9 +18,9 @@ class UserInterface {
 public:
     UserInterface();
     EntityManager* getEntityManager();
-    bool removeEntity(QMainWindow *window, Entity *entity, QString s, int type);
+    bool removeEntity(Entity *entity, QString s, int type);
     Connection* getConnection(string person, string computer);
-    QStandardItemModel* getTableModel(vector<Entity*> entities, int type, QMainWindow *window);
+    QStandardItemModel* getTableModel(vector<Entity*> entities, int type);
     vector<Entity*> getEntities(int type);
     vector<Entity*> getSearchResults(string s, string filter, int type);
 private:

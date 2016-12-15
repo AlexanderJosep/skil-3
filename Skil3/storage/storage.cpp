@@ -106,7 +106,7 @@ bool Storage::saveComputer(Computer &computer) {
     return query.exec();
 }
 
-bool Storage::editPerson(Person &person, string name, short gender, short birthYear, short deathYear) {
+bool Storage::editPerson(Person *person, string name, short gender, short birthYear, short deathYear) {
     QSqlQuery query(database);
     query.prepare("SELECT * FROM persons WHERE name='"+QString::fromStdString(name)+"' AND gender=? AND "
                   "birth_year=? AND death_year=?");
@@ -116,16 +116,16 @@ bool Storage::editPerson(Person &person, string name, short gender, short birthY
     query.exec();
 
     while(query.next()) { // so it edits only one if there are multiple persons with the same details
-        query.prepare("UPDATE persons SET name='"+QString::fromStdString(person.getName())+"',gender=?,birth_year=?,death_year=? WHERE id = "+QString::fromStdString(to_string(query.value("id").toUInt())));
-        query.addBindValue(QString::fromStdString(to_string(person.getGender())));
-        query.addBindValue(QString::fromStdString(to_string(person.getBirthYear())));
-        query.addBindValue(QString::fromStdString(to_string(person.getDeathYear())));
+        query.prepare("UPDATE persons SET name='"+QString::fromStdString(person -> getName())+"',gender=?,birth_year=?,death_year=? WHERE id = "+QString::fromStdString(to_string(query.value("id").toUInt())));
+        query.addBindValue(QString::fromStdString(to_string(person -> getGender())));
+        query.addBindValue(QString::fromStdString(to_string(person -> getBirthYear())));
+        query.addBindValue(QString::fromStdString(to_string(person -> getDeathYear())));
         return  query.exec();
     }
     return false;
 }
 
-bool Storage::editComputer(Computer &computer, string name, short yearBuilt, short type) {
+bool Storage::editComputer(Computer *computer, string name, short yearBuilt, short type) {
     QSqlQuery query(database);
     query.prepare("SELECT * FROM computers WHERE name='"+QString::fromStdString(name)+"' AND year_built=? AND "
                   "type=?");
@@ -133,9 +133,9 @@ bool Storage::editComputer(Computer &computer, string name, short yearBuilt, sho
     query.addBindValue(QString::fromStdString(to_string(type)));
     query.exec();
     while(query.next()) { // so it edits only one if there are multiple computers with the same details
-        query.prepare("UPDATE computers SET name='"+QString::fromStdString(computer.getName())+"',year_built=?,type=? WHERE id = "+QString::fromStdString(to_string(query.value("id").toUInt())));
-        query.addBindValue(QString::fromStdString(to_string(computer.getYear())));
-        query.addBindValue(QString::fromStdString(to_string(computer.getType())));
+        query.prepare("UPDATE computers SET name='"+QString::fromStdString(computer -> getName())+"',year_built=?,type=? WHERE id = "+QString::fromStdString(to_string(query.value("id").toUInt())));
+        query.addBindValue(QString::fromStdString(to_string(computer -> getYear())));
+        query.addBindValue(QString::fromStdString(to_string(computer -> getType())));
         return query.exec();
     }
     return false;
