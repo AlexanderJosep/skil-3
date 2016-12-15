@@ -7,8 +7,8 @@
 #include <vector>
 #include <cstdlib>
 #include "config.h"
-#include "person.h"
-#include "entity.h"
+#include "entity/person/person.h"
+#include "entity/entity.h"
 
 using namespace config;
 

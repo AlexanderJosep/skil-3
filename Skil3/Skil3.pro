@@ -15,53 +15,50 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    entity.cpp \
-    computer.cpp \
-    connection.cpp \
-    entitymanager.cpp \
-    person.cpp \
-    snake.cpp \
-    snakegrid.cpp \
-    snakescore.cpp \
-    snakethread.cpp \
-    snakewidget.cpp \
+    entity/entity.cpp \
+    entity/computer/computer.cpp \
+    entity/connection/connection.cpp \
+    entity/entitymanager.cpp \
+    entity/person/person.cpp \
+    snake/snake.cpp \
+    snake/snakegrid.cpp \
+    snake/snakescore.cpp \
+    snake/snakethread.cpp \
+    snake/snakewidget.cpp \
     console.cpp \
-    storage.cpp \
+    storage/storage.cpp \
     userinterface.cpp \
-    pongwidget.cpp \
-    pong.cpp \
-    pongracket.cpp \
-    pongthread.cpp \
-    pongball.cpp \
-    addwindow.cpp \
-    editwindow.cpp
+    pong/pongwidget.cpp \
+    pong/pong.cpp \
+    pong/pongracket.cpp \
+    pong/pongthread.cpp \
+    pong/pongball.cpp \
+    entity/person/addpersondialog.cpp
 
 HEADERS  += mainwindow.h \
-    entity.h \
-    computer.h \
-    connection.h \
-    entitymanager.h \
-    person.h \
-    snake.h \
-    snakegrid.h \
-    snakescore.h \
-    snakethread.h \
-    snakewidget.h \
+    entity/entity.h \
+    entity/computer/computer.h \
+    entity/connection/connection.h \
+    entity/entitymanager.h \
+    entity/person/person.h \
+    snake/snake.h \
+    snake/snakegrid.h \
+    snake/snakescore.h \
+    snake/snakethread.h \
+    snake/snakewidget.h \
     console.h \
-    storage.h \
+    storage/storage.h \
     config.h \
     userinterface.h \
-    pongwidget.h \
-    pong.h \
-    pongracket.h \
-    pongthread.h \
-    pongball.h \
-    addwindow.h \
-    editwindow.h
+    pong/pongwidget.h \
+    pong/pong.h \
+    pong/pongracket.h \
+    pong/pongthread.h \
+    pong/pongball.h \
+    entity/person/addpersondialog.h
 
 FORMS    += mainwindow.ui \
-    addwindow.ui \
-    editwindow.ui
+    entity/person/addpersondialog.ui
 
 RESOURCES += \
     resources.qrc

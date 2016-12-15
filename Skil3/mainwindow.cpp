@@ -1,11 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "userinterface.h"
-#include "addwindow.h"
-#include "editwindow.h"
-
-//toremove
-#include <iostream>
+#include "entity/person/addpersondialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -52,16 +48,16 @@ void MainWindow::on_actionPong_triggered() {
 
 void MainWindow::on_addButton_clicked() {
     this -> hide();
-    AddWindow addWindow;
-    addWindow.exec();
+    AddPersonDialog a;
+    a.exec();
     this -> show();
 }
 
 void MainWindow::on_editButton_clicked() {
-    this -> hide();
-    EditWindow a;
-    a.exec();
-    this -> show();
+   // this -> hide();
+    //EditWindow a;
+   // a.exec();
+  //  this -> show();
 }
 
 void MainWindow::on_removeButton_clicked() {

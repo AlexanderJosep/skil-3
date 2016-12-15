@@ -7,11 +7,11 @@
 #include <QMessageBox>
 #include <vector>
 #include "config.h"
-#include "entity.h"
-#include "person.h"
-#include "computer.h"
-#include "connection.h"
-#include "entitymanager.h"
+#include "entity/entity.h"
+#include "entity/person/person.h"
+#include "entity/computer/computer.h"
+#include "entity/connection/connection.h"
+#include "entity/entitymanager.h"
 
 using namespace config;
 

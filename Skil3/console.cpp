@@ -1,6 +1,6 @@
 #include "console.h"
-#include "entitymanager.h"
-#include "snake.h"
+#include "entity/entitymanager.h"
+#include "snake/snake.h"
 
 Console::Console() {
 
