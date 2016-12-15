@@ -3,7 +3,15 @@
 
 AddPersonDialog::AddPersonDialog(QWidget *parent) : QDialog(parent), ui(new Ui::AddPersonDialog) {
     ui -> setupUi(this);
+    layout() -> setSizeConstraint(QLayout::SetFixedSize);
     setWindowTitle("Add a person");
+    edit = false;
+    imageName = DEFULT_PERSON_IMAGE;
+    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    ui -> imageLabel -> setPixmap(pixmap);
+    ui -> imageLabel -> setFixedHeight(pixmap.height());
+    ui -> imageLabel -> setFixedWidth(pixmap.width());
+    edit = false;
 }
 
 AddPersonDialog::~AddPersonDialog() {
@@ -30,6 +38,13 @@ void AddPersonDialog::setPerson(Person *person) {
         ui -> personDeadBox -> setChecked(true);
         ui -> deathYearBox -> setValue(person -> getDeathYear());
     }
+    int id = manager -> getID(person, PERSON);
+    QString image = QString::fromStdString("./images/persons/"+to_string(id));
+    if(QFile::exists(image)) {
+        imageName = image;
+        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        ui -> imageLabel -> setPixmap(pixmap);
+    }
 }
 
 void AddPersonDialog::on_personDeadBox_toggled(bool checked) {
@@ -55,6 +70,13 @@ void AddPersonDialog::on_addButton_clicked() {
     } else {
         manager -> add(person, PERSON);
     }
+
+    int id = manager -> getID(person, PERSON);
+    if(imageName != DEFULT_PERSON_IMAGE && updatedImage) {
+        QFile::copy(imageName, QString::fromStdString("./images/persons/"+to_string(id)));
+    } else {
+        QFile::remove(QString::fromStdString("./images/persons/"+to_string(id)));
+    }
     this -> close();
 }
 
@@ -64,4 +86,21 @@ void AddPersonDialog::on_cancelButton_clicked() {
 
 void AddPersonDialog::on_birthYearBox_valueChanged(int arg1) {
     ui -> deathYearBox -> setMinimum(arg1);
+}
+
+void AddPersonDialog::on_imageSelection_clicked() {
+    QString fileName = QFileDialog::getOpenFileName(this,
+         tr("Select an image"), QDir::currentPath(), tr("*.jpg *.jpeg *.png"));
+    if(fileName != NULL) {
+        imageName = fileName;
+        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        ui -> imageLabel -> setPixmap(pixmap);
+        updatedImage = true;
+    }
+}
+
+void AddPersonDialog::on_removeImageButton_clicked() {
+    imageName = DEFULT_PERSON_IMAGE;
+    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    ui -> imageLabel -> setPixmap(pixmap);
 }

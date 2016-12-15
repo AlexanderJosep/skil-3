@@ -1,11 +1,22 @@
 #include "snake.h"
 
-Snake::Snake(QMainWindow *window) {
+#include <QApplication>
+
+#include <QMessageBox>
+#include <QInputDialog>
+
+#include <QIcon>
+
+Snake::Snake(QMainWindow *window, Storage *storage) {
     window -> hide();
     bool isOk;
     short gridSize = QInputDialog::getInt(window, QObject::tr("Grid"),
                                        QObject::tr("Grid size(10-30):"), 10, 10, 30, 1, &isOk);
-    if(!isOk) {
+    string name;
+    if(isOk) {
+         name = QInputDialog::getText(window, QObject::tr("What is your username?"), QObject::tr("Username:"), QLineEdit::Normal, "", &isOk).toStdString();
+    }
+    if(!isOk || name.length() == 0) {
         window -> show();
         return;
     }
@@ -26,7 +37,7 @@ Snake::Snake(QMainWindow *window) {
     widget -> activateWindow();
     widget -> raise();
 
-    SnakeThread *thread = new SnakeThread(grid, widget);
+    SnakeThread *thread = new SnakeThread(grid, widget, name, storage);
     thread -> start();
 }
 

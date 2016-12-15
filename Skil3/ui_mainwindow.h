@@ -35,9 +35,8 @@ public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QPushButton *addButton;
-    QComboBox *comboBox;
-    QPushButton *editButton;
     QPushButton *removeButton;
+    QPushButton *editButton;
     QPushButton *viewButton;
     QGridLayout *gridLayout_2;
     QLabel *searchLabel;
@@ -45,6 +44,7 @@ public:
     QLineEdit *listFilter;
     QLineEdit *listSearch;
     QTableView *tableView;
+    QComboBox *comboBox;
     QMenuBar *menuBar;
     QMenu *menuMain;
     QMenu *menuGames;
@@ -73,22 +73,17 @@ public:
 
         gridLayout->addWidget(addButton, 12, 5, 1, 1);
 
-        comboBox = new QComboBox(centralWidget);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
+        removeButton = new QPushButton(centralWidget);
+        removeButton->setObjectName(QStringLiteral("removeButton"));
+        removeButton->setCursor(QCursor(Qt::PointingHandCursor));
 
-        gridLayout->addWidget(comboBox, 0, 7, 1, 1);
+        gridLayout->addWidget(removeButton, 12, 7, 1, 1);
 
         editButton = new QPushButton(centralWidget);
         editButton->setObjectName(QStringLiteral("editButton"));
         editButton->setCursor(QCursor(Qt::PointingHandCursor));
 
         gridLayout->addWidget(editButton, 12, 6, 1, 1);
-
-        removeButton = new QPushButton(centralWidget);
-        removeButton->setObjectName(QStringLiteral("removeButton"));
-        removeButton->setCursor(QCursor(Qt::PointingHandCursor));
-
-        gridLayout->addWidget(removeButton, 12, 7, 1, 1);
 
         viewButton = new QPushButton(centralWidget);
         viewButton->setObjectName(QStringLiteral("viewButton"));
@@ -134,10 +129,18 @@ public:
 
         gridLayout->addWidget(tableView, 7, 4, 3, 4);
 
+        comboBox = new QComboBox(centralWidget);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+        QFont font;
+        font.setPointSize(12);
+        comboBox->setFont(font);
+
+        gridLayout->addWidget(comboBox, 0, 7, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 421, 22));
+        menuBar->setGeometry(QRect(0, 0, 421, 19));
         menuMain = new QMenu(menuBar);
         menuMain->setObjectName(QStringLiteral("menuMain"));
         menuGames = new QMenu(menuMain);
@@ -158,13 +161,21 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "A\303\260algluggi", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Main window", 0));
         actionSnake->setText(QApplication::translate("MainWindow", "Snake", 0));
         actionPong->setText(QApplication::translate("MainWindow", "Pong", 0));
 #ifndef QT_NO_WHATSTHIS
         addButton->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>Add a entity..</p></body></html>", 0));
 #endif // QT_NO_WHATSTHIS
         addButton->setText(QApplication::translate("MainWindow", "Add", 0));
+        removeButton->setText(QApplication::translate("MainWindow", "Remove", 0));
+        editButton->setText(QApplication::translate("MainWindow", "Edit", 0));
+        viewButton->setText(QApplication::translate("MainWindow", "View", 0));
+        searchLabel->setText(QApplication::translate("MainWindow", "Search:", 0));
+        label->setText(QApplication::translate("MainWindow", "Filter:", 0));
+#ifndef QT_NO_WHATSTHIS
+        listSearch->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>Search..</p></body></html>", 0));
+#endif // QT_NO_WHATSTHIS
         comboBox->clear();
         comboBox->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Persons", 0)
@@ -173,14 +184,6 @@ public:
         );
 #ifndef QT_NO_WHATSTHIS
         comboBox->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>List types..</p></body></html>", 0));
-#endif // QT_NO_WHATSTHIS
-        editButton->setText(QApplication::translate("MainWindow", "Edit", 0));
-        removeButton->setText(QApplication::translate("MainWindow", "Remove", 0));
-        viewButton->setText(QApplication::translate("MainWindow", "View", 0));
-        searchLabel->setText(QApplication::translate("MainWindow", "Search:", 0));
-        label->setText(QApplication::translate("MainWindow", "Filter:", 0));
-#ifndef QT_NO_WHATSTHIS
-        listSearch->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>Search..</p></body></html>", 0));
 #endif // QT_NO_WHATSTHIS
         menuMain->setTitle(QApplication::translate("MainWindow", "Main", 0));
         menuGames->setTitle(QApplication::translate("MainWindow", "Games", 0));

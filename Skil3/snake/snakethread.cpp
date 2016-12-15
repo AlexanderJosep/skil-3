@@ -1,8 +1,10 @@
 #include "snakethread.h"
 
-SnakeThread::SnakeThread(SnakeGrid *grid, SnakeWidget *widget) {
+SnakeThread::SnakeThread(SnakeGrid *grid, SnakeWidget *widget, string name, Storage *storage) {
     this -> grid = grid;
     this -> widget = widget;
+    this -> name = name;
+    this -> storage = storage;
 }
 
 void SnakeThread::run() {
@@ -17,6 +19,12 @@ void SnakeThread::run() {
             msleep(SNAKE_SLEEP_TIME);
         }
         if(!(grid -> update())) {
+            int points = grid -> getSnakeSize() - 3;
+            if(storage -> addSnakeScore(name, points, grid -> getGridSize())) {
+                QMessageBox infoBox;
+                infoBox.information(0, "New hiscore!", "Your new hiscore on "+QString::fromStdString(name)+" is "+QString::fromStdString(to_string(points))+".");
+                infoBox.setFixedSize(500, 200);
+            }
             if(grid -> hasWon()) {
                  widget -> setStatus("You WIN! Press any key to restart.");
             } else {

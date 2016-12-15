@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>185</width>
-    <height>149</height>
+    <width>226</width>
+    <height>186</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,6 +28,13 @@
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QSpinBox" name="buildYearBox">
+         <property name="enabled">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -55,10 +62,13 @@
          </item>
         </widget>
        </item>
-       <item row="3" column="3">
-        <widget class="QSpinBox" name="buildYearBox">
-         <property name="enabled">
-          <bool>false</bool>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Type</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -79,17 +89,32 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_2">
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="imageSelection">
          <property name="text">
-          <string>Type</string>
+          <string>Change image</string>
          </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="removeImageButton">
+         <property name="text">
+          <string>Clear Image</string>
          </property>
         </widget>
        </item>
       </layout>
+     </item>
+     <item>
+      <widget class="QLabel" name="imageLabel">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">

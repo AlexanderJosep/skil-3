@@ -13,6 +13,7 @@
 #include <QLineEdit>
 #include <QDir>
 #include <QMainWindow>
+#include "storage/storage.h"
 #include "snakegrid.h"
 #include "snakewidget.h"
 #include "snakethread.h"
@@ -22,7 +23,7 @@ using namespace config;
 
 class Snake {
 public:
-    Snake(QMainWindow *window);
+    Snake(QMainWindow *window, Storage *storage);
     int getPoints();
     short getGridSize();
 private:

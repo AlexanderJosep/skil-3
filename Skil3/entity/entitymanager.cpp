@@ -36,6 +36,10 @@ void EntityManager::loadConnections() {
     }
 }
 
+Storage* EntityManager::getStorage() {
+    return &storage;
+}
+
 QStandardItemModel* EntityManager::getTableModel(vector<Entity*> entities, int type) {
     QStandardItemModel *model = new QStandardItemModel(entities.size(), 4 - type);
     model -> setHorizontalHeaderItem(0, new QStandardItem(QString(type == CONNECTION ? "Person" : "Name")));
@@ -177,6 +181,19 @@ short EntityManager::getIndex(Entity *entity, int type) {
         }
     }
     return index;
+}
+
+short EntityManager::getID(Entity *entity, int type) {
+    short index = getIndex(entity, type);
+    if(index < 0) {
+        return -1;
+    }
+    if(type == PERSON) {
+        return persons[index].getID();
+    } else if(type == COMPUTER) {
+        return computers[index].getID();
+    }
+    return -1;
 }
 
 string EntityManager::getName(Console &c, bool n, int type) {
@@ -368,10 +385,11 @@ vector<Entity*> EntityManager::getSearchResults(string search, int type) {
     if(type == PERSON) {
         string male = "male";
         string female = "female";
+        string notDead = "not dead";
         for(unsigned int i = 0; i < persons.size(); i++) {
             if(toLowerCase(persons[i].getName()).find(search) != string::npos || to_string(persons[i].getBirthYear()).find(search) != string::npos
                     || (persons[i].getGender() == 0 && male.find(search) != string::npos) || (search != male && persons[i].getGender() == 1 && female.find(search) != string::npos)
-                    || (persons[i].getDeathYear() >= 0 && to_string(persons[i].getDeathYear()).find(search) != string::npos)) {
+                    || (persons[i].getDeathYear() >= 0 && to_string(persons[i].getDeathYear()).find(search) != string::npos) || (persons[i].getDeathYear() < 0 && notDead.find(search) != string::npos)) {
                out.push_back(&persons[i]);
             }
         }
@@ -408,41 +426,4 @@ vector<Entity*> EntityManager::getSearchResults(string search, int type) {
         }
     }
     return out;
-}
-
-
-void EntityManager::addSnakeScore(Console &c, int score, int grid) {
-    string name = trim(c.getString("Hiscore name", true));
-    if(storage.addSnakeScore(name, score, grid)) {
-        c.println("New hiscore on '"+name+"': "+to_string(score));
-    } else {
-        c.println("Your score wasn't suffiecient enough for '"+name+"' to go on the hiscores.");
-    }
-    vector<SnakeScore> scores = storage.getSnakeScores(grid);
-    vector<SnakeScore> topTenScores;
-    for(int i = 0; i < 10; i++) {
-        int idx = 0;
-        if(scores.size() <= 0) {
-            break;
-        }
-        for(unsigned int j = 1; j < scores.size(); j++) {
-            if(scores[j].getScore() > scores[idx].getScore()) {
-                idx = j;
-            }
-        }
-        topTenScores.push_back(scores[idx]);
-        scores.erase(scores.begin() + idx);
-    }
-    if(topTenScores.size() <= 0) {
-        c.println("No scores to display.");
-    } else {
-        int size = topTenScores.size() > 10 ? 10 : topTenScores.size();
-        c.println("Top "+to_string(size)+" players (grid size -> "+to_string(grid)+"):");
-        c.println("  \tName:\tScore");
-        for(unsigned int i = 0; i < topTenScores.size(); i++) {
-            c.println(to_string(i + 1) + ".\t"+topTenScores[i].getName()+"\t"+to_string(topTenScores[i].getScore()));
-        }
-    }
-    c.ignoreNextClear();
-    c.newLine();
 }

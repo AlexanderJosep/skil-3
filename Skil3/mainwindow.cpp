@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setListType(0);
     ui -> tableView -> setSelectionMode(QAbstractItemView::SingleSelection);
     ui -> tableView -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);
-    resize(QDesktopWidget().availableGeometry(this).size() * 0.4);
+    resize(QDesktopWidget().availableGeometry(this).size() * 0.35);
 }
 
 MainWindow::~MainWindow() {
@@ -43,7 +43,7 @@ void MainWindow::on_listFilter_textChanged(const QString &arg1) {
 }
 
 void MainWindow::on_actionSnake_triggered() {
-    Snake snake = Snake(this);
+    Snake snake = Snake(this, userInterface.getEntityManager() -> getStorage());
     // add hiscores to this bitch :)
 }
 

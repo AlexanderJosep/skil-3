@@ -3,7 +3,14 @@
 
 AddComputerDialog::AddComputerDialog(QWidget *parent) : QDialog(parent), ui(new Ui::AddComputerDialog) {
     ui -> setupUi(this);
+    layout() -> setSizeConstraint(QLayout::SetFixedSize);
     setWindowTitle("Add a computer");
+    imageName = DEFULT_COMPUTER_IMAGE;
+    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    ui -> imageLabel -> setPixmap(pixmap);
+    ui -> imageLabel -> setFixedHeight(pixmap.height());
+    ui -> imageLabel -> setFixedWidth(pixmap.width());
+    edit = false;
 }
 
 AddComputerDialog::~AddComputerDialog() {
@@ -26,6 +33,13 @@ void AddComputerDialog::setComputer(Computer *computer) {
     if(computer -> getYear() >= 0) {
         ui -> computerBuiltBox -> setChecked(true);
         ui -> buildYearBox -> setValue(computer -> getYear());
+    }
+    int id = manager -> getID(computer, COMPUTER);
+    QString image = QString::fromStdString("./images/computers/"+to_string(id));
+    if(QFile::exists(image)) {
+        imageName = image;
+        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        ui -> imageLabel -> setPixmap(pixmap);
     }
 }
 
@@ -50,9 +64,33 @@ void AddComputerDialog::on_addButton_clicked() {
     } else {
         manager -> add(computer, COMPUTER);
     }
+
+    int id = manager -> getID(computer, COMPUTER);
+    if(imageName != DEFULT_COMPUTER_IMAGE && updatedImage) {
+        QFile::copy(imageName, QString::fromStdString("./images/computers/"+to_string(id)));
+    } else {
+        QFile::remove(QString::fromStdString("./images/computers/"+to_string(id)));
+    }
     this -> close();
 }
 
 void AddComputerDialog::on_computerBuiltBox_toggled(bool checked) {
     ui -> buildYearBox -> setEnabled(checked);
+}
+
+void AddComputerDialog::on_imageSelection_clicked() {
+    QString fileName = QFileDialog::getOpenFileName(this,
+         tr("Select an image"), QDir::currentPath(), tr("*.jpg *.jpeg *.png"));
+    if(fileName != NULL) {
+        imageName = fileName;
+        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        ui -> imageLabel -> setPixmap(pixmap);
+        updatedImage = true;
+    }
+}
+
+void AddComputerDialog::on_removeImageButton_clicked() {
+    imageName = DEFULT_COMPUTER_IMAGE;
+    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    ui -> imageLabel -> setPixmap(pixmap);
 }

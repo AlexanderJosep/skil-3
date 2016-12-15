@@ -62,3 +62,7 @@ void AddConnectionDialog::on_addButton_clicked() {
     manager -> add(connection, 2);
     this -> close();
 }
+
+void AddConnectionDialog::on_cancelButton_clicked() {
+    this -> close();
+}

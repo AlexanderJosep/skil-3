@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QMessageBox>
+#include <QFileDialog>
 #include "entity/entitymanager.h"
 #include "entity/computer/computer.h"
 
@@ -24,11 +25,17 @@ private slots:
      void on_addButton_clicked();
      void on_computerBuiltBox_toggled(bool checked);
 
+     void on_imageSelection_clicked();
+
+     void on_removeImageButton_clicked();
+
 private:
     Ui::AddComputerDialog *ui;
     EntityManager *manager;
     Computer *computer;
     bool edit;
+    bool updatedImage;
+    QString imageName;
 };
 
 #endif // ADDCOMPUTERDIALOG_H

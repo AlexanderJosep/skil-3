@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Aðalgluggi</string>
+   <string>Main window</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
@@ -32,26 +32,14 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="7">
-     <widget class="QComboBox" name="comboBox">
-      <property name="whatsThis">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;List types..&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <item row="12" column="7">
+     <widget class="QPushButton" name="removeButton">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
-      <item>
-       <property name="text">
-        <string>Persons</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Computers</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Connections</string>
-       </property>
-      </item>
+      <property name="text">
+       <string>Remove</string>
+      </property>
      </widget>
     </item>
     <item row="12" column="6">
@@ -61,16 +49,6 @@
       </property>
       <property name="text">
        <string>Edit</string>
-      </property>
-     </widget>
-    </item>
-    <item row="12" column="7">
-     <widget class="QPushButton" name="removeButton">
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="text">
-       <string>Remove</string>
       </property>
      </widget>
     </item>
@@ -137,6 +115,33 @@
       </attribute>
      </widget>
     </item>
+    <item row="0" column="7">
+     <widget class="QComboBox" name="comboBox">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;List types..&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Persons</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Computers</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Connections</string>
+       </property>
+      </item>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -145,7 +150,7 @@
      <x>0</x>
      <y>0</y>
      <width>421</width>
-     <height>22</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMain">
