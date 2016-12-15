@@ -43,9 +43,6 @@ Connection* UserInterface::getConnection(string person, string computer) {
     Connection *connection = new Connection(pId, cId);
     connection -> setPerson(p);
     connection -> setComputer(c);
-    cout << "test" << endl;
-    cout << p->getName() << endl;
-        cout << "test" << endl;
     return connection;
 }
 
@@ -91,8 +88,8 @@ QStandardItemModel* UserInterface::getTableModel(vector<Entity*> entities, int t
             model -> setItem(i, 2, row3);
         } else {
             Connection* connection = static_cast<Connection*>(entities[i]);
-            QStandardItem *row1 = new QStandardItem(QString::fromStdString(connection -> getComputer() -> getName()));
-            QStandardItem *row2 = new QStandardItem(QString::fromStdString(connection -> getPerson() -> getName()));
+            QStandardItem *row1 = new QStandardItem(QString::fromStdString(connection -> getPerson() -> getName()));
+            QStandardItem *row2 = new QStandardItem(QString::fromStdString(connection -> getComputer() -> getName()));
             model -> setItem(i, 0, row1);
             model -> setItem(i, 1, row2);
         }
