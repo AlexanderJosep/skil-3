@@ -1,4 +1,5 @@
 #include "pongball.h"
+#include <stdlib.h>
 
 static int getRanInt(int size) { // get a random int from 0-size
     return rand() % size;
