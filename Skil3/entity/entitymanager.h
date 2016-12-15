@@ -16,10 +16,14 @@ class EntityManager {
 public:
     EntityManager();
     EntityManager(int currentYear);
+    int getCurrentYear();
     void loadConnections();
-    void add(Console &c, int type);
+    bool add(Entity *entity, int type);
     void edit(Console &c, vector<Entity*> entities, int type); // edits a entity in a list
     bool remove(Entity *entity, int type); // remove a entity from a list
+    bool validName(string name, int type); // checks if a name is valid or not
+    string trim(string s); // trims the edges of a string for any pesky spaces
+    string capitialize(string s); // capitalizes a string
     vector<Entity*> getOrganizedEntities(int o, int type); // gets organized entity list which organizes by type o
     vector<Entity*> getFilteredSearchResults(string searchString, string filterString, int type); // gets filtered search results and returns the resulting entities in a vector
     void addSnakeScore(Console &c, int score, int grid); // adds a snake score to a list, also prints top 10 hiscores if available
@@ -31,9 +35,6 @@ private:
     short getDeathYear(Console &c, bool n, int birthYear); // gets the death year from user input, n is true if user is creating a new person, false if editing
     short getComputerType(Console &c, string s); // gets a computer type from user input
     short getYearBuilt(Console &c, bool n);
-    bool validName(string name, int type); // checks if a name is valid or not
-    string trim(string s); // trims the edges of a string for any pesky spaces
-    string capitialize(string s); // capitalizes a string
     string toLowerCase(string s); // lowercases a string
     vector<Entity*> getSearchResults(string search, int type); // returns a list of entities that correspond to the search
     vector<Person> persons;

@@ -12,6 +12,10 @@ EntityManager::EntityManager(int currentYear) {
     loadConnections();
 }
 
+int EntityManager::getCurrentYear() {
+    return currentYear;
+}
+
 void EntityManager::loadConnections() {
     this -> connections = storage.getConnections();
     // set the person and computer pointer in connections
@@ -32,60 +36,23 @@ void EntityManager::loadConnections() {
     }
 }
 
-void EntityManager::add(Console &c, int type) {
-   /* if(type == PERSON) {
-        string name = getName(c, true, type);
-        short gender = getGender(c, true);
-        short birthYear = getYear(c, "Birth year");
-        short deathYear = getDeathYear(c, true, birthYear);
-        Person person = Person(name, gender, birthYear, deathYear);
-        if(storage.savePerson(person)) {
-            persons.push_back(person);
-            c.println("You have added "+name+" to the persons list.");
-        } else {
-            c.println("Failed to add "+name+" to the persons list.");
+bool EntityManager::add(Entity *entity, int type) {
+    if(type == PERSON) {
+        Person *person = static_cast<Person*>(entity);
+        if(storage.savePerson(*person)) {
+            persons.push_back(*person);
         }
     } else if(type == COMPUTER) {
-        string name = getName(c, true, type);
-        short type = getComputerType(c, "ID of computer type");
-        short yearBuilt = getYearBuilt(c, true);
-        Computer computer = Computer(name, yearBuilt, type);
-        if(storage.saveComputer(computer)) {
-            computers.push_back(computer);
-            c.println("You have added "+name+" to the computers list.");
-        } else {
-            c.println("Failed to add "+name+" to the computers list.");
+        Computer *computer = static_cast<Computer*>(entity);
+        if(storage.saveComputer(*computer)) {
+            computers.push_back(*computer);
         }
-    } else { // add a connection
-        vector<Entity*> personsList = getOrganizedEntities(1, PERSON);
-        vector<Entity*> computersList = getOrganizedEntities(1, COMPUTER);
-
-        c.printEntities(personsList, false, true, PERSON);
-        c.println("Person:");
-        short personIndex = getRealIndex(personsList, getListIndex(c, PERSON), PERSON);
-
-        c.printEntities(computersList, false, true, COMPUTER);
-        c.println("Computer:");
-        short computerIndex = getRealIndex(computersList, getListIndex(c, COMPUTER), COMPUTER);
-
-        for(Connection connection : connections) {
-            if(connection.getPersonID() == persons[personIndex].getID() && connection.getComputerID() == computers[computerIndex].getID()) {
-                c.println("That connection has already been made.");
-                c.newLine();
-                return;
-            }
-        }
-        Connection connection = Connection(persons[personIndex].getID(), computers[computerIndex].getID());
-        connection.setPerson(&persons[personIndex]);
-        connection.setComputer(&computers[computerIndex]);
-        if(storage.addConnection(connection)) {
-            connections.push_back(connection);
-            c.println("Connected "+persons[personIndex].getName() +" and "+computers[computerIndex].getName()+" together.");
-        } else {
-            c.println("Failed to connect "+persons[personIndex].getName() +" and "+computers[computerIndex].getName()+" together.");
+    } else {
+        Connection *connection = static_cast<Connection*>(entity);
+        if(storage.addConnection(*connection)) {
+            connections.push_back(*connection);
         }
     }
-    c.newLine();*/
 }
 
 void EntityManager::edit(Console &c, vector<Entity*> entities, int type) {

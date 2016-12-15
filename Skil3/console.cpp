@@ -195,7 +195,7 @@ void Console::process() {
           //  printEntities(manager.getSearchResults(type), false, false, type);
         }
         if(i == 2) { // add person
-            manager.add(*this, !getBool("Person or computer", 'p', 'c'));
+            //manager.add(*this, !getBool("Person or computer", 'p', 'c'));
             clearBuffer();
         }
         if(i == 3) { // info

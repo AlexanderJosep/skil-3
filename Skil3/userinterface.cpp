@@ -3,7 +3,11 @@
 UserInterface::UserInterface() {
     time_t t = time(NULL);
     tm* tPtr = localtime(&t);
-    this -> manager = EntityManager(tPtr -> tm_year + 1900); // parameter is the current year
+    this -> manager = new EntityManager(tPtr -> tm_year + 1900); // parameter is the current year
+}
+
+EntityManager* UserInterface::getEntityManager() {
+    return manager;
 }
 
 bool UserInterface::removeEntity(QMainWindow *window, Entity *entity, QString s, int type) {
@@ -14,7 +18,7 @@ bool UserInterface::removeEntity(QMainWindow *window, Entity *entity, QString s,
     rmBox.addButton(QMessageBox::No);
     rmBox.setDefaultButton(QMessageBox::No);
     if(rmBox.exec() == QMessageBox::Yes){
-        return manager.remove(entity, type);
+        return manager -> remove(entity, type);
     }
     return false;
 }
@@ -24,8 +28,8 @@ Connection* UserInterface::getConnection(string person, string computer) {
     int cId = 0;
     Person *p;
     Computer *c;
-    vector<Entity*> persons = manager.getOrganizedEntities(0, PERSON);
-    vector<Entity*> computers = manager.getOrganizedEntities(0, COMPUTER);
+    vector<Entity*> persons = manager -> getOrganizedEntities(0, PERSON);
+    vector<Entity*> computers = manager -> getOrganizedEntities(0, COMPUTER);
     for(unsigned int i = 0; i < persons.size(); i++) {
         if(persons[i] -> getName() == person) {
             pId = persons[i] -> getID();
@@ -47,11 +51,11 @@ Connection* UserInterface::getConnection(string person, string computer) {
 }
 
 vector<Entity*> UserInterface::getEntities(int type) {
-    return manager.getOrganizedEntities(0, type);
+    return manager -> getOrganizedEntities(0, type);
 }
 
 vector<Entity*> UserInterface::getSearchResults(string s, string filter, int type) {
-    return manager.getFilteredSearchResults(s, filter, type);
+    return manager -> getFilteredSearchResults(s, filter, type);
 }
 
 QStandardItemModel* UserInterface::getTableModel(vector<Entity*> entities, int type, QMainWindow *window) {

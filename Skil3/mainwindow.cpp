@@ -49,6 +49,7 @@ void MainWindow::on_actionPong_triggered() {
 void MainWindow::on_addButton_clicked() {
     this -> hide();
     AddPersonDialog a;
+    a.setEntityManager(userInterface.getEntityManager());
     a.exec();
     this -> show();
 }
