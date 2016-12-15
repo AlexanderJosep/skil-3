@@ -30,7 +30,7 @@ QT_BEGIN_NAMESPACE
 class Ui_AddPersonDialog
 {
 public:
-    QGridLayout *gridLayout_3;
+    QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_3;
     QGridLayout *gridLayout;
     QLabel *label_2;
@@ -61,8 +61,8 @@ public:
         QIcon icon;
         icon.addFile(QStringLiteral(":/icons/icons/add.png"), QSize(), QIcon::Normal, QIcon::Off);
         AddPersonDialog->setWindowIcon(icon);
-        gridLayout_3 = new QGridLayout(AddPersonDialog);
-        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
+        horizontalLayout = new QHBoxLayout(AddPersonDialog);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         gridLayout = new QGridLayout();
@@ -136,7 +136,7 @@ public:
         verticalLayout_3->addLayout(horizontalLayout_3);
 
 
-        gridLayout_3->addLayout(verticalLayout_3, 0, 0, 1, 1);
+        horizontalLayout->addLayout(verticalLayout_3);
 
         QWidget::setTabOrder(nameBox, genderBox);
         QWidget::setTabOrder(genderBox, birthYearBox);
