@@ -11,7 +11,6 @@ AddWindow::~AddWindow() {
     delete ui;
 }
 
-void AddWindow::on_pushButton_clicked()
-{
-    //hellings kóði, með villuleiðbeiningum.
+void AddWindow::on_addPersonButton_clicked() {
+
 }

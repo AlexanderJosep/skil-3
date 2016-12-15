@@ -15,9 +15,7 @@ public:
     ~AddWindow();
 
 private slots:
-
-
-    void on_pushButton_clicked();
+    void on_addPersonButton_clicked();
 
 private:
     Ui::AddWindow *ui;
