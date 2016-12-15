@@ -54,6 +54,9 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(421, 340);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/icons/people_icon.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
         actionSnake = new QAction(MainWindow);
         actionSnake->setObjectName(QStringLiteral("actionSnake"));
         actionPong = new QAction(MainWindow);
@@ -134,7 +137,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 421, 19));
+        menuBar->setGeometry(QRect(0, 0, 421, 22));
         menuMain = new QMenu(menuBar);
         menuMain->setObjectName(QStringLiteral("menuMain"));
         menuGames = new QMenu(menuMain);
@@ -155,7 +158,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "A\303\260algluggi", 0));
         actionSnake->setText(QApplication::translate("MainWindow", "Snake", 0));
         actionPong->setText(QApplication::translate("MainWindow", "Pong", 0));
 #ifndef QT_NO_WHATSTHIS

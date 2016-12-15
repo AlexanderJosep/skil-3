@@ -62,3 +62,6 @@ HEADERS  += mainwindow.h \
 FORMS    += mainwindow.ui \
     addwindow.ui \
     editwindow.ui
+
+RESOURCES += \
+    resources.qrc
