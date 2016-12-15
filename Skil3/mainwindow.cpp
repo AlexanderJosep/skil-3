@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "userinterface.h"
 #include "entity/person/addpersondialog.h"
+#include "entity/computer/addcomputerdialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -48,9 +49,17 @@ void MainWindow::on_actionPong_triggered() {
 
 void MainWindow::on_addButton_clicked() {
     this -> hide();
-    AddPersonDialog a;
-    a.setEntityManager(userInterface.getEntityManager());
-    a.exec();
+    if(listType == PERSON) {
+        AddPersonDialog a;
+        a.setEntityManager(userInterface.getEntityManager());
+        a.exec();
+    } else if(listType == COMPUTER) {
+        AddComputerDialog a;
+        a.setEntityManager(userInterface.getEntityManager());
+        a.exec();
+    } else {
+
+    }
     this -> show();
 }
 

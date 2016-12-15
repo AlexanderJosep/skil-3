@@ -29,9 +29,9 @@ void AddPersonDialog::on_addButton_clicked() {
         // invalid name
         return;
     }
-    short gender = ui-> genderBox -> currentIndex();
+    short gender = ui -> genderBox -> currentIndex();
     short birthYear = ui -> birthYearBox -> value();
-    short deathYear = ui -> personDeadBox-> isChecked() ? ui -> deathYearBox -> value() : -1;
+    short deathYear = ui -> personDeadBox -> isChecked() ? ui -> deathYearBox -> value() : -1;
     Person *person = new Person(name, gender, birthYear, deathYear);
     manager -> add(person, 0);
     this -> close();
