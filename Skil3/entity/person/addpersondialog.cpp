@@ -8,8 +8,9 @@ AddPersonDialog::AddPersonDialog(QWidget *parent) : QDialog(parent), ui(new Ui::
     setWindowTitle("Add Person");
     edit = false;
     imageName = DEFULT_PERSON_IMAGE;
-    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> imageLabel -> setPixmap(pixmap);
+    ui -> imageLabel -> setAlignment(Qt::AlignCenter);
     ui -> imageLabel -> setFixedHeight(pixmap.height());
     ui -> imageLabel -> setFixedWidth(pixmap.width());
     edit = false;
@@ -44,8 +45,9 @@ void AddPersonDialog::setPerson(Person *person) {
     QString image = QString::fromStdString("./images/persons/"+to_string(id));
     if(QFile::exists(image)) {
         imageName = image;
-        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));
         ui -> imageLabel -> setPixmap(pixmap);
+        ui -> imageLabel -> setAlignment(Qt::AlignCenter);
     }
 }
 

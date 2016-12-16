@@ -8,8 +8,9 @@ ViewComputerDialog::ViewComputerDialog(QWidget *parent) : QDialog(parent), ui(ne
     imageName = DEFULT_COMPUTER_IMAGE;
     ui -> connectionTableView -> setSelectionMode(QAbstractItemView::SingleSelection);
     ui -> connectionTableView -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);
-    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> imageLabel -> setPixmap(pixmap);
+    ui -> imageLabel -> setAlignment(Qt::AlignCenter);
     ui -> imageLabel -> setFixedHeight(pixmap.height());
     ui -> imageLabel -> setFixedWidth(pixmap.width());
     layout() -> setSizeConstraint(QLayout::SetFixedSize);
@@ -37,8 +38,9 @@ void ViewComputerDialog::setComputer(Computer *computer) {
     QString image = QString::fromStdString("./images/computers/"+to_string(id));
     if(QFile::exists(image)) {
         imageName = image;
-        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));
         ui -> imageLabel -> setPixmap(pixmap);
+        ui -> imageLabel -> setAlignment(Qt::AlignCenter);
     }
     vector<Connection*> personConnections;
     vector<Entity*> connections = manager -> getEntities(CONNECTION);

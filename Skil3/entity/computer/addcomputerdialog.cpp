@@ -7,8 +7,9 @@ AddComputerDialog::AddComputerDialog(QWidget *parent) : QDialog(parent), ui(new 
     layout() -> setSizeConstraint(QLayout::SetFixedSize);
     setWindowTitle("Add Computer");
     imageName = DEFULT_COMPUTER_IMAGE;
-    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> imageLabel -> setPixmap(pixmap);
+    ui -> imageLabel -> setAlignment(Qt::AlignCenter);
     ui -> imageLabel -> setFixedHeight(pixmap.height());
     ui -> imageLabel -> setFixedWidth(pixmap.width());
     edit = false;
@@ -40,7 +41,8 @@ void AddComputerDialog::setComputer(Computer *computer) {
     QString image = QString::fromStdString("./images/computers/"+to_string(id));
     if(QFile::exists(image)) {
         imageName = image;
-        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        ui -> imageLabel -> setAlignment(Qt::AlignCenter);
         ui -> imageLabel -> setPixmap(pixmap);
     }
 }

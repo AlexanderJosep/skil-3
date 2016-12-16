@@ -17,20 +17,20 @@ MainWindow::MainWindow(QWidget *parent) :
     ui -> tableView -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);
     resize(QDesktopWidget().availableGeometry(this).size() * 0.45);
 
-    QPixmap pixmap("./icons/info.png");
-    ui -> viewButton -> setIcon(ButtonIcon(ButtonIcon(pixmap)));
+    QPixmap pixmap(QPixmap("./icons/info.png").scaled(45, 45, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    ui -> viewButton -> setIcon(QIcon(pixmap));
     ui -> viewButton -> setIconSize(pixmap.rect().size());
 
-    pixmap = QPixmap("./icons/info.png");
-    ui -> addButton -> setIcon(ButtonIcon(pixmap));
+    pixmap = QPixmap(QPixmap("./icons/add.png").scaled(45, 45, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    ui -> addButton -> setIcon(QIcon(pixmap));
     ui -> addButton -> setIconSize(pixmap.rect().size());
 
-    pixmap = QPixmap("./icons/edit.png");
-    ui -> editButton -> setIcon(ButtonIcon(pixmap));
+    pixmap = QPixmap(QPixmap("./icons/edit.png").scaled(45, 45, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    ui -> editButton -> setIcon(QIcon(pixmap));
     ui -> editButton -> setIconSize(pixmap.rect().size());
 
-    pixmap = QPixmap("./icons/remove.png");
-    ui -> removeButton -> setIcon(ButtonIcon(pixmap));
+    pixmap = QPixmap(QPixmap("./icons/remove.png").scaled(45, 45, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    ui -> removeButton -> setIcon(QIcon(pixmap));
     ui -> removeButton -> setIconSize(pixmap.rect().size());
 }
 

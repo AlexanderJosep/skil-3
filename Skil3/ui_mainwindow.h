@@ -188,10 +188,10 @@ public:
 #ifndef QT_NO_WHATSTHIS
         addButton->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>Add a entity..</p></body></html>", 0));
 #endif // QT_NO_WHATSTHIS
-        addButton->setText(QApplication::translate("MainWindow", "Add", 0));
-        removeButton->setText(QApplication::translate("MainWindow", "Remove", 0));
-        editButton->setText(QApplication::translate("MainWindow", "Edit", 0));
-        viewButton->setText(QApplication::translate("MainWindow", "View", 0));
+        addButton->setText(QString());
+        removeButton->setText(QString());
+        editButton->setText(QString());
+        viewButton->setText(QString());
         searchLabel->setText(QApplication::translate("MainWindow", "Search:", 0));
         label->setText(QApplication::translate("MainWindow", "Filter:", 0));
 #ifndef QT_NO_WHATSTHIS
