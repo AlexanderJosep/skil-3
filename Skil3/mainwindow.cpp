@@ -277,3 +277,11 @@ void MainWindow::on_actionBack_triggered() {
     ui -> actionPlay -> setText("Stop");
     ui -> actionPause -> setText("Pause");
 }
+
+void MainWindow::on_tableView_pressed(const QModelIndex&) {
+    if(listType != CONNECTION) {
+        ui -> editButton -> setEnabled(true);
+        ui -> viewButton -> setEnabled(true);
+    }
+    ui -> removeButton -> setEnabled(true);
+}

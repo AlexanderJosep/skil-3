@@ -4,6 +4,7 @@
 SnakeHiscoresDialog::SnakeHiscoresDialog(QWidget *parent) : QDialog(parent), ui(new Ui::SnakeHiscoresDialog) {
     ui -> setupUi(this);
     resize(QDesktopWidget().availableGeometry(this).size() * 0.35);
+    setWindowIcon(QIcon("./data/icons/snake.png"));
     ui -> tableView -> setSelectionMode(QAbstractItemView::SingleSelection);
     ui -> tableView -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);

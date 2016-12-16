@@ -107,6 +107,11 @@ private slots:
     * Starts the previous song in the playlist
     */
     void on_actionBack_triggered();
+
+    /**
+    * Enables view, edit and remove depending on which type is selected when the table view is clicked
+    */
+    void on_tableView_pressed(const QModelIndex &index);
 };
 
 #endif // MAINWINDOW_H

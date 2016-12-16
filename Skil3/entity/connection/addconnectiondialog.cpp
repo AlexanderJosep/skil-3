@@ -68,3 +68,21 @@ void AddConnectionDialog::on_addButton_clicked() {
 void AddConnectionDialog::on_cancelButton_clicked() {
     this -> close();
 }
+
+void AddConnectionDialog::on_personTable_pressed(const QModelIndex&) {
+    QItemSelectionModel *item = ui -> personTable -> selectionModel();
+    personId = item -> currentIndex().row();
+    ui -> personLabel -> setText(item -> selectedRows(0).value(0).data().toString());
+    if(computerId >= 0 && !ui -> addButton -> isEnabled()) {
+        ui -> addButton -> setEnabled(true);
+    }
+}
+
+void AddConnectionDialog::on_computerTable_pressed(const QModelIndex&) {
+    QItemSelectionModel *item = ui -> computerTable -> selectionModel();
+    computerId = item -> currentIndex().row();
+    ui -> computerLabel -> setText(item -> selectedRows(0).value(0).data().toString());
+    if(personId >= 0 && !ui -> addButton -> isEnabled()) {
+        ui -> addButton -> setEnabled(true);
+    }
+}

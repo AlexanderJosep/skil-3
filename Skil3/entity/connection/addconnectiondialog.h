@@ -50,6 +50,16 @@ private slots:
     */
     void on_cancelButton_clicked();
 
+    /**
+    * Here we check if both tables, person and computer have been clicked and enable the Add button if it has.
+    */
+    void on_personTable_pressed(const QModelIndex &index);
+
+    /**
+    * Here we check if both tables, computer and person have been clicked and enable the add button if it has.
+    */
+    void on_computerTable_pressed(const QModelIndex &index);
+
 private:
     Ui::AddConnectionDialog *ui;
     EntityManager *manager;

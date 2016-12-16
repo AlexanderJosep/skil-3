@@ -2,10 +2,10 @@
 #define USERINTERFACE_H
 
 #include <cstdlib>
-#include <QStandardItemModel>
-#include <QMessageBox>
 #include <vector>
 #include "config.h"
+#include <QMessageBox>
+#include <QStandardItemModel>
 #include "entity/entity.h"
 #include "entity/person/person.h"
 #include "entity/computer/computer.h"
