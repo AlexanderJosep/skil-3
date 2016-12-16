@@ -23,13 +23,15 @@ ViewPersonDialog::~ViewPersonDialog() {
 
 void ViewPersonDialog::setEntityManager(EntityManager *manager) {
     this -> manager = manager;
+    ui -> birthYearBox -> setMaximum(manager -> getCurrentYear());
+    ui -> deathYearBox -> setMaximum(manager -> getCurrentYear());
     ui -> birthYearBox -> setMinimum(0);
     ui -> deathYearBox -> setMinimum(0);
 }
 
 void ViewPersonDialog::setPerson(Person *person) {
     this -> person = person;
-    ui -> nameBox-> setText(QString::fromStdString(person -> getName()));
+    ui -> nameBox -> setText(QString::fromStdString(person -> getName()));
     ui -> genderBox -> setCurrentIndex(person -> getGender());
     ui -> birthYearBox -> setValue(person -> getBirthYear());
     if(person -> getDeathYear() >= 0) {

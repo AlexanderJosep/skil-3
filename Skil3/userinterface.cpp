@@ -13,7 +13,7 @@ EntityManager* UserInterface::getEntityManager() {
 bool UserInterface::removeEntity(Entity *entity, QString s, int type) {
     QMessageBox rmBox;
     rmBox.setWindowTitle("Remove entity");
-    rmBox.setText("Are you sure you want to remove "+s);
+    rmBox.setText("Are you sure you want to remove "+s+"?");
     rmBox.setStandardButtons(QMessageBox::Yes);
     rmBox.addButton(QMessageBox::No);
     rmBox.setDefaultButton(QMessageBox::No);

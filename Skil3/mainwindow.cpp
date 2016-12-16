@@ -178,6 +178,7 @@ void MainWindow::on_viewButton_clicked() {
         short gender = item -> selectedRows(1).value(0).data().toString() == "Male" ? 0 : 1;
         short birthYear = item -> selectedRows(2).value(0).data().toInt();
         short deathYear = item -> selectedRows(3).value(0).data().toString() == "Not dead" ? -1 : item -> selectedRows(3).value(0).data().toInt();
+        qDebug() << birthYear;
         v.setPerson(new Person(name.toStdString(), gender, birthYear, deathYear));
         v.exec();
     } else if(listType == COMPUTER) {
