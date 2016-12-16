@@ -14,10 +14,16 @@ SnakeWidget::SnakeWidget(SnakeGrid *gridObject, QMainWindow *window) {
     started = false;
     needsReset = false;
     waitTime = 0;
+    points = -1;
 }
 
 void SnakeWidget::setStatus(string status) {
     this -> status = status;
+}
+
+void SnakeWidget::setPoints(string name, int pts) {
+    this -> name = name;
+    this -> points = pts;
 }
 
 void SnakeWidget::reset() {
@@ -98,6 +104,11 @@ void SnakeWidget::paintEvent(QPaintEvent*) {
         painter.setBrush(brush);
     }
     painter.end();
+    if(points >= 0) {
+        QMessageBox infoBox;
+        infoBox.information(this, "New hiscore!", "Your new hiscore on "+QString::fromStdString(name)+" is "+QString::fromStdString(to_string(points))+".");
+        points = -1;
+    }
 }
 
 void SnakeWidget::mousePressEvent(QMouseEvent*) {

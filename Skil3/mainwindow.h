@@ -36,6 +36,7 @@ private slots:
     void on_removeButton_clicked();
     void on_tableView_clicked(const QModelIndex &index);
     void on_viewButton_clicked();
+    void on_actionSnake_2_triggered();
 };
 
 #endif // MAINWINDOW_H

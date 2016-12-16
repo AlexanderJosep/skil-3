@@ -12,10 +12,10 @@ Snake::Snake(QMainWindow *window, Storage *storage) {
     bool isOk;
     short gridSize = QInputDialog::getInt(window, QObject::tr("Grid"),
                                        QObject::tr("Grid size(10-30):"), 10, 10, 30, 1, &isOk);
-
     string name;
     if(isOk) {
-         name = QInputDialog::getText(window, QObject::tr("What is your username?"), QObject::tr("Username:"), QLineEdit::Normal, "", &isOk).toStdString();
+         name = QInputDialog::getText(window, QObject::tr("What is your username?"),
+                                      QObject::tr("Username:"), QLineEdit::Normal, "", &isOk).toStdString();
     }
     if(!isOk || name.length() == 0) {
         window -> show();

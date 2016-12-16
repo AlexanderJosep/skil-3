@@ -123,6 +123,12 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>addButton</tabstop>
+  <tabstop>cancelButton</tabstop>
+  <tabstop>personTable</tabstop>
+  <tabstop>computerTable</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

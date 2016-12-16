@@ -136,6 +136,15 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>closeButton</tabstop>
+  <tabstop>connectionTableView</tabstop>
+  <tabstop>personDeadBox</tabstop>
+  <tabstop>nameBox</tabstop>
+  <tabstop>genderBox</tabstop>
+  <tabstop>birthYearBox</tabstop>
+  <tabstop>deathYearBox</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

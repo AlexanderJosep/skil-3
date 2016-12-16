@@ -143,6 +143,8 @@
   <tabstop>typeBox</tabstop>
   <tabstop>computerBuiltBox</tabstop>
   <tabstop>buildYearBox</tabstop>
+  <tabstop>imageSelection</tabstop>
+  <tabstop>removeImageButton</tabstop>
   <tabstop>addButton</tabstop>
   <tabstop>cancelButton</tabstop>
  </tabstops>

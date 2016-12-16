@@ -161,13 +161,27 @@
      <property name="title">
       <string>Games</string>
      </property>
-     <addaction name="actionSnake"/>
-     <addaction name="actionPong"/>
     </widget>
     <addaction name="separator"/>
     <addaction name="menuGames"/>
    </widget>
+   <widget class="QMenu" name="menuGames_2">
+    <property name="title">
+     <string>Games</string>
+    </property>
+    <widget class="QMenu" name="menuHiscores">
+     <property name="title">
+      <string>Hiscores</string>
+     </property>
+     <addaction name="actionSnake_2"/>
+    </widget>
+    <addaction name="actionPong"/>
+    <addaction name="actionSnake"/>
+    <addaction name="separator"/>
+    <addaction name="menuHiscores"/>
+   </widget>
    <addaction name="menuMain"/>
+   <addaction name="menuGames_2"/>
   </widget>
   <action name="actionSnake">
    <property name="text">
@@ -179,8 +193,23 @@
     <string>Pong</string>
    </property>
   </action>
+  <action name="actionSnake_2">
+   <property name="text">
+    <string>Snake</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>listSearch</tabstop>
+  <tabstop>listFilter</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>viewButton</tabstop>
+  <tabstop>addButton</tabstop>
+  <tabstop>editButton</tabstop>
+  <tabstop>removeButton</tabstop>
+  <tabstop>tableView</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

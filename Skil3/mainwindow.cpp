@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "userinterface.h"
+#include "snake/snakehiscoresdialog.h"
 #include "entity/person/viewpersondialog.h"
 #include "entity/computer/viewcomputerdialog.h"
 #include "entity/person/addpersondialog.h"
@@ -177,4 +178,17 @@ void MainWindow::on_viewButton_clicked() {
         v.setComputer(new Computer(name.toStdString(), yearBuilt, type));
         v.exec();
     }
+}
+
+void MainWindow::on_actionSnake_2_triggered() {
+    this -> hide();
+    bool isOk;
+    short gridSize = QInputDialog::getInt(this, QObject::tr("Grid"),
+                                       QObject::tr("Grid size(10-30):"), 10, 10, 30, 1, &isOk);
+    if(isOk) {
+       SnakeHiscoresDialog s;
+       s.setData(userInterface.getEntityManager() -> getStorage(), gridSize);
+       s.exec();
+    }
+    this -> show();
 }

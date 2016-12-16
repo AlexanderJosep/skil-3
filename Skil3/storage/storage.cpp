@@ -200,6 +200,7 @@ bool Storage::addSnakeScore(string name, int score, int gridSize){
         if(oScore >= 0) {
             query.prepare("UPDATE snake_hiscores SET score=? WHERE id = "+QString::fromStdString(to_string(id)));
             query.addBindValue(QString::fromStdString(to_string(score)));
+            query.exec();
         } else {
             query.prepare("INSERT INTO snake_hiscores (name,score,grid_size) VALUES "
                           "('"+QString::fromStdString(name)+"',?,?)");

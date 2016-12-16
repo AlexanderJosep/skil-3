@@ -12,6 +12,7 @@
 #include <QBrush>
 #include <QFontMetrics>
 #include <QMainWindow>
+#include <QMessageBox>
 #include <ctime>
 #include <string>
 #include <chrono>
@@ -26,6 +27,7 @@ public:
     void setStatus(string status);
     void setGrid(short **grid);
     void reset();
+    void setPoints(string name, int pts);
     bool hasStarted();
     bool doesNeedReset();
     void setNeedsReset(bool b);
@@ -43,6 +45,8 @@ private:
     bool needsReset;
     long double waitTime;
     string status;
+    int points;
+    string name;
 };
 
 #endif // SNAKEWIDGET_H

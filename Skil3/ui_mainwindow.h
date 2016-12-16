@@ -32,6 +32,7 @@ class Ui_MainWindow
 public:
     QAction *actionSnake;
     QAction *actionPong;
+    QAction *actionSnake_2;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QPushButton *addButton;
@@ -48,6 +49,8 @@ public:
     QMenuBar *menuBar;
     QMenu *menuMain;
     QMenu *menuGames;
+    QMenu *menuGames_2;
+    QMenu *menuHiscores;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -61,6 +64,8 @@ public:
         actionSnake->setObjectName(QStringLiteral("actionSnake"));
         actionPong = new QAction(MainWindow);
         actionPong->setObjectName(QStringLiteral("actionPong"));
+        actionSnake_2 = new QAction(MainWindow);
+        actionSnake_2->setObjectName(QStringLiteral("actionSnake_2"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -145,13 +150,28 @@ public:
         menuMain->setObjectName(QStringLiteral("menuMain"));
         menuGames = new QMenu(menuMain);
         menuGames->setObjectName(QStringLiteral("menuGames"));
+        menuGames_2 = new QMenu(menuBar);
+        menuGames_2->setObjectName(QStringLiteral("menuGames_2"));
+        menuHiscores = new QMenu(menuGames_2);
+        menuHiscores->setObjectName(QStringLiteral("menuHiscores"));
         MainWindow->setMenuBar(menuBar);
+        QWidget::setTabOrder(listSearch, listFilter);
+        QWidget::setTabOrder(listFilter, comboBox);
+        QWidget::setTabOrder(comboBox, viewButton);
+        QWidget::setTabOrder(viewButton, addButton);
+        QWidget::setTabOrder(addButton, editButton);
+        QWidget::setTabOrder(editButton, removeButton);
+        QWidget::setTabOrder(removeButton, tableView);
 
         menuBar->addAction(menuMain->menuAction());
+        menuBar->addAction(menuGames_2->menuAction());
         menuMain->addSeparator();
         menuMain->addAction(menuGames->menuAction());
-        menuGames->addAction(actionSnake);
-        menuGames->addAction(actionPong);
+        menuGames_2->addAction(actionPong);
+        menuGames_2->addAction(actionSnake);
+        menuGames_2->addSeparator();
+        menuGames_2->addAction(menuHiscores->menuAction());
+        menuHiscores->addAction(actionSnake_2);
 
         retranslateUi(MainWindow);
         QObject::connect(actionSnake, SIGNAL(triggered()), MainWindow, SLOT(raise()));
@@ -164,6 +184,7 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Main Window", 0));
         actionSnake->setText(QApplication::translate("MainWindow", "Snake", 0));
         actionPong->setText(QApplication::translate("MainWindow", "Pong", 0));
+        actionSnake_2->setText(QApplication::translate("MainWindow", "Snake", 0));
 #ifndef QT_NO_WHATSTHIS
         addButton->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>Add a entity..</p></body></html>", 0));
 #endif // QT_NO_WHATSTHIS
@@ -187,6 +208,8 @@ public:
 #endif // QT_NO_WHATSTHIS
         menuMain->setTitle(QApplication::translate("MainWindow", "Main", 0));
         menuGames->setTitle(QApplication::translate("MainWindow", "Games", 0));
+        menuGames_2->setTitle(QApplication::translate("MainWindow", "Games", 0));
+        menuHiscores->setTitle(QApplication::translate("MainWindow", "Hiscores", 0));
     } // retranslateUi
 
 };

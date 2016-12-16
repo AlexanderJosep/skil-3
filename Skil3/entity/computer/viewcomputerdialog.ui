@@ -129,6 +129,14 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>closeButtom</tabstop>
+  <tabstop>connectionTableView</tabstop>
+  <tabstop>nameBox</tabstop>
+  <tabstop>buildYearBox</tabstop>
+  <tabstop>typeBox</tabstop>
+  <tabstop>computerBuiltBox</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

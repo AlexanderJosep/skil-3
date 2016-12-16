@@ -21,9 +21,7 @@ void SnakeThread::run() {
         if(!(grid -> update())) {
             int points = grid -> getSnakeSize() - 3;
             if(storage -> addSnakeScore(name, points, grid -> getGridSize())) {
-                QMessageBox infoBox;
-                infoBox.information(0, "New hiscore!", "Your new hiscore on "+QString::fromStdString(name)+" is "+QString::fromStdString(to_string(points))+".");
-                infoBox.setFixedSize(500, 200);
+               widget -> setPoints(name, points);
             }
             if(grid -> hasWon()) {
                  widget -> setStatus("You WIN! Press any key to restart.");

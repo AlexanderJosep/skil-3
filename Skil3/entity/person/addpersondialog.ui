@@ -159,6 +159,17 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>nameBox</tabstop>
+  <tabstop>genderBox</tabstop>
+  <tabstop>birthYearBox</tabstop>
+  <tabstop>personDeadBox</tabstop>
+  <tabstop>deathYearBox</tabstop>
+  <tabstop>imageSelection</tabstop>
+  <tabstop>removeImageButton</tabstop>
+  <tabstop>addButton</tabstop>
+  <tabstop>cancelButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
