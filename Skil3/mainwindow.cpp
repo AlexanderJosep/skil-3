@@ -41,7 +41,7 @@ MainWindow::~MainWindow() {
 
 void MainWindow::setListType(int index) {
     listType = index;
-    tableModel = userInterface.getTableModel(userInterface.getSearchResults(ui -> listSearch -> text().toStdString(), ui -> listFilter -> text().toStdString(), listType), listType);
+    tableModel = userInterface.getEntityManager() -> getTableModel(userInterface.getEntityManager() -> getFilteredSearchResults(ui -> listSearch -> text().toStdString(), ui -> listFilter -> text().toStdString(), listType), listType);
     ui -> tableView -> setModel(tableModel);
     ui -> editButton -> setEnabled(false);
     ui -> viewButton -> setEnabled(false);
@@ -53,12 +53,12 @@ void MainWindow::on_comboBox_activated(int index){
 }
 
 void MainWindow::on_listSearch_textChanged(const QString &arg1) {
-    tableModel = userInterface.getTableModel(userInterface.getSearchResults(arg1.toStdString(), ui -> listFilter -> text().toStdString(), listType), listType);
+    tableModel = userInterface.getEntityManager() -> getTableModel(userInterface.getEntityManager() -> getFilteredSearchResults(arg1.toStdString(), ui -> listFilter -> text().toStdString(), listType), listType);
     ui -> tableView -> setModel(tableModel);
 }
 
 void MainWindow::on_listFilter_textChanged(const QString &arg1) {
-    tableModel = userInterface.getTableModel(userInterface.getSearchResults(ui -> listSearch -> text().toStdString(), arg1.toStdString(), listType), listType);
+    tableModel = userInterface.getEntityManager() -> getTableModel(userInterface.getEntityManager() -> getFilteredSearchResults(ui -> listSearch -> text().toStdString(), arg1.toStdString(), listType), listType);
     ui -> tableView -> setModel(tableModel);
 }
 
@@ -85,7 +85,7 @@ void MainWindow::on_addButton_clicked() {
         a.setEntityManager(userInterface.getEntityManager());
         a.exec();
     }
-    tableModel = userInterface.getTableModel(userInterface.getSearchResults(ui -> listSearch -> text().toStdString(), ui -> listFilter -> text().toStdString(), listType), listType);
+    tableModel = userInterface.getEntityManager() -> getTableModel(userInterface.getEntityManager() -> getFilteredSearchResults(ui -> listSearch -> text().toStdString(), ui -> listFilter -> text().toStdString(), listType), listType);
     ui -> tableView -> setModel(tableModel);
     ui -> editButton -> setEnabled(false);
     ui -> viewButton -> setEnabled(false);
@@ -121,7 +121,7 @@ void MainWindow::on_editButton_clicked() {
         a.setComputer(new Computer(name.toStdString(), yearBuilt, type));
         a.exec();
     }
-    tableModel = userInterface.getTableModel(userInterface.getSearchResults(ui -> listSearch -> text().toStdString(), ui -> listFilter -> text().toStdString(), listType), listType);
+    tableModel = userInterface.getEntityManager() -> getTableModel(userInterface.getEntityManager() -> getFilteredSearchResults(ui -> listSearch -> text().toStdString(), ui -> listFilter -> text().toStdString(), listType), listType);
     ui -> tableView -> setModel(tableModel);
     ui -> editButton -> setEnabled(false);
     ui -> viewButton -> setEnabled(false);

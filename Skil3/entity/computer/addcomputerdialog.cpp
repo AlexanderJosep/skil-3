@@ -88,7 +88,7 @@ void AddComputerDialog::on_imageSelection_clicked() {
          tr("Select an image"), QDir::currentPath(), tr("*.jpg *.jpeg *.png"));
     if(fileName != NULL) {
         imageName = fileName;
-        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));
         ui -> imageLabel -> setPixmap(pixmap);
         updatedImage = true;
     }
@@ -96,6 +96,6 @@ void AddComputerDialog::on_imageSelection_clicked() {
 
 void AddComputerDialog::on_removeImageButton_clicked() {
     imageName = DEFULT_COMPUTER_IMAGE;
-    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> imageLabel -> setPixmap(pixmap);
 }

@@ -10,9 +10,9 @@ AddPersonDialog::AddPersonDialog(QWidget *parent) : QDialog(parent), ui(new Ui::
     imageName = DEFULT_PERSON_IMAGE;
     QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> imageLabel -> setPixmap(pixmap);
-    ui -> imageLabel -> setAlignment(Qt::AlignCenter);
     ui -> imageLabel -> setFixedHeight(pixmap.height());
     ui -> imageLabel -> setFixedWidth(pixmap.width());
+    ui -> imageLabel -> setAlignment(Qt::AlignCenter);
     edit = false;
     updatedImage = false;
 }
@@ -58,7 +58,7 @@ void AddPersonDialog::on_personDeadBox_toggled(bool checked) {
 void AddPersonDialog::on_addButton_clicked() {
     string name = ui -> nameBox -> text().toStdString();
     name = manager -> trim(name);
-    name = manager -> capitialize(name);
+    name = manager -> capitalize(name);
     if(!manager -> validName(name, 0)) {
         QMessageBox errorBox;
         errorBox.critical(0,"Error", "Please select a valid name!");
@@ -98,7 +98,7 @@ void AddPersonDialog::on_imageSelection_clicked() {
          tr("Select an image"), QDir::currentPath(), tr("*.jpg *.jpeg *.png"));
     if(fileName != NULL) {
         imageName = fileName;
-        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));
         ui -> imageLabel -> setPixmap(pixmap);
         updatedImage = true;
     }
@@ -106,6 +106,6 @@ void AddPersonDialog::on_imageSelection_clicked() {
 
 void AddPersonDialog::on_removeImageButton_clicked() {
     imageName = DEFULT_PERSON_IMAGE;
-    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> imageLabel -> setPixmap(pixmap);
 }

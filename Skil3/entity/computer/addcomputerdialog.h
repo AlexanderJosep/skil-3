@@ -18,13 +18,43 @@ class AddComputerDialog : public QDialog
 public:
     explicit AddComputerDialog(QWidget *parent = 0);
     ~AddComputerDialog();
+
+    /**
+    * Sets the entity manager for getting entity lists/data.
+    */
     void setEntityManager(EntityManager *manager);
+
+    /**
+    * When we want to edit a computer we use this function. Here we change
+    * text of buttons & title as well as fill in the info so the user won't have to.
+    */
     void setComputer(Computer *computer);
 private slots:
+
+    /**
+    * Close the frame when the cancel button is clicked
+    */
      void on_cancelButton_clicked();
+
+     /**
+     * Add/edit the computer when the add/edit button is clicked. If an image was chosen it is copied
+     * and moved to a folder for future loading.
+     */
      void on_addButton_clicked();
+
+     /**
+     * Check or uncheck whether the computer was built and enable/disable the computer built input box.
+     */
      void on_computerBuiltBox_toggled(bool checked);
+
+     /**
+     * Select an image with a file selector and gets the path of it
+     */
      void on_imageSelection_clicked();
+
+     /**
+     * Clears the image and sets it to the default one
+     */
      void on_removeImageButton_clicked();
 
 private:

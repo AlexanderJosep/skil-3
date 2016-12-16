@@ -49,16 +49,3 @@ Connection* UserInterface::getConnection(string person, string computer) {
     connection -> setComputer(c);
     return connection;
 }
-
-vector<Entity*> UserInterface::getEntities(int type) {
-    return manager -> getEntities(type);
-}
-
-vector<Entity*> UserInterface::getSearchResults(string s, string filter, int type) {
-    return manager -> getFilteredSearchResults(s, filter, type);
-}
-
-QStandardItemModel* UserInterface::getTableModel(vector<Entity*> entities, int type) {
-    return manager -> getTableModel(entities, type);
-}
-

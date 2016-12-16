@@ -18,6 +18,10 @@ private:
     PongRacket *playerRacket;
     PongRacket *computerRacket;
 protected:
+    /**
+    * The pong game loop. Controls computer racket movements, checks if the ball touches either racket, checks if a point should be giving
+    * etc.
+    */
     void run();
 };
 

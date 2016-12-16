@@ -23,9 +23,10 @@ using namespace config;
 
 class Snake {
 public:
+    /**
+    * Creates a new snake instance. Starts the game frame, starts the snake thread and more.
+    */
     Snake(QMainWindow *window, Storage *storage);
-    int getPoints();
-    short getGridSize();
 private:
     SnakeGrid *grid;
 };

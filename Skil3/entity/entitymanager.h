@@ -16,23 +16,88 @@ class EntityManager {
 public:
     EntityManager();
     EntityManager(int currentYear);
+
+    /**
+    * Returns the current year
+    */
     int getCurrentYear();
+
+    /**
+    * Loads all connections id's and connects the persons and computers together.
+    */
     void loadConnections();
+
+    /**
+    * Returns the pointer of the storage object
+    */
     Storage* getStorage();
+
+    /**
+    * Sets up the table model with its columns and rows and returns it.
+    */
     QStandardItemModel* getTableModel(vector<Entity*> entities, int type);
-    bool add(Entity *entity, int type); // adds a entity to the list
-    void edit(Entity *oldEntity, Entity *newEntity, int type); // edits a entity in a list
-    bool remove(Entity *entity, int type); // remove a entity from a list
-    short getID(Entity *entity, int type); // gets the sql id from
-    bool validName(string name, int type); // checks if a name is valid or not
-    string trim(string s); // trims the edges of a string for any pesky spaces
-    string capitialize(string s); // capitalizes a string
-    vector<Entity*> getEntities( int type); // gets all entities
-    vector<Entity*> getFilteredSearchResults(string searchString, string filterString, int type); // gets filtered search results and returns the resulting entities in a vector
+
+    /**
+    * Adds a entity to the list and stores it
+    */
+    bool add(Entity *entity, int type);
+
+    /**
+    * Edits an entity, oldEntity having the old information and newEntity having the new information, and updates it in the database.
+    */
+    void edit(Entity *oldEntity, Entity *newEntity, int type);
+
+    /**
+    * Removes an entity from a list and removes it from the database
+    */
+    bool remove(Entity *entity, int type);
+
+    /**
+    * Returns the entities sql id
+    */
+    short getID(Entity *entity, int type);
+
+    /**
+    * Checks if a name is valid or not depending on the entity type
+    */
+    bool validName(string name, int type);
+
+    /**
+    * Trims the edges of a string for any pesky spaces
+    */
+    string trim(string s);
+
+    /**
+    * Capitalize a string
+    */
+    string capitalize(string s);
+
+    /**
+    * Returns a list of pointers to entities
+    */
+    vector<Entity*> getEntities(int type);
+
+    /**
+    * Returns a list of pointers to searched and filtered entities
+    */
+    vector<Entity*> getFilteredSearchResults(string searchString, string filterString, int type);
 private:
-    short getIndex(Entity *entity, int type); // gets a entity index from the list
-    string toLowerCase(string s); // lowercases a string
+
+    /**
+    * Returns the index of entity in its list
+    */
+    short getIndex(Entity *entity, int type);
+
+    /**
+    * Lowercases a string
+    */
+    string toLowerCase(string s);
+
+    /**
+    * Returns a list of pointers to searched entities
+    */
     vector<Entity*> getSearchResults(string search, int type); // returns a list of entities that correspond to the search
+
     vector<Person> persons;
     vector<Computer> computers;
     vector<Connection> connections;

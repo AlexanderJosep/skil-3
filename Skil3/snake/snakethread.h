@@ -15,6 +15,10 @@ class SnakeThread : public QThread {
 public:
     SnakeThread(SnakeGrid *grid, SnakeWidget *widget, string name, Storage *storage);
 protected:
+    /**
+    * The pong game loop. Controls snake updating, checks for win and lose. Also updates hiscores if the player got a new score
+    * and notifies it if it did.
+    */
     void run();
 private:
     SnakeGrid *grid;

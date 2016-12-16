@@ -21,12 +21,33 @@ class AddConnectionDialog : public QDialog {
 public:
     explicit AddConnectionDialog(QWidget *parent = 0);
     ~AddConnectionDialog();
+
+    /**
+    * Sets the entity manager for getting entity lists/data.
+    */
     void setEntityManager(EntityManager *manager);
 
 private slots:
+
+    /**
+    * Here we check if both tables, person and computer have been clicked and enable the Add button if it has.
+    */
     void on_personTable_clicked(const QModelIndex &index);
+
+    /**
+    * Here we check if both tables, computer and person have been clicked and enable the add button if it has.
+    */
     void on_computerTable_clicked(const QModelIndex &index);
+
+    /**
+    * Adds a connection between a person and a computer. Also checks if the connection has already been made and
+    * tells the user the error if it has been.
+    */
     void on_addButton_clicked();
+
+    /**
+    * Close the window if the cancel button has been clicked.
+    */
     void on_cancelButton_clicked();
 
 private:

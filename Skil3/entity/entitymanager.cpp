@@ -238,7 +238,7 @@ string EntityManager::trim(string s) {
     return s;
 }
 
-string EntityManager::capitialize(string s) {
+string EntityManager::capitalize(string s) {
     s = toLowerCase(s); // lowercase everything first before we capitalize the first letter in a word
     const char* c = s.c_str();
     bool capitalizeNext = true;

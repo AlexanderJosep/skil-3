@@ -41,11 +41,3 @@ Snake::Snake(QMainWindow *window, Storage *storage) {
     SnakeThread *thread = new SnakeThread(grid, widget, name, storage);
     thread -> start();
 }
-
-int Snake::getPoints() {
-    return grid -> getSnakeSize() - 3;
-}
-
-short Snake::getGridSize() {
-    return grid -> getGridSize();
-}

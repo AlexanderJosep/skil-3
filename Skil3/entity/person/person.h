@@ -12,14 +12,30 @@ using namespace std;
 class Person : public Entity {
 public:
     Person(string name, short gender, short birthYear, short deathYear);
+
+    /**
+    * Returns the gender of the person (0=male, 1=female)
+    */
     short getGender();
+
+    /**
+    * Returns the birth year of the person
+    */
     short getBirthYear();
+
+    /**
+    * Returns the death year of the person, if the person isn't dead it returns -1
+    */
     short getDeathYear();
-    void setData(string name, short gender, short birthYear, short deathYear); // set name, gender, birthYear and deathYear
+
+    /**
+    * When editing the person, we update the name, gender, birth year and death year with the following params
+    */
+    void setData(string name, short gender, short birthYear, short deathYear);
 private:
-    short gender; // 0 male, 1 female
+    short gender;
     short birthYear;
-    short deathYear; // -1 if not dead
+    short deathYear;
 };
 
 #endif // PERSON_H

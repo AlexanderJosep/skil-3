@@ -38,7 +38,7 @@ void PongBall::changeDirection(PongRacket *racket, bool player) {
     x = player ? (racket -> getX() - width) : (racket-> getX() + width);
 }
 
-int PongBall::update() { // 0 noone got a point, 1 player got a point, 2 computer got a point
+int PongBall::update() {
     x += speedX;
     y += speedY;
     if(x <= 0) {

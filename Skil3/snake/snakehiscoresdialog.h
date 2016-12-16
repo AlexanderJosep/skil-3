@@ -17,8 +17,14 @@ class SnakeHiscoresDialog : public QDialog {
 public:
     explicit SnakeHiscoresDialog(QWidget *parent = 0);
     ~SnakeHiscoresDialog();
+    /**
+    * Sets the table contents. Retrieves hiscore data from a sql database in storage.
+    */
     void setData(Storage *storage, int grid);
 private slots:
+    /**
+    * Close the frame when close clicked.
+    */
     void on_closeButton_clicked();
 private:
     Ui::SnakeHiscoresDialog *ui;

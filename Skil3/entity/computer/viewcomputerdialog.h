@@ -14,9 +14,21 @@ class ViewComputerDialog : public QDialog {
 public:
     explicit ViewComputerDialog(QWidget *parent = 0);
     ~ViewComputerDialog();
+
+    /**
+    * Sets the entity manager for getting entity lists/data.
+    */
     void setEntityManager(EntityManager *manager);
+
+    /**
+    * Here we fill all of the widgets with correct information, like change the text of the name box for viewing.
+    * We also set the image if the computer has a picture of itself.
+    */
     void setComputer(Computer *computer);
 private slots:
+    /**
+    * Close the window then the close button is clicked
+    */
     void on_closeButtom_clicked();
 private:
     Ui::ViewComputerDialog *ui;

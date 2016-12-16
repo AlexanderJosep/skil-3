@@ -12,6 +12,9 @@ using namespace config;
 
 class Pong {
 public:
+    /**
+    * Creates a new instance of Pong. It opens the frame, starts the thread and more
+    */
     Pong(QMainWindow *window);
 };
 

@@ -17,12 +17,20 @@ using namespace config;
 class UserInterface {
 public:
     UserInterface();
+    /**
+    * Returns the entity manager
+    */
     EntityManager* getEntityManager();
+
+    /**
+    * Removes an entity from a list in manager and removes it from the sql database it's stored in
+    */
     bool removeEntity(Entity *entity, QString s, int type);
+
+    /**
+    * Gets a connection based off a person and computer name
+    */
     Connection* getConnection(string person, string computer);
-    QStandardItemModel* getTableModel(vector<Entity*> entities, int type);
-    vector<Entity*> getEntities(int type);
-    vector<Entity*> getSearchResults(string s, string filter, int type);
 private:
     int currentYear;
     EntityManager *manager;

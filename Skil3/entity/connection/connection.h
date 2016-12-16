@@ -8,12 +8,40 @@
 class Connection : public Entity {
 public:
     Connection(int personID, int computerID);
-    int getPersonID(); // get person id
-    int getComputerID(); // get computer id
+
+    /**
+    * Returns the persons's sql id
+    */
+    int getPersonID();
+
+    /**
+    * Returns the computers's sql id
+    */
+    int getComputerID();
+
+    /**
+    * Returns the string: 'name of the person' <-> 'name of the computer'
+    */
     string getName();
+
+    /**
+    * Sets the pointer to the person. We do this to get future information from it.
+    */
     void setPerson(Person *person);
+
+    /**
+    * Sets the pointer to the computer. We do this to get future information from it.
+    */
     void setComputer(Computer *computer);
+
+    /**
+    * Returns the pointer to the person
+    */
     Person* getPerson();
+
+    /**
+    * Returns the pointer to the computer
+    */
     Computer* getComputer();
 private:
     int personID;
