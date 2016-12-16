@@ -8,6 +8,7 @@ Pong::Pong(QMainWindow *window) {
     PongRacket* computerRacket = new PongRacket(PONG_RACKET_WIDTH, PONG_RACKET_HEIGHT, 9, PONG_WINDOW_WIDTH, PONG_WINDOW_HEIGHT, false);
 
     PongWidget *widget = new PongWidget(ball, playerRacket, computerRacket, window, PONG_WINDOW_WIDTH, PONG_WINDOW_HEIGHT);
+    widget -> setWindowIcon(QIcon("./data/icons/pong.png"));
     widget -> setWindowTitle(QString::fromUtf8("Pong"));
     widget -> resize(PONG_WINDOW_WIDTH, PONG_WINDOW_HEIGHT);
     QSize size = QSize(PONG_WINDOW_WIDTH, PONG_WINDOW_HEIGHT);

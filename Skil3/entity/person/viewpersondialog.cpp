@@ -4,6 +4,7 @@
 ViewPersonDialog::ViewPersonDialog(QWidget *parent) : QDialog(parent), ui(new Ui::ViewPersonDialog) {
     ui -> setupUi(this);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    setWindowIcon(QIcon("./data/icons/info.png"));
     setWindowTitle("View Person");
     imageName = DEFULT_PERSON_IMAGE;
     ui -> connectionTableView -> setSelectionMode(QAbstractItemView::SingleSelection);

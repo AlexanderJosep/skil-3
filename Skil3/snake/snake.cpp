@@ -27,6 +27,7 @@ Snake::Snake(QMainWindow *window, Storage *storage) {
     grid -> initialize();
 
     SnakeWidget *widget = new SnakeWidget(grid, window);
+    widget -> setWindowIcon(QIcon("./data/icons/snake.png"));
     widget -> setWindowTitle(QString::fromUtf8("Snake"));
     widget -> resize((gridSize + 2) * (SNAKE_CELL_SIZE + 2), (gridSize + 2) * (SNAKE_CELL_SIZE + 2) + SNAKE_BAR_OFFSET);
     QSize size = QSize((gridSize + 2) * (SNAKE_CELL_SIZE + 2), (gridSize + 2) * (SNAKE_CELL_SIZE + 2) + SNAKE_BAR_OFFSET);

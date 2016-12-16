@@ -4,6 +4,7 @@
 AddComputerDialog::AddComputerDialog(QWidget *parent) : QDialog(parent), ui(new Ui::AddComputerDialog) {
     ui -> setupUi(this);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    setWindowIcon(QIcon("./data/icons/add.png"));
     layout() -> setSizeConstraint(QLayout::SetFixedSize);
     setWindowTitle("Add Computer");
     imageName = DEFULT_COMPUTER_IMAGE;
@@ -30,6 +31,7 @@ void AddComputerDialog::setComputer(Computer *computer) {
     this -> computer = computer;
     this -> edit = true;
     setWindowTitle("Edit Computer");
+    setWindowIcon(QIcon("./data/icons/edit.png"));
     ui -> addButton -> setText("Save");
     ui -> nameBox-> setText(QString::fromStdString(computer -> getName()));
     ui -> typeBox -> setCurrentIndex(computer -> getType());

@@ -5,6 +5,7 @@ ViewComputerDialog::ViewComputerDialog(QWidget *parent) : QDialog(parent), ui(ne
     ui -> setupUi(this);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     setWindowTitle("View Computer");
+    setWindowIcon(QIcon("./data/icons/info.png"));
     imageName = DEFULT_COMPUTER_IMAGE;
     ui -> connectionTableView -> setSelectionMode(QAbstractItemView::SingleSelection);
     ui -> connectionTableView -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);

@@ -4,6 +4,7 @@
 AddPersonDialog::AddPersonDialog(QWidget *parent) : QDialog(parent), ui(new Ui::AddPersonDialog) {
     ui -> setupUi(this);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    setWindowIcon(QIcon("./data/icons/add.png"));
     layout() -> setSizeConstraint(QLayout::SetFixedSize);
     setWindowTitle("Add Person");
     edit = false;
@@ -33,6 +34,7 @@ void AddPersonDialog::setPerson(Person *person) {
     this -> person = person;
     this -> edit = true;
     setWindowTitle("Edit Person");
+    setWindowIcon(QIcon("./data/icons/edit.png"));
     ui -> addButton -> setText("Save");
     ui -> nameBox-> setText(QString::fromStdString(person -> getName()));
     ui -> genderBox -> setCurrentIndex(person -> getGender());
