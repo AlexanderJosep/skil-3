@@ -137,7 +137,7 @@ public:
         comboBox = new QComboBox(centralWidget);
         comboBox->setObjectName(QStringLiteral("comboBox"));
         QFont font;
-        font.setPointSize(11);
+        font.setPointSize(10);
         comboBox->setFont(font);
 
         gridLayout->addWidget(comboBox, 0, 7, 1, 1);
