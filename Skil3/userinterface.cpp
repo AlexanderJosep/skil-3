@@ -12,7 +12,6 @@ EntityManager* UserInterface::getEntityManager() {
 
 bool UserInterface::removeEntity(Entity *entity, QString s, int type) {
     QMessageBox rmBox;
-    rmBox.setIconPixmap(QPixmap("./data/icons/database.png"));
     rmBox.setWindowTitle("Remove entity");
     rmBox.setText("Are you sure you want to remove "+s);
     rmBox.setStandardButtons(QMessageBox::Yes);
