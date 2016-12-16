@@ -7,7 +7,6 @@
 #include <QtSql>
 #include "entity/person/person.h"
 #include "entity/computer/computer.h"
-#include "console.h"
 #include "entity/connection/connection.h"
 #include "snake/snakescore.h"
 

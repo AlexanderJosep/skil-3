@@ -30,6 +30,9 @@
        </item>
        <item row="1" column="1">
         <widget class="QTableView" name="computerTable">
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
          <property name="selectionBehavior">
           <enum>QAbstractItemView::SelectRows</enum>
          </property>
@@ -37,6 +40,9 @@
        </item>
        <item row="1" column="0">
         <widget class="QTableView" name="personTable">
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
          <property name="selectionBehavior">
           <enum>QAbstractItemView::SelectRows</enum>
          </property>

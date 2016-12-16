@@ -3,9 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <cstdlib>
-#include <cstdlib>
 #include <ctime>
-#include "console.h"
 #include "config.h"
 
 using namespace config;

@@ -26,8 +26,8 @@ bool UserInterface::removeEntity(Entity *entity, QString s, int type) {
 Connection* UserInterface::getConnection(string person, string computer) {
     int pId = 0;
     int cId = 0;
-    Person *p;
-    Computer *c;
+    Person *p = NULL;
+    Computer *c = NULL;
     vector<Entity*> persons = manager -> getEntities(PERSON);
     vector<Entity*> computers = manager -> getEntities(COMPUTER);
     for(unsigned int i = 0; i < persons.size(); i++) {

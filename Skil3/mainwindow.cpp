@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "userinterface.h"
+#include "entity/person/viewpersondialog.h"
 #include "entity/person/addpersondialog.h"
 #include "entity/computer/addcomputerdialog.h"
 #include "entity/connection/addconnectiondialog.h"
@@ -12,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setListType(0);
     ui -> tableView -> setSelectionMode(QAbstractItemView::SingleSelection);
     ui -> tableView -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);
-    resize(QDesktopWidget().availableGeometry(this).size() * 0.35);
+    resize(QDesktopWidget().availableGeometry(this).size() * 0.45);
 }
 
 MainWindow::~MainWindow() {
@@ -43,12 +44,11 @@ void MainWindow::on_listFilter_textChanged(const QString &arg1) {
 }
 
 void MainWindow::on_actionSnake_triggered() {
-    Snake snake = Snake(this, userInterface.getEntityManager() -> getStorage());
-    // add hiscores to this bitch :)
+    Snake(this, userInterface.getEntityManager() -> getStorage());
 }
 
 void MainWindow::on_actionPong_triggered() {
-    Pong pong = Pong(this);
+    Pong(this);
 }
 
 void MainWindow::on_addButton_clicked() {
@@ -147,4 +147,26 @@ void MainWindow::on_tableView_clicked(const QModelIndex&) {
     }
     ui -> viewButton -> setEnabled(true);
     ui -> removeButton -> setEnabled(true);
+}
+
+void MainWindow::on_viewButton_clicked() {
+    QItemSelectionModel *item = ui -> tableView -> selectionModel();
+    if(listType == PERSON) {
+        ViewPersonDialog v;
+        v.setEntityManager(userInterface.getEntityManager());
+        QString name = item -> selectedRows(0).value(0).data().toString();
+        short gender = item -> selectedRows(1).value(0).data().toString() == "Male" ? 0 : 1;
+        short birthYear = item -> selectedRows(2).value(0).data().toInt();
+        short deathYear = item -> selectedRows(3).value(0).data().toString() == "Not dead" ? -1 : item -> selectedRows(3).value(0).data().toInt();
+        v.setPerson(new Person(name.toStdString(), gender, birthYear, deathYear));
+        v.exec();
+    } else if(listType == COMPUTER) {
+        AddComputerDialog a;
+        a.setEntityManager(userInterface.getEntityManager());
+        a.exec();
+    } else {
+        AddConnectionDialog a;
+        a.setEntityManager(userInterface.getEntityManager());
+        a.exec();
+    }
 }

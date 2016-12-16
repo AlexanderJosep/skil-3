@@ -25,7 +25,6 @@ SOURCES += main.cpp\
     snake/snakescore.cpp \
     snake/snakethread.cpp \
     snake/snakewidget.cpp \
-    console.cpp \
     storage/storage.cpp \
     userinterface.cpp \
     pong/pongwidget.cpp \
@@ -35,7 +34,8 @@ SOURCES += main.cpp\
     pong/pongball.cpp \
     entity/person/addpersondialog.cpp \
     entity/computer/addcomputerdialog.cpp \
-    entity/connection/addconnectiondialog.cpp
+    entity/connection/addconnectiondialog.cpp \
+    entity/person/viewpersondialog.cpp
 
 HEADERS  += mainwindow.h \
     entity/entity.h \
@@ -48,7 +48,6 @@ HEADERS  += mainwindow.h \
     snake/snakescore.h \
     snake/snakethread.h \
     snake/snakewidget.h \
-    console.h \
     storage/storage.h \
     config.h \
     userinterface.h \
@@ -59,12 +58,14 @@ HEADERS  += mainwindow.h \
     pong/pongball.h \
     entity/person/addpersondialog.h \
     entity/computer/addcomputerdialog.h \
-    entity/connection/addconnectiondialog.h
+    entity/connection/addconnectiondialog.h \
+    entity/person/viewpersondialog.h
 
 FORMS    += mainwindow.ui \
     entity/person/addpersondialog.ui \
     entity/computer/addcomputerdialog.ui \
-    entity/connection/addconnectiondialog.ui
+    entity/connection/addconnectiondialog.ui \
+    entity/person/viewpersondialog.ui
 
 RESOURCES += \
     resources.qrc

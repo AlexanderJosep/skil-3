@@ -11,6 +11,7 @@ AddComputerDialog::AddComputerDialog(QWidget *parent) : QDialog(parent), ui(new 
     ui -> imageLabel -> setFixedHeight(pixmap.height());
     ui -> imageLabel -> setFixedWidth(pixmap.width());
     edit = false;
+    updatedImage = false;
 }
 
 AddComputerDialog::~AddComputerDialog() {
@@ -67,8 +68,9 @@ void AddComputerDialog::on_addButton_clicked() {
 
     int id = manager -> getID(computer, COMPUTER);
     if(imageName != DEFULT_COMPUTER_IMAGE && updatedImage) {
+        QFile::remove(QString::fromStdString("./images/computers/"+to_string(id)));
         QFile::copy(imageName, QString::fromStdString("./images/computers/"+to_string(id)));
-    } else {
+    } else if(imageName == DEFULT_COMPUTER_IMAGE) {
         QFile::remove(QString::fromStdString("./images/computers/"+to_string(id)));
     }
     this -> close();
