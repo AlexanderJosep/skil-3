@@ -7,7 +7,7 @@ AddConnectionDialog::AddConnectionDialog(QWidget *parent) : QDialog(parent), ui(
     ui -> personTable -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);
     ui -> computerTable -> setSelectionMode(QAbstractItemView::SingleSelection);
     ui -> computerTable -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);
-    setWindowTitle("Add a connection");
+    setWindowTitle("Add Connection");
     resize(QDesktopWidget().availableGeometry(this).size() * 0.5);
     personId = -1;
     computerId = -1;

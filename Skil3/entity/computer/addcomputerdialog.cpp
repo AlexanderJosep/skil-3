@@ -4,7 +4,7 @@
 AddComputerDialog::AddComputerDialog(QWidget *parent) : QDialog(parent), ui(new Ui::AddComputerDialog) {
     ui -> setupUi(this);
     layout() -> setSizeConstraint(QLayout::SetFixedSize);
-    setWindowTitle("Add a computer");
+    setWindowTitle("Add Computer");
     imageName = DEFULT_COMPUTER_IMAGE;
     QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
     ui -> imageLabel -> setPixmap(pixmap);
@@ -26,7 +26,7 @@ void AddComputerDialog::setEntityManager(EntityManager *manager) {
 void AddComputerDialog::setComputer(Computer *computer) {
     this -> computer = computer;
     this -> edit = true;
-    setWindowTitle("Edit computer");
+    setWindowTitle("Edit Computer");
     ui -> addButton -> setText("Save");
     ui -> nameBox-> setText(QString::fromStdString(computer -> getName()));
     ui -> typeBox -> setCurrentIndex(computer -> getType());

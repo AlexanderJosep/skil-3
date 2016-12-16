@@ -4,7 +4,7 @@
 AddPersonDialog::AddPersonDialog(QWidget *parent) : QDialog(parent), ui(new Ui::AddPersonDialog) {
     ui -> setupUi(this);
     layout() -> setSizeConstraint(QLayout::SetFixedSize);
-    setWindowTitle("Add a person");
+    setWindowTitle("Add Person");
     edit = false;
     imageName = DEFULT_PERSON_IMAGE;
     QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
@@ -29,7 +29,7 @@ void AddPersonDialog::setEntityManager(EntityManager *manager) {
 void AddPersonDialog::setPerson(Person *person) {
     this -> person = person;
     this -> edit = true;
-    setWindowTitle("Edit person");
+    setWindowTitle("Edit Person");
     ui -> addButton -> setText("Save");
     ui -> nameBox-> setText(QString::fromStdString(person -> getName()));
     ui -> genderBox -> setCurrentIndex(person -> getGender());

@@ -140,7 +140,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 421, 19));
+        menuBar->setGeometry(QRect(0, 0, 421, 17));
         menuMain = new QMenu(menuBar);
         menuMain->setObjectName(QStringLiteral("menuMain"));
         menuGames = new QMenu(menuMain);
@@ -161,7 +161,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Main window", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Main Window", 0));
         actionSnake->setText(QApplication::translate("MainWindow", "Snake", 0));
         actionPong->setText(QApplication::translate("MainWindow", "Pong", 0));
 #ifndef QT_NO_WHATSTHIS
