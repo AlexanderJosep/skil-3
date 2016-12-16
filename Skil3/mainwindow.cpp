@@ -17,19 +17,19 @@ MainWindow::MainWindow(QWidget *parent) :
     ui -> tableView -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);
     resize(QDesktopWidget().availableGeometry(this).size() * 0.50);
 
-    QPixmap pixmap(QPixmap("./icons/info.png").scaled(25, 25, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    QPixmap pixmap(QPixmap("./icons/info.png").scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> viewButton -> setIcon(QIcon(pixmap));
     ui -> viewButton -> setIconSize(pixmap.rect().size());
 
-    pixmap = QPixmap(QPixmap("./icons/add.png").scaled(25, 25, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    pixmap = QPixmap(QPixmap("./icons/add.png").scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> addButton -> setIcon(QIcon(pixmap));
     ui -> addButton -> setIconSize(pixmap.rect().size());
 
-    pixmap = QPixmap(QPixmap("./icons/edit.png").scaled(25, 25, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    pixmap = QPixmap(QPixmap("./icons/edit.png").scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> editButton -> setIcon(QIcon(pixmap));
     ui -> editButton -> setIconSize(pixmap.rect().size());
 
-    pixmap = QPixmap(QPixmap("./icons/remove.png").scaled(25, 25, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    pixmap = QPixmap(QPixmap("./icons/remove.png").scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> removeButton -> setIcon(QIcon(pixmap));
     ui -> removeButton -> setIconSize(pixmap.rect().size());
 }
@@ -168,6 +168,7 @@ void MainWindow::on_tableView_clicked(const QModelIndex&) {
 }
 
 void MainWindow::on_viewButton_clicked() {
+    this -> hide();
     QItemSelectionModel *item = ui -> tableView -> selectionModel();
     if(listType == PERSON) {
         ViewPersonDialog v;
@@ -194,6 +195,7 @@ void MainWindow::on_viewButton_clicked() {
         v.setComputer(new Computer(name.toStdString(), yearBuilt, type));
         v.exec();
     }
+    this -> show();
 }
 
 void MainWindow::on_actionSnake_2_triggered() {
