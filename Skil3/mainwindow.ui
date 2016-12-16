@@ -13,10 +13,6 @@
   <property name="windowTitle">
    <string>Main Window</string>
   </property>
-  <property name="windowIcon">
-   <iconset resource="resources.qrc">
-    <normaloff>:/icons/people_icon.jpg</normaloff>:/icons/people_icon.jpg</iconset>
-  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="12" column="5">
@@ -210,9 +206,7 @@
   <tabstop>removeButton</tabstop>
   <tabstop>tableView</tabstop>
  </tabstops>
- <resources>
-  <include location="resources.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>actionSnake</sender>

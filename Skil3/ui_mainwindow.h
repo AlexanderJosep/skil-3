@@ -57,9 +57,6 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(421, 340);
-        QIcon icon;
-        icon.addFile(QStringLiteral(":/icons/people_icon.jpg"), QSize(), QIcon::Normal, QIcon::Off);
-        MainWindow->setWindowIcon(icon);
         actionSnake = new QAction(MainWindow);
         actionSnake->setObjectName(QStringLiteral("actionSnake"));
         actionPong = new QAction(MainWindow);
