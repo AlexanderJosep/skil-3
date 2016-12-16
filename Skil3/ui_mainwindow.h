@@ -33,6 +33,10 @@ public:
     QAction *actionSnake;
     QAction *actionPong;
     QAction *actionSnake_2;
+    QAction *actionPlay;
+    QAction *actionPause;
+    QAction *actionNext;
+    QAction *actionBack;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QPushButton *addButton;
@@ -63,6 +67,17 @@ public:
         actionPong->setObjectName(QStringLiteral("actionPong"));
         actionSnake_2 = new QAction(MainWindow);
         actionSnake_2->setObjectName(QStringLiteral("actionSnake_2"));
+        actionPlay = new QAction(MainWindow);
+        actionPlay->setObjectName(QStringLiteral("actionPlay"));
+        actionPause = new QAction(MainWindow);
+        actionPause->setObjectName(QStringLiteral("actionPause"));
+        actionPause->setEnabled(false);
+        actionNext = new QAction(MainWindow);
+        actionNext->setObjectName(QStringLiteral("actionNext"));
+        actionNext->setEnabled(false);
+        actionBack = new QAction(MainWindow);
+        actionBack->setObjectName(QStringLiteral("actionBack"));
+        actionBack->setEnabled(false);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -164,6 +179,10 @@ public:
         menuBar->addAction(menuGames_2->menuAction());
         menuMain->addSeparator();
         menuMain->addAction(menuGames->menuAction());
+        menuGames->addAction(actionPlay);
+        menuGames->addAction(actionPause);
+        menuGames->addAction(actionNext);
+        menuGames->addAction(actionBack);
         menuGames_2->addAction(actionPong);
         menuGames_2->addAction(actionSnake);
         menuGames_2->addSeparator();
@@ -182,13 +201,17 @@ public:
         actionSnake->setText(QApplication::translate("MainWindow", "Snake", 0));
         actionPong->setText(QApplication::translate("MainWindow", "Pong", 0));
         actionSnake_2->setText(QApplication::translate("MainWindow", "Snake", 0));
+        actionPlay->setText(QApplication::translate("MainWindow", "Play", 0));
+        actionPause->setText(QApplication::translate("MainWindow", "Pause", 0));
+        actionNext->setText(QApplication::translate("MainWindow", "Next", 0));
+        actionBack->setText(QApplication::translate("MainWindow", "Back", 0));
 #ifndef QT_NO_WHATSTHIS
         addButton->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>Add a entity..</p></body></html>", 0));
 #endif // QT_NO_WHATSTHIS
-        addButton->setText(QString());
-        removeButton->setText(QString());
-        editButton->setText(QString());
-        viewButton->setText(QString());
+        addButton->setText(QApplication::translate("MainWindow", "Add", 0));
+        removeButton->setText(QApplication::translate("MainWindow", "Remove", 0));
+        editButton->setText(QApplication::translate("MainWindow", "Edit", 0));
+        viewButton->setText(QApplication::translate("MainWindow", "View", 0));
         searchLabel->setText(QApplication::translate("MainWindow", "Search:", 0));
         label->setText(QApplication::translate("MainWindow", "Filter:", 0));
 #ifndef QT_NO_WHATSTHIS
@@ -204,7 +227,7 @@ public:
         comboBox->setWhatsThis(QApplication::translate("MainWindow", "<html><head/><body><p>List types..</p></body></html>", 0));
 #endif // QT_NO_WHATSTHIS
         menuMain->setTitle(QApplication::translate("MainWindow", "Main", 0));
-        menuGames->setTitle(QApplication::translate("MainWindow", "Games", 0));
+        menuGames->setTitle(QApplication::translate("MainWindow", "Music", 0));
         menuGames_2->setTitle(QApplication::translate("MainWindow", "Games", 0));
         menuHiscores->setTitle(QApplication::translate("MainWindow", "Hiscores", 0));
     } // retranslateUi

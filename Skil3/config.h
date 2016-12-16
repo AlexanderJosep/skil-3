@@ -33,8 +33,8 @@ namespace config {
     const int CONNECTION = 2;
     const int NUMBER_OF_MACHINES_TYPES = 4;
     const string MACHINE_TYPES[NUMBER_OF_MACHINES_TYPES] =  {"Mechanic", "Electronic", "Transistor", "Quantum"};
-    const QString DEFULT_COMPUTER_IMAGE = "images/computer.jpg";
-    const QString DEFULT_PERSON_IMAGE = "images/person.png";
+    const QString DEFULT_COMPUTER_IMAGE = "data/images/computer.jpg";
+    const QString DEFULT_PERSON_IMAGE = "data/images/person.png";
 
     /* Commands and organization */
     const int COMMANDS_LENGTH = 18;

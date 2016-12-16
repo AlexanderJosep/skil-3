@@ -38,7 +38,7 @@ void AddComputerDialog::setComputer(Computer *computer) {
         ui -> buildYearBox -> setValue(computer -> getYear());
     }
     int id = manager -> getID(computer, COMPUTER);
-    QString image = QString::fromStdString("./images/computers/"+to_string(id));
+    QString image = QString::fromStdString("./data/images/computers/"+to_string(id));
     if(QFile::exists(image)) {
         imageName = image;
         QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));
@@ -71,10 +71,10 @@ void AddComputerDialog::on_addButton_clicked() {
 
     int id = manager -> getID(computer, COMPUTER);
     if(imageName != DEFULT_COMPUTER_IMAGE && updatedImage) {
-        QFile::remove(QString::fromStdString("./images/computers/"+to_string(id)));
-        QFile::copy(imageName, QString::fromStdString("./images/computers/"+to_string(id)));
+        QFile::remove(QString::fromStdString("./data/images/computers/"+to_string(id)));
+        QFile::copy(imageName, QString::fromStdString("./data/images/computers/"+to_string(id)));
     } else if(imageName == DEFULT_COMPUTER_IMAGE) {
-        QFile::remove(QString::fromStdString("./images/computers/"+to_string(id)));
+        QFile::remove(QString::fromStdString("./data/images/computers/"+to_string(id)));
     }
     this -> close();
 }

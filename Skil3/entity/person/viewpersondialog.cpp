@@ -36,7 +36,7 @@ void ViewPersonDialog::setPerson(Person *person) {
         ui -> deathYearBox -> setValue(person -> getDeathYear());
     }
     int id = manager -> getID(person, PERSON);
-    QString image = QString::fromStdString("./images/persons/"+to_string(id));
+    QString image = QString::fromStdString("./data/images/persons/"+to_string(id));
     if(QFile::exists(image)) {
         imageName = image;
         QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));

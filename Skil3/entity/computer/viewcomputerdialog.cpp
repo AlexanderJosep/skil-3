@@ -35,7 +35,7 @@ void ViewComputerDialog::setComputer(Computer *computer) {
         ui -> buildYearBox -> setValue(computer -> getYear());
     }
     int id = manager -> getID(computer, COMPUTER);
-    QString image = QString::fromStdString("./images/computers/"+to_string(id));
+    QString image = QString::fromStdString("./data/images/computers/"+to_string(id));
     if(QFile::exists(image)) {
         imageName = image;
         QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));

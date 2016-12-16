@@ -6,6 +6,8 @@
 #include <QStandardItem>
 #include <QDesktopWidget>
 #include <QItemSelectionModel>
+#include <QMediaPlaylist>
+#include <QMediaPlayer>
 #include "userinterface.h"
 #include "snake/snake.h"
 #include "pong/pong.h"
@@ -22,6 +24,8 @@ public:
 private:
     void setListType(int index); // sets the list type (persons/computers/connections)
     Ui::MainWindow *ui;
+    QMediaPlayer *music;
+    QMediaPlaylist *playlist;
     UserInterface userInterface;
     QStandardItemModel *tableModel;
     int listType;
@@ -37,6 +41,10 @@ private slots:
     void on_tableView_clicked(const QModelIndex &index);
     void on_viewButton_clicked();
     void on_actionSnake_2_triggered();
+    void on_actionPlay_triggered();
+    void on_actionPause_triggered();
+    void on_actionNext_triggered();
+    void on_actionBack_triggered();
 };
 
 #endif // MAINWINDOW_H

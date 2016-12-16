@@ -24,7 +24,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add a entity..&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="text">
-       <string/>
+       <string>Add</string>
       </property>
      </widget>
     </item>
@@ -34,7 +34,7 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="text">
-       <string/>
+       <string>Remove</string>
       </property>
      </widget>
     </item>
@@ -44,7 +44,7 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="text">
-       <string/>
+       <string>Edit</string>
       </property>
      </widget>
     </item>
@@ -54,7 +54,7 @@
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="text">
-       <string/>
+       <string>View</string>
       </property>
      </widget>
     </item>
@@ -155,8 +155,12 @@
     </property>
     <widget class="QMenu" name="menuGames">
      <property name="title">
-      <string>Games</string>
+      <string>Music</string>
      </property>
+     <addaction name="actionPlay"/>
+     <addaction name="actionPause"/>
+     <addaction name="actionNext"/>
+     <addaction name="actionBack"/>
     </widget>
     <addaction name="separator"/>
     <addaction name="menuGames"/>
@@ -192,6 +196,35 @@
   <action name="actionSnake_2">
    <property name="text">
     <string>Snake</string>
+   </property>
+  </action>
+  <action name="actionPlay">
+   <property name="text">
+    <string>Play</string>
+   </property>
+  </action>
+  <action name="actionPause">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Pause</string>
+   </property>
+  </action>
+  <action name="actionNext">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Next</string>
+   </property>
+  </action>
+  <action name="actionBack">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Back</string>
    </property>
   </action>
  </widget>

@@ -42,7 +42,7 @@ void AddPersonDialog::setPerson(Person *person) {
         ui -> deathYearBox -> setValue(person -> getDeathYear());
     }
     int id = manager -> getID(person, PERSON);
-    QString image = QString::fromStdString("./images/persons/"+to_string(id));
+    QString image = QString::fromStdString("./data/images/persons/"+to_string(id));
     if(QFile::exists(image)) {
         imageName = image;
         QPixmap pixmap(QPixmap(imageName).scaled(450, 300, Qt::KeepAspectRatio, Qt::SmoothTransformation));
@@ -77,10 +77,10 @@ void AddPersonDialog::on_addButton_clicked() {
 
     int id = manager -> getID(person, PERSON);
     if(imageName != DEFULT_PERSON_IMAGE && updatedImage) {
-        QFile::remove(QString::fromStdString("./images/persons/"+to_string(id)));
-        QFile::copy(imageName, QString::fromStdString("./images/persons/"+to_string(id)));
+        QFile::remove(QString::fromStdString("./data/images/persons/"+to_string(id)));
+        QFile::copy(imageName, QString::fromStdString("./data/images/persons/"+to_string(id)));
     } else if(imageName == DEFULT_PERSON_IMAGE) {
-        QFile::remove(QString::fromStdString("./images/persons/"+to_string(id)));
+        QFile::remove(QString::fromStdString("./data/images/persons/"+to_string(id)));
     }
     this -> close();
 }

@@ -13,23 +13,24 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow) {
     ui -> setupUi(this);
     setListType(0);
+    music = NULL;
     ui -> tableView -> setSelectionMode(QAbstractItemView::SingleSelection);
     ui -> tableView -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);
     resize(QDesktopWidget().availableGeometry(this).size() * 0.50);
 
-    QPixmap pixmap(QPixmap("./icons/info.png").scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    QPixmap pixmap(QPixmap("./data/icons/info.png").scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> viewButton -> setIcon(QIcon(pixmap));
     ui -> viewButton -> setIconSize(pixmap.rect().size());
 
-    pixmap = QPixmap(QPixmap("./icons/add.png").scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    pixmap = QPixmap(QPixmap("./data/icons/add.png").scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> addButton -> setIcon(QIcon(pixmap));
     ui -> addButton -> setIconSize(pixmap.rect().size());
 
-    pixmap = QPixmap(QPixmap("./icons/edit.png").scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    pixmap = QPixmap(QPixmap("./data/icons/edit.png").scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> editButton -> setIcon(QIcon(pixmap));
     ui -> editButton -> setIconSize(pixmap.rect().size());
 
-    pixmap = QPixmap(QPixmap("./icons/remove.png").scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    pixmap = QPixmap(QPixmap("./data/icons/remove.png").scaled(20, 20, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     ui -> removeButton -> setIcon(QIcon(pixmap));
     ui -> removeButton -> setIconSize(pixmap.rect().size());
 }
@@ -209,4 +210,70 @@ void MainWindow::on_actionSnake_2_triggered() {
        s.exec();
     }
     this -> show();
+}
+
+void MainWindow::on_actionPlay_triggered() {
+    if(music != NULL) {
+        if(music -> state() == QMediaPlayer::PausedState) {
+            music -> play();
+            ui -> actionPlay -> setText("Stop");
+            ui -> actionPause -> setText("Pause");
+            return;
+        }
+    }
+    if(ui -> actionPlay -> text() == "Play") {
+        ui -> actionPlay -> setText("Stop");
+        playlist = new QMediaPlaylist();
+        QDirIterator directoryIterator("./data/music/", QDirIterator::Subdirectories);
+        while (directoryIterator.hasNext()) {
+            directoryIterator.next();
+            if (QFileInfo(directoryIterator.filePath()).isFile()) {
+                playlist -> addMedia(QUrl(directoryIterator.filePath()));
+            }
+        }
+        playlist -> setPlaybackMode(QMediaPlaylist::Loop);
+        music = new QMediaPlayer();
+        music -> setPlaylist(playlist);
+        music -> play();
+        ui -> actionPause -> setEnabled(true);
+        ui -> actionNext -> setEnabled(true);
+        ui -> actionBack -> setEnabled(true);
+    } else {
+        ui -> actionPlay -> setText("Play");
+        music -> stop();
+        music = NULL;
+        ui -> actionPause -> setEnabled(false);
+        ui -> actionNext -> setEnabled(false);
+        ui -> actionBack -> setEnabled(false);
+    }
+}
+
+void MainWindow::on_actionPause_triggered() {
+    if(music -> state() == QMediaPlayer::PausedState) {
+        ui -> actionPlay -> setText("Play");
+        ui -> actionPause -> setText("Pause");
+        music -> stop();
+        music = NULL;
+        ui -> actionPause -> setEnabled(false);
+        ui -> actionNext -> setEnabled(false);
+        ui -> actionBack -> setEnabled(false);
+        return;
+    }
+    music -> pause();
+    ui -> actionPlay -> setText("Play");
+    ui -> actionPause -> setText("Stop");
+}
+
+void MainWindow::on_actionNext_triggered() {
+    playlist -> next();
+    music -> play();
+    ui -> actionPlay -> setText("Stop");
+    ui -> actionPause -> setText("Pause");
+}
+
+void MainWindow::on_actionBack_triggered() {
+    playlist -> previous();
+    music -> play();
+    ui -> actionPlay -> setText("Stop");
+    ui -> actionPause -> setText("Pause");
 }
