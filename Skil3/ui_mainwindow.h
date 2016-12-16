@@ -60,13 +60,23 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(421, 340);
+        MainWindow->resize(442, 340);
+        QIcon icon;
+        icon.addFile(QStringLiteral("data/icons/database.png"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
         actionSnake = new QAction(MainWindow);
         actionSnake->setObjectName(QStringLiteral("actionSnake"));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral("data/icons/snake.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionSnake->setIcon(icon1);
         actionPong = new QAction(MainWindow);
         actionPong->setObjectName(QStringLiteral("actionPong"));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral("data/icons/pong.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionPong->setIcon(icon2);
         actionSnake_2 = new QAction(MainWindow);
         actionSnake_2->setObjectName(QStringLiteral("actionSnake_2"));
+        actionSnake_2->setIcon(icon1);
         actionPlay = new QAction(MainWindow);
         actionPlay->setObjectName(QStringLiteral("actionPlay"));
         actionPause = new QAction(MainWindow);
@@ -157,15 +167,21 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 421, 19));
+        menuBar->setGeometry(QRect(0, 0, 442, 26));
         menuMain = new QMenu(menuBar);
         menuMain->setObjectName(QStringLiteral("menuMain"));
         menuGames = new QMenu(menuMain);
         menuGames->setObjectName(QStringLiteral("menuGames"));
+        QIcon icon3;
+        icon3.addFile(QStringLiteral("data/icons/music.png"), QSize(), QIcon::Normal, QIcon::Off);
+        menuGames->setIcon(icon3);
         menuGames_2 = new QMenu(menuBar);
         menuGames_2->setObjectName(QStringLiteral("menuGames_2"));
         menuHiscores = new QMenu(menuGames_2);
         menuHiscores->setObjectName(QStringLiteral("menuHiscores"));
+        QIcon icon4;
+        icon4.addFile(QStringLiteral("data/icons/trophy.png"), QSize(), QIcon::Normal, QIcon::Off);
+        menuHiscores->setIcon(icon4);
         MainWindow->setMenuBar(menuBar);
         QWidget::setTabOrder(listSearch, listFilter);
         QWidget::setTabOrder(listFilter, comboBox);

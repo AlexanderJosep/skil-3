@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>183</width>
-    <height>168</height>
+    <width>237</width>
+    <height>259</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -30,6 +30,10 @@
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../data/icons/add.png</normaloff>../../data/icons/add.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
    <item row="0" column="0">

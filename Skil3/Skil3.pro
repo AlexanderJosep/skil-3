@@ -73,3 +73,6 @@ FORMS    += mainwindow.ui \
     entity/person/viewpersondialog.ui \
     entity/computer/viewcomputerdialog.ui \
     snake/snakehiscoresdialog.ui
+
+RESOURCES += \
+    data/icons.qrc

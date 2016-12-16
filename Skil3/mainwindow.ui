@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>421</width>
+    <width>442</width>
     <height>340</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Main Window</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>data/icons/database.png</normaloff>data/icons/database.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -145,8 +149,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>421</width>
-     <height>19</height>
+     <width>442</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMain">
@@ -156,6 +160,10 @@
     <widget class="QMenu" name="menuGames">
      <property name="title">
       <string>Music</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>data/icons/music.png</normaloff>data/icons/music.png</iconset>
      </property>
      <addaction name="actionPlay"/>
      <addaction name="actionPause"/>
@@ -173,6 +181,10 @@
      <property name="title">
       <string>Hiscores</string>
      </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>data/icons/trophy.png</normaloff>data/icons/trophy.png</iconset>
+     </property>
      <addaction name="actionSnake_2"/>
     </widget>
     <addaction name="actionPong"/>
@@ -184,16 +196,28 @@
    <addaction name="menuGames_2"/>
   </widget>
   <action name="actionSnake">
+   <property name="icon">
+    <iconset>
+     <normaloff>data/icons/snake.png</normaloff>data/icons/snake.png</iconset>
+   </property>
    <property name="text">
     <string>Snake</string>
    </property>
   </action>
   <action name="actionPong">
+   <property name="icon">
+    <iconset>
+     <normaloff>data/icons/pong.png</normaloff>data/icons/pong.png</iconset>
+   </property>
    <property name="text">
     <string>Pong</string>
    </property>
   </action>
   <action name="actionSnake_2">
+   <property name="icon">
+    <iconset>
+     <normaloff>data/icons/snake.png</normaloff>data/icons/snake.png</iconset>
+   </property>
    <property name="text">
     <string>Snake</string>
    </property>
