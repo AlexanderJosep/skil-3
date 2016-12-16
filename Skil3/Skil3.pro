@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     entity/person/addpersondialog.cpp \
     entity/computer/addcomputerdialog.cpp \
     entity/connection/addconnectiondialog.cpp \
-    entity/person/viewpersondialog.cpp
+    entity/person/viewpersondialog.cpp \
+    entity/computer/viewcomputerdialog.cpp
 
 HEADERS  += mainwindow.h \
     entity/entity.h \
@@ -59,13 +60,15 @@ HEADERS  += mainwindow.h \
     entity/person/addpersondialog.h \
     entity/computer/addcomputerdialog.h \
     entity/connection/addconnectiondialog.h \
-    entity/person/viewpersondialog.h
+    entity/person/viewpersondialog.h \
+    entity/computer/viewcomputerdialog.h
 
 FORMS    += mainwindow.ui \
     entity/person/addpersondialog.ui \
     entity/computer/addcomputerdialog.ui \
     entity/connection/addconnectiondialog.ui \
-    entity/person/viewpersondialog.ui
+    entity/person/viewpersondialog.ui \
+    entity/computer/viewcomputerdialog.ui
 
 RESOURCES += \
     resources.qrc

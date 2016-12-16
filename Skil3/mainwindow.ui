@@ -119,7 +119,7 @@
      <widget class="QComboBox" name="comboBox">
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="whatsThis">
@@ -150,7 +150,7 @@
      <x>0</x>
      <y>0</y>
      <width>421</width>
-     <height>17</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMain">

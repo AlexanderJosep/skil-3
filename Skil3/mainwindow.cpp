@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "userinterface.h"
 #include "entity/person/viewpersondialog.h"
+#include "entity/computer/viewcomputerdialog.h"
 #include "entity/person/addpersondialog.h"
 #include "entity/computer/addcomputerdialog.h"
 #include "entity/connection/addconnectiondialog.h"
@@ -144,8 +145,8 @@ void MainWindow::on_removeButton_clicked() {
 void MainWindow::on_tableView_clicked(const QModelIndex&) {
     if(listType != CONNECTION) {
         ui -> editButton -> setEnabled(true);
+        ui -> viewButton -> setEnabled(true);
     }
-    ui -> viewButton -> setEnabled(true);
     ui -> removeButton -> setEnabled(true);
 }
 
@@ -161,12 +162,19 @@ void MainWindow::on_viewButton_clicked() {
         v.setPerson(new Person(name.toStdString(), gender, birthYear, deathYear));
         v.exec();
     } else if(listType == COMPUTER) {
-        AddComputerDialog a;
-        a.setEntityManager(userInterface.getEntityManager());
-        a.exec();
-    } else {
-        AddConnectionDialog a;
-        a.setEntityManager(userInterface.getEntityManager());
-        a.exec();
+        ViewComputerDialog v;
+        v.setEntityManager(userInterface.getEntityManager());
+        QString name = item -> selectedRows(0).value(0).data().toString();
+        short type = 0;
+        string machineType = item -> selectedRows(1).value(0).data().toString().toStdString();
+        for(int i = 1; i < NUMBER_OF_MACHINES_TYPES; i++) { // no need to check for the first index
+            if(machineType == MACHINE_TYPES[i]) {
+                type = i;
+                break;
+            }
+        }
+        short yearBuilt = item -> selectedRows(2).value(0).data().toString() == "Not built" ? -1 : item -> selectedRows(2).value(0).data().toInt();
+        v.setComputer(new Computer(name.toStdString(), yearBuilt, type));
+        v.exec();
     }
 }

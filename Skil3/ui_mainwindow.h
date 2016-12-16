@@ -132,7 +132,7 @@ public:
         comboBox = new QComboBox(centralWidget);
         comboBox->setObjectName(QStringLiteral("comboBox"));
         QFont font;
-        font.setPointSize(12);
+        font.setPointSize(11);
         comboBox->setFont(font);
 
         gridLayout->addWidget(comboBox, 0, 7, 1, 1);
@@ -140,7 +140,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 421, 17));
+        menuBar->setGeometry(QRect(0, 0, 421, 19));
         menuMain = new QMenu(menuBar);
         menuMain->setObjectName(QStringLiteral("menuMain"));
         menuGames = new QMenu(menuMain);

@@ -27,7 +27,6 @@ private slots:
     void on_personTable_clicked(const QModelIndex &index);
     void on_computerTable_clicked(const QModelIndex &index);
     void on_addButton_clicked();
-
     void on_cancelButton_clicked();
 
 private:

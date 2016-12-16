@@ -22,9 +22,7 @@ private slots:
     void on_addButton_clicked();
     void on_cancelButton_clicked();
     void on_birthYearBox_valueChanged(int arg1);
-
     void on_imageSelection_clicked();
-
     void on_removeImageButton_clicked();
 
 private:

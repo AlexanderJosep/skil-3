@@ -24,9 +24,7 @@ private slots:
      void on_cancelButton_clicked();
      void on_addButton_clicked();
      void on_computerBuiltBox_toggled(bool checked);
-
      void on_imageSelection_clicked();
-
      void on_removeImageButton_clicked();
 
 private:

@@ -3,6 +3,7 @@
 
 AddConnectionDialog::AddConnectionDialog(QWidget *parent) : QDialog(parent), ui(new Ui::AddConnectionDialog) {
     ui -> setupUi(this);
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     ui -> personTable -> setSelectionMode(QAbstractItemView::SingleSelection);
     ui -> personTable -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);
     ui -> computerTable -> setSelectionMode(QAbstractItemView::SingleSelection);

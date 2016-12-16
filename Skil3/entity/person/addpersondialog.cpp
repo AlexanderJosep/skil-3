@@ -3,6 +3,7 @@
 
 AddPersonDialog::AddPersonDialog(QWidget *parent) : QDialog(parent), ui(new Ui::AddPersonDialog) {
     ui -> setupUi(this);
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     layout() -> setSizeConstraint(QLayout::SetFixedSize);
     setWindowTitle("Add Person");
     edit = false;
