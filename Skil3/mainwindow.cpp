@@ -16,6 +16,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui -> tableView -> setSelectionMode(QAbstractItemView::SingleSelection);
     ui -> tableView -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);
     resize(QDesktopWidget().availableGeometry(this).size() * 0.45);
+
+    QPixmap pixmap("./icons/info.png");
+    ui -> viewButton -> setIcon(ButtonIcon(ButtonIcon(pixmap)));
+    ui -> viewButton -> setIconSize(pixmap.rect().size());
+
+    pixmap = QPixmap("./icons/info.png");
+    ui -> addButton -> setIcon(ButtonIcon(pixmap));
+    ui -> addButton -> setIconSize(pixmap.rect().size());
+
+    pixmap = QPixmap("./icons/edit.png");
+    ui -> editButton -> setIcon(ButtonIcon(pixmap));
+    ui -> editButton -> setIconSize(pixmap.rect().size());
+
+    pixmap = QPixmap("./icons/remove.png");
+    ui -> removeButton -> setIcon(ButtonIcon(pixmap));
+    ui -> removeButton -> setIconSize(pixmap.rect().size());
 }
 
 MainWindow::~MainWindow() {
